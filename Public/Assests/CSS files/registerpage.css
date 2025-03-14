@@ -1,0 +1,162 @@
+/* General Styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: url('../../Assests/Images/registerpage_background1.jpg') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Form Container with Spacing */
+.container {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+/* Logo Styling */
+.logo-container {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.logo {
+    width:50px;
+    height:50px;
+}
+
+h2 {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+    font-size: 28px;
+    background: linear-gradient(to bottom, #005222, #2cda43);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Card Styling */
+.card {
+    max-width: 750px;
+    margin: auto;
+    padding: 30px; 
+    border-radius: 12px;
+    background: #ffffff; 
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.02);
+}
+
+/* Input Fields */
+.form-control {
+    border-radius: 8px;
+    border: 2px solid #bbb;
+    padding: 12px;
+    transition: all 0.3s ease-in-out;
+    font-size: 16px;
+    background-color: #fff;
+}
+
+.form-control:hover {
+    border-color: #007bff;
+}
+
+.form-control:focus {
+    border-color: #ff9800;
+    box-shadow: 0 0 10px rgba(255, 152, 0, 0.7);
+    outline: none;
+}
+
+/* Buttons */
+.btn {
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 25px;
+    padding: 10px 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Success (Register) Button */
+.btn-success {
+    background: linear-gradient(to right, #28a745, #34d058);
+    border: none;
+    color: white;
+}
+
+/* Danger (Cancel) Button */
+.btn-danger {
+    background: linear-gradient(to right, #d9534f, #ff6b6b);
+    border: none;
+    color: white;
+}
+
+.mt-4.text-center .btn {
+    margin: 0 10px;
+}
+
+.mt-4 {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.btn:hover {
+    transform: scale(1.07);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Avatar Section */
+.avatar-container {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.avatar-container img {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    border: 3px solid #ddd;
+    object-fit: cover;
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+}
+
+.avatar-container img:hover {
+    border-color: #007bff;
+    box-shadow: 0px 0px 15px rgba(0, 123, 255, 0.6);
+    transform: scale(1.05);
+}
+
+.avatar-container input {
+    display: none;
+}
+
+/* Avatar Selection Modal */
+.avatar-selection img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.avatar-selection img:hover {
+    transform: scale(1.15);
+    box-shadow: 0px 0px 10px rgba(255, 152, 0, 0.8);
+}
+
+/* Error Message Styling */
+.error {
+    color: #ff3e3e;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member Login</title>
+    <link rel="stylesheet" href="../../Public/Assests/CSS files/loginpage.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <!-- Bootstrap Toast (Top Center) -->
+    <div id="toastElement" class="toast position-fixed top-0 start-50 translate-middle-x mt-3">
+        <div id="toastMessage" class="toast-body text-center">
+            <!-- Message will be inserted dynamically -->
+        </div>
+    </div>
+
+    <!--main content-->
+    <div class="smls-login-container">
+        <!-- Left Side: Login logo -->
+        <div class="smls-company-header">
+            <img src="../../Public/Assests/Images/supermarket_logo.png" alt="Company Logo" class="logo">
+            <span id="company_name">FOOD HUB</span>
+        </div>
+        <!-- Left Side: Login Form -->
+        <div class="smls-left-side">
+            <div class="smls-login-Form-container">
+                <h2>MEMBER LOGIN</h2>
+                    <form id="smls_login_form">
+                        <!--username-->
+                        <div class="smls-login-input-container">
+                            <span class="icon"><i class="fa fa-user fa-lg" ></i></span>
+                            <input type="text" id="username" name="username" placeholder="Username">
+                        </div>
+                        <!--password-->
+                        <div class="smls-login-input-container">
+                            <span class="icon"><i class="fa fa-lock fa-lg" ></i></span>
+                            <input type="password" id="password" name="password" placeholder="Password">
+                        </div>
+                        <!--button-->
+                        <button type="button" class="login-btn">LOGIN</button>
+                        <p class="register-text">Not have an Account?</p>
+                        <button type="button" class="register-btn">REGISTER</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Right Side: Background with Slogan -->
+        <div class="smls-right-side">
+            <p class="slogan">"Delicious Deals Await You!"</p>
+        </div>
+
+    <script src="../../Public/Assests/Js files/loginpage.js"></script>
+</body>
+</html>
