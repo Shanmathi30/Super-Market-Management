@@ -70,7 +70,7 @@ h2 {
     border-radius: 5px;
     margin-bottom: 15px;
     width: 80%; /* Reduced width */
-    margin: 0 auto 15px auto; 
+    margin: 0 auto 0px auto; 
 
 }
 
@@ -148,6 +148,9 @@ input {
     color:red;
     transform: translateX(-50%);
     z-index: 1050;
+}
+.error {
+    color: red !important;
 }
 
 

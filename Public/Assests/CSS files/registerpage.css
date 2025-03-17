@@ -11,21 +11,35 @@ body {
 }
 
 /* Form Container with Spacing */
-.container {
+.smrs-container {
     margin-top: 50px;
     margin-bottom: 50px;
 }
 
-/* Logo Styling */
-.logo-container {
+/* Logo Inside the Card */
+.smrs-logo-container {
     position: absolute;
-    top: 20px;
-    left: 20px;
+    top: 15px;  
+    left: 30px; 
+    width: 60px;
+    height: 60px;
 }
 
+/* Ensure Logo Doesn't Move */
+.smrs-card {
+    position: relative; /* Ensures absolute positioning is inside this */
+    max-width: 750px;
+    margin: auto;
+    padding: 60px 30px 30px; 
+    border-radius: 12px;
+    background: #ffffff;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Logo Styling */
 .logo {
-    width:50px;
-    height:50px;
+    width: 50px;
+    height: 50px;
 }
 
 h2 {
@@ -40,7 +54,7 @@ h2 {
 }
 
 /* Card Styling */
-.card {
+.smrs-card {
     max-width: 750px;
     margin: auto;
     padding: 30px; 
@@ -50,7 +64,7 @@ h2 {
     transition: transform 0.3s ease-in-out;
 }
 
-.card:hover {
+.smrs-card:hover {
     transform: scale(1.02);
 }
 
@@ -58,8 +72,6 @@ h2 {
 .form-control {
     border-radius: 8px;
     border: 2px solid #bbb;
-    padding: 12px;
-    transition: all 0.3s ease-in-out;
     font-size: 16px;
     background-color: #fff;
 }
@@ -89,11 +101,16 @@ h2 {
     border: none;
     color: white;
 }
+/*cancel button*/
+.btn-outline-danger {
+    border: 2px solid red;
+    color: red;
+    background-color: transparent;
+    transition: all 0.3s ease-in-out;
+}
 
-/* Danger (Cancel) Button */
-.btn-danger {
-    background: linear-gradient(to right, #d9534f, #ff6b6b);
-    border: none;
+.btn-outline-danger:hover {
+    background-color: red;
     color: white;
 }
 
@@ -112,34 +129,29 @@ h2 {
 }
 
 /* Avatar Section */
-.avatar-container {
+.smrs-avatar-container {
     position: relative;
     display: inline-block;
-    cursor: pointer;
 }
 
-.avatar-container img {
+.smrs-avatar-container img {
     width: 130px;
     height: 130px;
     border-radius: 50%;
-    border: 3px solid #ddd;
-    object-fit: cover;
-    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease-in-out;
+    border: 3px solid #28a745;
+    box-shadow: 0px 0px 15px rgba(40, 167, 69, 0.6); 
+    display: block;
 }
 
-.avatar-container img:hover {
-    border-color: #007bff;
-    box-shadow: 0px 0px 15px rgba(0, 123, 255, 0.6);
-    transform: scale(1.05);
-}
-
-.avatar-container input {
-    display: none;
+/* Error Message Styling */
+.error {
+    color: #ff3e3e;
+    font-size: 13px;
+    font-weight: bold;
 }
 
 /* Avatar Selection Modal */
-.avatar-selection img {
+/* .avatar-selection img {
     width: 100px;
     height: 100px;
     border-radius: 50%;
@@ -150,13 +162,6 @@ h2 {
 .avatar-selection img:hover {
     transform: scale(1.15);
     box-shadow: 0px 0px 10px rgba(255, 152, 0, 0.8);
-}
-
-/* Error Message Styling */
-.error {
-    color: #ff3e3e;
-    font-size: 13px;
-    font-weight: bold;
-}
+}  */
 
 

@@ -18,23 +18,21 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.8/jquery.inputmask.min.js"></script>
 </head>
 <body>
-    <div class="container mt-5">
-        <div class="card shadow-lg p-4">
-            <div class="logo-container">
+    <div class="smrs-container mt-5">
+        <div class="smrs-card shadow-lg p-4">
+            <div class="smrs-logo-container">
                 <img src="../../Public/Assests/Images/supermarket_logo.png" alt="Logo" class="logo">
             </div>
             <h2 class="text-center mb-4">Customer Registration</h2>
 
-            <!-- Avatar Upload (Clickable) -->
-            <div class="text-center mb-4">
-                <div class="avatar-container">
-                    <img id="avatarPreview" src="../../Public/Assests/Images/general_avatar.png" alt="Avatar">
-                    <input type="file" id="avatarUpload" name="avatar">
+             <!-- Avatar -->
+             <div class="text-center mb-4">
+                <div class="smrs-avatar-container">
+                    <img id="smrs_avatar_Preview" src="../../Public/Assests/Images/general user icon.jpg" alt="Avatar">
                 </div>
-                <p class="small text-muted">Click on the avatar to choose</p>
             </div>
 
-            <form id="scf-customer-form">
+            <form id="smrs_customer_form">
                 <div class="row g-3">
                     <div class="col-md-4">
                         <label for="firstName" class="form-label">First Name</label>
@@ -78,15 +76,35 @@
                     </div>
                 </div>
                 <div class="mt-4 text-center">
-                    <button type="button" class="btn btn-success w-25" id="scb_register_btn">Register</button>
-                    <button type="button" class="btn btn-danger w-25" id="scb_cancel_btn">Cancel</button>
+                    <button type="button" class="btn btn-success w-25" id="smrs_register_btn">Register</button>
+                    <button type="button" class="btn btn-outline-danger w-25" id="smrs_cancel_btn">Cancel</button>
                 </div>
             </form>
         </div>
     </div>
 
-    <!-- Avatar Selection Modal -->
-    <div class="modal fade" id="avatarModal" tabindex="-1">
+    <!-- Toast Message (Only Bold Red Text) -->
+<div class="position-fixed top-0 start-50 translate-middle-x p-3" style="z-index: 1050">
+    <div id="liveToast" class="toast border-0">
+        <div class="d-flex">
+            <div class="toast-body fw-bold text-danger text-center" id="toastBody">
+                <!-- Message will be inserted dynamically -->
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../Public/Assests/Js files/registerpage.js"></script>
+
+</body>
+</html>
+
+
+<!-- Avatar Selection Modal -->
+    <!-- <div class="modal fade" id="avatarModal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content p-3">
                 <h5 class="modal-title">Select Your Avatar</h5>
@@ -99,24 +117,13 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- Toast Message (Only Bold Red Text) -->
-<div class="position-fixed top-0 start-50 translate-middle-x p-3" style="z-index: 1050">
-    <div id="liveToast" class="toast border-0" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="d-flex">
-            <div class="toast-body fw-bold text-danger text-center" id="toastBody"></div>
-        </div>
-    </div>
-</div>
-
+    </div> -->
     
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../../Public/Assests/Js files/registerpage.js"></script>
-
-
-</body>
-</html>
-
-
+            <!-- Avatar Upload (Clickable) -->
+            <!-- <div class="text-center mb-4">
+                <div class="avatar-container">
+                    <img id="avatarPreview" src="../../Public/Assests/Images/general_avatar.png" alt="Avatar">
+                    <input type="file" id="avatarUpload" name="avatar">
+                </div>
+                <p class="small text-muted">Click on the avatar to choose</p>
+            </div> -->
