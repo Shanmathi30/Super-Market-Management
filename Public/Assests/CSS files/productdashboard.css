@@ -8,7 +8,7 @@
     
 }
 .banner-fruitJuice {
-    background-image: url("./assests/juice.jpg");
+    background-image: url("../Images/juice.jpg");
     width: 100%;
     background-repeat: no-repeat;
     background-size: cover;
@@ -16,7 +16,7 @@
     
 }
 .banner-fruitPop {
-    background-image: url("./assests/kiwi.jpg");
+    background-image: url("../Images/kiwi.jpg");
     width: 100%;
     background-repeat: no-repeat;
     background-size: cover;
@@ -113,7 +113,7 @@
     }
     50% {
       left: 25%;
-      opacity: .5;
+      opacity:0.5;
     }
     100% {
       left: 100%;
