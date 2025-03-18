@@ -1,0 +1,122 @@
+.banners {
+    display: flex;
+    width: 100%;
+    height: 400px;
+    gap: 10px;
+    margin-top: 80px;
+    color: #064c4f;
+    
+}
+.banner-fruitJuice {
+    background-image: url("./assests/juice.jpg");
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+    
+}
+.banner-fruitPop {
+    background-image: url("./assests/kiwi.jpg");
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+
+}
+.banner-inner {
+    margin-top: 120px;
+    padding-right: 20px;
+    width: 250px;
+    margin-right:20px ;
+    margin-left: 20px;
+}
+.subtitle {
+    font-size: 24px;
+    margin: 0 0 10px;
+    color: #227c47;
+}
+.title {
+    float: left;
+    width: 100%;
+    font-size: 30px;
+    font-weight: 600;
+    margin: 0 0 15px;
+}
+.btn {
+    padding: 10px 25px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    background: transparent;
+    outline: none !important;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+}
+.btn-12 {
+    
+    background-color: #fff;
+    z-index: 1;
+    border-radius: 5px;
+}
+.btn-12:after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    background: orange;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+}
+.btn-12:hover {
+    color: #fff;
+}
+.btn-12:hover:after {
+    top: 0;
+    height: 100%;
+}
+.btn-12:active {
+    top: 2px;
+}
+.shine-overlay {
+    position: relative;
+    overflow: hidden;
+    
+    &:hover .shine {
+    display: block;
+    }
+  }
+  
+  .shine {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    background: linear-gradient(to right,rgba(255,255,255,0.5) 0,rgba(255,255,255,.8) 50%,rgba(255,255,255,0.3) 100%);
+    pointer-events: none;
+    z-index: 3;
+    opacity: 0;
+    transform: skew(30deg);
+    animation: shine 0.75s linear 1;
+  }
+  
+  @keyframes shine {
+    0% {
+      left: -50%;
+      opacity: 0;
+    }
+    50% {
+      left: 25%;
+      opacity: .5;
+    }
+    100% {
+      left: 100%;
+      opacity: 0;
+    }
+  }
