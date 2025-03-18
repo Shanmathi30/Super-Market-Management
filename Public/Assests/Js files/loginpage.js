@@ -76,7 +76,7 @@ const LoginPage = function () {
             }
         });
     };
-
+    
     // Event binding
     this.bindLoginPageEvents = function () {
         $(SELECTORS.userLoginButtonId).on("click", function () {
