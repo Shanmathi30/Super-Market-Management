@@ -150,18 +150,5 @@ h2 {
     font-weight: bold;
 }
 
-/* Avatar Selection Modal */
-/* .avatar-selection img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
-
-.avatar-selection img:hover {
-    transform: scale(1.15);
-    box-shadow: 0px 0px 10px rgba(255, 152, 0, 0.8);
-}  */
 
 

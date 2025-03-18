@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>Dashboard</title>
     
     <link rel="stylesheet" href="../../Public/Assests/CSS files/dashboard.css">
     <!-- Bootstrap 5 CSS -->
@@ -22,40 +22,8 @@
     
     <!-- Navbar -->
     <div class="content-wrapper">
-    <nav class="navbar" style="width:95%;">
-        <div class="container-fluid p-0">
-            <!-- Logo -->
-            <a class="navbar-brand text-white d-flex align-items-center" href="#">
-                <img src="../../Public/Assests/Images/supermarket logo.jpg" alt="logo" class="logo-image">
-                <span class="brand-text">FOOD<span class="orange-text">HUB</span></span>
-            </a>
-            <!-- Search Bar -->
-            <div class="search-bar">
-                <input class="form-control" type="search" placeholder="Search for vegetables, fruits....." aria-label="Search">
-                <i class='fas fa-search search-icon'></i>
-            </div>
-            <!-- Cart & Avatar -->
-            <div class="d-flex align-items-center ms-3">
-                <!-- Cart Icon with Badge -->
-                <div class="cart-container">
-                    <i class="fa-solid fa-cart-shopping text-white fs-4"></i>
-                    <span class="position-absolute cart-badge badge bg-danger rounded-pill">0</span>
-                </div>
-                <!-- Avatar Icon -->
-                <div class="avatar-icon  top-0 right-0 ms-3" id="avatarIcon">
-                    <i class="fa-solid fa-user text-dark fs-5"></i>
-                </div>
-                <!-- Profile Card (Initially Hidden) -->
-                <div id="profileCard">
-                    <div class="profile-card-content">
-                        <img src="../../Public/Assests/Images/general user icon.jpg" class="profile-pic" alt="User Avatar">
-                        <h5 class="user-name">User</h5>
-                        <button class="btn btn-update mt-2">Update Profile</button>
-                        <button class="btn btn-logout mt-2">Logout</button>                        
-                    </div>
-                </div>
-            </div>
-        </div>
+    <nav class="navbar" style="width:96%;">
+        <supermarket-topnavigation style="display:block; width:100%;"></supermarket-topnavigation>  
     </nav>
 
     <main class="content">
@@ -133,13 +101,18 @@
 <div class="all-template"></div>
 <script src="../../Public/Assests/Js files/dashboard.js"></script>
     <script>
-        
+
         $('.all-template').load('customelement.html', function () {
-        let script = document.createElement('script');
-        script.src = '../../Public/Assests/Js files/navigation.js';
-        document.body.appendChild(script);
+            let script = document.createElement('script');
+            script.src = '../../Public/Assests/Js files/navigation.js';
+            document.body.appendChild(script);
+            
+            let scriptTopNavigation = document.createElement('script');
+            scriptTopNavigation.src = '../../Public/Assests/Js files/topnavigation.js';
+            document.body.appendChild(scriptTopNavigation);
     });
     </script>
+
     
 </body>
 </html>

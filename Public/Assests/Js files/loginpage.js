@@ -84,7 +84,7 @@ const LoginPage = function () {
                 loginPage.processLogin();
             } 
         });
-
+        
         $(SELECTORS.userRegisterButtonClass).on("click", function () {
             window.location.href = "registerpage.html";
         });

@@ -174,16 +174,18 @@ const RegisterPage = function () {
 
     // Event Binding
     this.bindRegisterPageEvents = function () {
-        $(SELECTORS.userCancelButtonId).click(function () {
-            $(SELECTORS.userRegisterFormId)[0].reset(); 
-        });
+        $(SELECTORS.userCancelButtonId).on("click",_handleCustomerRegisterationCancel);
 
-        $(SELECTORS.userRegisterButtonId).click(function () {
-            if ($(SELECTORS.userRegisterFormId).valid()) {
-                registerPage.registerCustomer();
-            }
-        });
+        $(SELECTORS.userRegisterButtonId).on("click", _saveCustomerDetailsForRegisteration);
     };
+    function _saveCustomerDetailsForRegisteration () {
+        if ($(SELECTORS.userRegisterFormId).valid()) {
+            registerPage.registerCustomer();
+        }
+    }
+    function _handleCustomerRegisterationCancel() {
+        $(SELECTORS.userRegisterFormId)[0].reset(); 
+    }
 };
 
 const registerPage = new RegisterPage();

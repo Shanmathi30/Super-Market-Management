@@ -10,3 +10,4 @@ class SuperMarketNavigation extends HTMLElement {
     }
 }
 customElements.define("supermarket-navigation", SuperMarketNavigation);
+

@@ -38,7 +38,7 @@ $(document).ready(function() {
     }
 
     // Toggle profile card when clicking the avatar
-    $("#avatarIcon").click(function() {
+    $("#avatarIcon").on("click",function() {
         $("#profileCard").toggle();
     });
 

@@ -3,61 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bootstrap 5 Carousel</title>
+    <title>product</title>
+    <link rel="stylesheet" href="../../Public/Assests/CSS files/dashboard.css">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../../Public/Assests/CSS files/productdashboard.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"> 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-  <main class="smps-product-container">
-    <!--Carousel-->
-    <div id="myCustomCarousel" class="carousel slide" data-bs-ride="carousel">
-      <!-- Indicators -->
-      <div class="carousel-indicators">
-        <button type="button" data-bs-target="#myCustomCarousel" data-bs-slide-to="0" class="active"></button>
-        <button type="button" data-bs-target="#myCustomCarousel" data-bs-slide-to="1"></button>
-        <button type="button" data-bs-target="#myCustomCarousel" data-bs-slide-to="2"></button>
-      </div>
-      <!-- Carousel Items -->
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img src="../../Public/Assests/Images/carousel_image_1.webp" class="d-block w-100" alt="Image 1">
-        </div>
-        <div class="carousel-item">
-            <img src="../../Public/Assests/Images/carousel_image_2.webp" class="d-block w-100" alt="Image 2">
-        </div>
-        <div class="carousel-item">
-            <img src="../../Public/Assests/Images/carousel_image_3.webp" class="d-block w-100" alt="Image 3">
-        </div>
-      </div>
-      <!-- Navigation Arrows -->
-      <button class="carousel-control-prev" type="button" data-bs-target="#myCustomCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon"></span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#myCustomCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon"></span>
-      </button>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <supermarket-navigation></supermarket-navigation>
     </div>
-    <!---search process-->
-    <!--banner-->
-    <div class="banners">
-      <div class="banner-fruitJuice shine-overlay">
-          <div class="banner-inner">
-          <div class="subtitle">Save 45% OFF</div>
-          <div class="title">Fresh &amp; Tasty <br> Fruits Juice</div>
-          <div class="btn btn-12" href="#">Shop Now</div>
+    
+    <!-- Navbar -->
+    <div class="content-wrapper">
+    <nav class="navbar" style="width:96%;">
+        <supermarket-topnavigation style="display:block; width:100%;"></supermarket-topnavigation>  
+    </nav>
+    <main class="smps-product-container">
+        <!--Carousel-->
+        <div id="myCustomCarousel" class="carousel slide" data-bs-ride="carousel">
+          <!-- Indicators -->
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#myCustomCarousel" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#myCustomCarousel" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#myCustomCarousel" data-bs-slide-to="2"></button>
           </div>
-          <div class="shine"></div>
-      </div>
-      <div class="banner-fruitPop shine-overlay">
-          <div class="banner-inner">
-          <div class="subtitle">Save 45% OFF</div>
-          <div class="title">Fresh &amp; Tasty <br> Fruits Ice Pop</div>
-          <div class="btn btn-12" href="#">Shop Now</div>
+          <!-- Carousel Items -->
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="../../Public/Assests/Images/carousel_image_1.webp" class="d-block w-100" alt="Image 1">
+            </div>
+            <div class="carousel-item">
+                <img src="../../Public/Assests/Images/carousel_image_2.webp" class="d-block w-100" alt="Image 2">
+            </div>
+            <div class="carousel-item">
+                <img src="../../Public/Assests/Images/carousel_image_3.webp" class="d-block w-100" alt="Image 3">
+            </div>
           </div>
-          <div class="shine"></div>
+          <!-- Navigation Arrows -->
+          <button class="carousel-control-prev" type="button" data-bs-target="#myCustomCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#myCustomCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </button>
+        </div>
+        <!---search process-->
+        <div class="search">
+    
+        </div>
+        <!--banner-->
+        <div class="smps-banners">
+          <div class="smps-banner-fruitJuice shine-overlay">
+              <div class="banner-inner">
+              <div class="subtitle">Save 45% OFF</div>
+              <div class="title">Fresh &amp; Tasty <br> Fruits Juice</div>
+              <div class="btn btn-12" href="#">Shop Now</div>
+              </div>
+              <div class="shine"></div>
+          </div>
+          <div class="smps-banner-fruitPop shine-overlay">
+              <div class="banner-inner">
+              <div class="subtitle">Save 45% OFF</div>
+              <div class="title">Fresh &amp; Tasty <br> Fruits Ice Pop</div>
+              <div class="btn btn-12" href="#">Shop Now</div>
+              </div>
+              <div class="shine"></div>
+          </div>
       </div>
-  </div>
-  </main>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+      </main>
+    </div>
+
+    <div class="all-template"></div>
+    <script src="../../Public/Assests/Js files/dashboard.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../Public/Assests/Js files/productdashboard.js"></script>
+    <script>
+
+        $('.all-template').load('customelement.html', function () {
+            let script = document.createElement('script');
+            script.src = '../../Public/Assests/Js files/navigation.js';
+            document.body.appendChild(script);
+            
+            let scriptTopNavigation = document.createElement('script');
+            scriptTopNavigation.src = '../../Public/Assests/Js files/topnavigation.js';
+            document.body.appendChild(scriptTopNavigation);
+    });
+    </script>
 </body>
 </html>
