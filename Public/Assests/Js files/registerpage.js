@@ -175,7 +175,6 @@ const RegisterPage = function () {
     // Event Binding
     this.bindRegisterPageEvents = function () {
         $(SELECTORS.userCancelButtonId).on("click",_handleCustomerRegisterationCancel);
-
         $(SELECTORS.userRegisterButtonId).on("click", _saveCustomerDetailsForRegisteration);
     };
     function _saveCustomerDetailsForRegisteration () {

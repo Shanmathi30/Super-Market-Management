@@ -79,16 +79,17 @@ const LoginPage = function () {
     
     // Event binding
     this.bindLoginPageEvents = function () {
-        $(SELECTORS.userLoginButtonId).on("click", function () {
-            if ($(SELECTORS.userLoginFormId).valid()) {
-                loginPage.processLogin();
-            } 
-        });
-        
-        $(SELECTORS.userRegisterButtonClass).on("click", function () {
-            window.location.href = "registerpage.html";
-        });
+        $(SELECTORS.userLoginButtonId).on("click",_logingToDashboard);
+        $(SELECTORS.userRegisterButtonClass).on("click",_redirectingRegisterPage);
     };
+    function _logingToDashboard() {
+        if ($(SELECTORS.userLoginFormId).valid()) {
+            loginPage.processLogin();
+        } 
+    }
+    function _redirectingRegisterPage() {
+        window.location.href = "registerpage.html";
+    }
 };
 
 const loginPage = new LoginPage();
