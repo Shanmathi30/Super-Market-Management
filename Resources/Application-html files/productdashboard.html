@@ -19,14 +19,15 @@
     <div class="sidebar">
         <supermarket-navigation></supermarket-navigation>
     </div>
-    
     <!-- Navbar -->
-    <div class="content-wrapper">
     <nav class="navbar" style="width:96%;">
         <supermarket-topnavigation style="display:block; width:100%;"></supermarket-topnavigation>  
     </nav>
-    <main class="smps-product-container">
+    <!---main content-->
+    <section class="content-wrapper">
+      <main class="smps-product-container">
         <!--Carousel-->
+        <h1>Product Details</h1>
         <div id="myCustomCarousel" class="carousel slide" data-bs-ride="carousel">
           <!-- Indicators -->
           <div class="carousel-indicators">
@@ -54,37 +55,160 @@
             <span class="carousel-control-next-icon"></span>
           </button>
         </div>
-        <!---search process-->
-        <div class="search">
-    
-        </div>
-        <!--banner-->
-        <div class="smps-banners">
-          <div class="smps-banner-fruitJuice shine-overlay">
-              <div class="banner-inner">
-              <div class="subtitle">Save 45% OFF</div>
-              <div class="title">Fresh &amp; Tasty <br> Fruits Juice</div>
-              <div class="btn btn-12" href="#">Shop Now</div>
+        <!---Curated process-->
+        <div class="container text-center mt-4">
+          <h2>Curated For You</h2>
+          <div class="category-container" id="mainCategories">
+              <div class="category">
+                  <a href="#"><img src="../../Public/Assests/Images/riceproducts.jpg" alt="Rice & Rice Products">
+                  <p>Rice & Rice Products</p></a>
               </div>
-              <div class="shine"></div>
+              <div class="category">
+                  <a href="#"><img src="../../Public/Assests/Images/masala&Spices.jpg" alt="Masala & Spices">
+                  <p>Masala & Spices</p></a>
+              </div>
+              <div class="category">
+                  <a href="#"><img src="../../Public/Assests/Images/DairyProducts.jpg" alt="Dairy Products">
+                  <p>Dairy Products</p></a>
+              </div>
+              <div class="category">
+                  <a href="#"><img src="../../Public/Assests/Images/BreakfastCereals.jpg" alt="Breakfast Cereals">
+                  <p>Breakfast Cereals</p></a>
+              </div>
+              <div class="category">
+                  <a href="#"><img src="../../Public/Assests/Images/InstantFoods.jpg" alt="Instant Foods">
+                  <p>Instant Foods</p></a>
+              </div>
+            </div>
+          <!---hidden category list-->
+          <div class="category-container" id="extraCategories">
+              <div class="category" id="category">
+                  <a href="#"><img src="../../Public/Assests/Images/Bread&Jam.jpg" alt="Bread & Jam">
+                  <p>Bread & Jam</p></a>
+              </div>
+              <div class="category">
+                  <a href="#"><img src="../../Public/Assests/Images/Papads&Fryums.jpg" alt="Papads & Fryums">
+                  <p>Papads & Fryums</p></a>
+              </div>
+              <div class="category">
+                  <a href="#"><img src="../../Public/Assests/Images/Sauces&Ketchup.jpg" alt="Sauces & Ketchup">
+                  <p>Sauces & Ketchup</p></a>
+              </div>
+              <div class="category">
+                  <a href="#"><img src="../../Public/Assests/Images/BabyFoods.jpg" alt="Baby Foods">
+                  <p>Baby Foods</p></a>
+              </div>
+              <div class="category">
+                  <a href="#"><img src="../../Public/Assests/Images/OralCare.jpg" alt="Oral Care">
+                  <p>Oral Care</p></a>
+              </div>
           </div>
-          <div class="smps-banner-fruitPop shine-overlay">
-              <div class="banner-inner">
-              <div class="subtitle">Save 45% OFF</div>
-              <div class="title">Fresh &amp; Tasty <br> Fruits Ice Pop</div>
-              <div class="btn btn-12" href="#">Shop Now</div>
-              </div>
-              <div class="shine"></div>
+          <div class="toggle-btn">
+              <button id="toggleButton" class="btn btn-outline-success">Show More</button>
           </div>
       </div>
-      </main>
-    </div>
+      <!---product category-->
+      <div class="container text-center mx-3 pt-5">
+        <h2>Shop By Categories</h2>
+      </div>
+      <div class="container-fluid px-3 category-section"> 
+        <!-- First Row -->
+        <div class="row row-cols-auto g-2 justify-content-center">
+            <div class="col">
+              <div class="card category-card">
+                <img src="../../Public/Assests/Images/fruit.jpg" alt="Fruits">
+                <div class="category-title">Fruits & Vegetables</div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card category-card">
+                <img src="../../Public/Assests/Images/staples.jpg" alt="Staples">
+                <div class="category-title">Staples</div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card category-card">
+                <img src="../../Public/Assests/Images/Chilled & Dairy.jpg" alt="Chilled & Dairy">
+                <div class="category-title">Chilled & Dairy</div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card category-card">
+                <img src="../../Public/Assests/Images/snacks.jpg" alt="Snacks">
+                <div class="category-title">Snacks</div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card category-card">
+                <img src="../../Public/Assests/Images/Beverages.jpg" alt="Beverages">
+                <div class="category-title">Beverages</div>
+              </div>
+            </div>
+        </div>
+        <!-- Second Row -->
+        <div class="row row-cols-auto g-2 justify-content-center mt-3">
+            <div class="col">
+              <div class="col">
+                <div class="card category-card">
+                  <img src="../../Public/Assests/Images/baby care.jpg" alt="Baby Care">
+                  <div class="category-title">Baby Care</div>
+                </div>
+              </div>
+              <div class="card category-card">
+                <img src="../../Public/Assests/Images/Ready To Cook.jpg" alt="Ready To Cook">
+                <div class="category-title">Ready To Cook</div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card category-card">
+                <img src="../../Public/Assests/Images/household.jpg" alt="Household">
+                <div class="category-title">Household</div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card category-card">
+                <img src="../../Public/Assests/Images/Feminine Care.jpg" alt="Feminine Care">
+                <div class="category-title">Feminine Care</div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card category-card">
+                <img src="../../Public/Assests/Images/cleaning.jpg" alt="Cleaning Needs">
+                <div class="category-title">Cleaning Needs</div>
+              </div>
+            </div>
+        </div>
 
-    <div class="all-template"></div>
-    <script src="../../Public/Assests/Js files/dashboard.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../../Public/Assests/Js files/productdashboard.js"></script>
-    <script>
+        <!-- Third Row (Centered Cards) -->
+        <div class="row row-cols-auto g-2 justify-content-center mt-3">
+            <div class="col">
+              <div class="card category-card">
+                <img src="../../Public/Assests/Images/health care.jpg" alt="Health Care">
+                <div class="category-title">Health Care</div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card category-card">
+                <img src="../../Public/Assests/Images/personal care.jpg" alt="Personal Care">
+                <div class="category-title">Personal Care</div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card category-card">
+                <img src="../../Public/Assests/Images/Crockeries.jpeg" alt="Crockeries">
+                <div class="category-title">Crockeries</div>
+              </div>
+            </div>
+        </div>
+    </div>
+    </main>
+  </section>
+
+  <div class="all-template"></div>
+  <script src="../../Public/Assests/Js files/dashboard.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../../Public/Assests/Js files/productdashboard.js"></script>
+  <script>
 
         $('.all-template').load('customelement.html', function () {
             let script = document.createElement('script');
