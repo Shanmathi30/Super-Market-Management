@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category Cards</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            background-color: #f5f5f5; /* Light gray background */
+        }
+
+        .category-section {
+            padding: 40px 0;
+        }
+
+        .category-card {
+            width: 180px; /* Adjust width */
+            height: 220px; /* Adjust height */
+            border-radius: 12px;
+            border: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+            background-color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .category-card img {
+            width: 100%;
+            height: 140px; /* Adjust image height */
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .category-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 8px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container-fluid category-section">
+        <!-- First Row -->
+        <div class="row row-cols-5 g-4 justify-content-center">
+            <div class="col">
+                <div class="card category-card">
+                    <img src="../../Public/Assests/Images/BabyFoods.jpg" alt="Fruits">
+                    <div class="category-title">Fruits & Vegetables</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card category-card">
+                    <img src="staples.jpg" alt="Staples">
+                    <div class="category-title">Staples</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card category-card">
+                    <img src="snacks.jpg" alt="Snacks">
+                    <div class="category-title">Snacks</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card category-card">
+                    <img src="beverages.jpg" alt="Beverages">
+                    <div class="category-title">Beverages</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card category-card">
+                    <img src="dairy.jpg" alt="Chilled & Dairy">
+                    <div class="category-title">Chilled & Dairy</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Second Row -->
+        <div class="row row-cols-5 g-4 justify-content-center mt-3">
+            <div class="col">
+                <div class="card category-card">
+                    <img src="ready_to_cook.jpg" alt="Ready To Cook">
+                    <div class="category-title">Ready To Cook</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card category-card">
+                    <img src="baby_care.jpg" alt="Baby Care">
+                    <div class="category-title">Baby Care</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card category-card">
+                    <img src="household.jpg" alt="Household">
+                    <div class="category-title">Household</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card category-card">
+                    <img src="cleaning.jpg" alt="Cleaning Needs">
+                    <div class="category-title">Cleaning Needs</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card category-card">
+                    <img src="feminine_care.jpg" alt="Feminine Care">
+                    <div class="category-title">Feminine Care</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Third Row (Centered) -->
+        <div class="row row-cols-5 g-4 justify-content-center mt-3">
+            <div class="col">
+                <div class="card category-card">
+                    <img src="health_care.jpg" alt="Health Care">
+                    <div class="category-title">Health Care</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card category-card">
+                    <img src="personal_care.jpg" alt="Personal Care">
+                    <div class="category-title">Personal Care</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -24,7 +24,7 @@
         <supermarket-topnavigation style="display:block; width:100%;"></supermarket-topnavigation>  
     </nav>
     <!---main content-->
-    <section class="content-wrapper">
+    <div class="content-wrapper">
       <main class="smps-product-container">
         <!--Carousel-->
         <h1>Product Details</h1>
@@ -108,7 +108,7 @@
           </div>
       </div>
       <!---product category-->
-      <div class="container text-center mx-3 pt-5">
+      <div class="container text-center pt-5">
         <h2>Shop By Categories</h2>
       </div>
       <div class="container-fluid px-3 category-section"> 
@@ -128,12 +128,6 @@
             </div>
             <div class="col">
               <div class="card category-card">
-                <img src="../../Public/Assests/Images/Chilled & Dairy.jpg" alt="Chilled & Dairy">
-                <div class="category-title">Chilled & Dairy</div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card category-card">
                 <img src="../../Public/Assests/Images/snacks.jpg" alt="Snacks">
                 <div class="category-title">Snacks</div>
               </div>
@@ -144,19 +138,24 @@
                 <div class="category-title">Beverages</div>
               </div>
             </div>
+            <div class="col">
+              <div class="card category-card">
+                <img src="../../Public/Assests/Images/Chilled & Dairy.jpg" alt="Chilled & Dairy">
+                <div class="category-title">Chilled & Dairy</div>
+              </div></div>
         </div>
         <!-- Second Row -->
         <div class="row row-cols-auto g-2 justify-content-center mt-3">
             <div class="col">
-              <div class="col">
-                <div class="card category-card">
-                  <img src="../../Public/Assests/Images/baby care.jpg" alt="Baby Care">
-                  <div class="category-title">Baby Care</div>
-                </div>
-              </div>
               <div class="card category-card">
                 <img src="../../Public/Assests/Images/Ready To Cook.jpg" alt="Ready To Cook">
                 <div class="category-title">Ready To Cook</div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card category-card">
+                <img src="../../Public/Assests/Images/baby care.jpg" alt="Baby Care">
+                <div class="category-title">Baby Care</div>
               </div>
             </div>
             <div class="col">
@@ -202,7 +201,7 @@
         </div>
     </div>
     </main>
-  </section>
+  </div>
 
   <div class="all-template"></div>
   <script src="../../Public/Assests/Js files/dashboard.js"></script>
