@@ -16,15 +16,16 @@
 </head>
 <body>
     <!-- Sidebar -->
-    <div class="sidebar">
+    <div class="smds-sidebar">
         <supermarket-navigation></supermarket-navigation>
     </div>
+    <div class="smds-content-wrapper">
     <!-- Navbar -->
     <nav class="navbar" style="width:96%;">
         <supermarket-topnavigation style="display:block; width:100%;"></supermarket-topnavigation>  
     </nav>
     <!---main content-->
-    <div class="content-wrapper">
+   
       <main class="smps-product-container">
         <!--Carousel-->
         <h1>Product Details</h1>
@@ -56,50 +57,50 @@
           </button>
         </div>
         <!---Curated process-->
-        <div class="container text-center mt-4">
+        <div class="smps-container text-center mt-4">
           <h2>Curated For You</h2>
-          <div class="category-container" id="mainCategories">
-              <div class="category">
-                  <a href="#"><img src="../../Public/Assests/Images/riceproducts.jpg" alt="Rice & Rice Products">
+          <div class="smps-category-container" id="mainCategories">
+              <div class="smps-category">
+                  <a class="curated"><img src="../../Public/Assests/Images/riceproducts.jpg" alt="Rice & Rice Products">
                   <p>Rice & Rice Products</p></a>
               </div>
-              <div class="category">
-                  <a href="#"><img src="../../Public/Assests/Images/masala&Spices.jpg" alt="Masala & Spices">
+              <div class="smps-category">
+                  <a class="curated"><img src="../../Public/Assests/Images/masala&Spices.jpg" alt="Masala & Spices">
                   <p>Masala & Spices</p></a>
               </div>
-              <div class="category">
-                  <a href="#"><img src="../../Public/Assests/Images/DairyProducts.jpg" alt="Dairy Products">
+              <div class="smps-category">
+                  <a class="curated"><img src="../../Public/Assests/Images/DairyProducts.jpg" alt="Dairy Products">
                   <p>Dairy Products</p></a>
               </div>
-              <div class="category">
-                  <a href="#"><img src="../../Public/Assests/Images/BreakfastCereals.jpg" alt="Breakfast Cereals">
+              <div class="smps-category">
+                  <a class="curated"><img src="../../Public/Assests/Images/BreakfastCereals.jpg" alt="Breakfast Cereals">
                   <p>Breakfast Cereals</p></a>
               </div>
-              <div class="category">
-                  <a href="#"><img src="../../Public/Assests/Images/InstantFoods.jpg" alt="Instant Foods">
+              <div class="smps-category">
+                  <a class="curated"><img src="../../Public/Assests/Images/InstantFoods.jpg" alt="Instant Foods">
                   <p>Instant Foods</p></a>
               </div>
             </div>
           <!---hidden category list-->
           <div class="category-container" id="extraCategories">
-              <div class="category" id="category">
-                  <a href="#"><img src="../../Public/Assests/Images/Bread&Jam.jpg" alt="Bread & Jam">
+              <div class="smps-category" id="category">
+                  <a class="curated"><img src="../../Public/Assests/Images/Bread&Jam.jpg" alt="Bread & Jam">
                   <p>Bread & Jam</p></a>
               </div>
-              <div class="category">
-                  <a href="#"><img src="../../Public/Assests/Images/Papads&Fryums.jpg" alt="Papads & Fryums">
+              <div class="smps-category">
+                  <a class="curated"><img src="../../Public/Assests/Images/Papads&Fryums.jpg" alt="Papads & Fryums">
                   <p>Papads & Fryums</p></a>
               </div>
-              <div class="category">
-                  <a href="#"><img src="../../Public/Assests/Images/Sauces&Ketchup.jpg" alt="Sauces & Ketchup">
+              <div class="smps-category">
+                  <a class="curated"><img src="../../Public/Assests/Images/Sauces&Ketchup.jpg" alt="Sauces & Ketchup">
                   <p>Sauces & Ketchup</p></a>
               </div>
-              <div class="category">
-                  <a href="#"><img src="../../Public/Assests/Images/BabyFoods.jpg" alt="Baby Foods">
+              <div class="smps-category">
+                  <a class="curated"><img src="../../Public/Assests/Images/BabyFoods.jpg" alt="Baby Foods">
                   <p>Baby Foods</p></a>
               </div>
-              <div class="category">
-                  <a href="#"><img src="../../Public/Assests/Images/OralCare.jpg" alt="Oral Care">
+              <div class="smps-category">
+                  <a class="curated"><img src="../../Public/Assests/Images/OralCare.jpg" alt="Oral Care">
                   <p>Oral Care</p></a>
               </div>
           </div>
@@ -111,12 +112,12 @@
       <div class="container text-center pt-5">
         <h2>Shop By Categories</h2>
       </div>
-      <div class="container-fluid px-3 category-section"> 
+      <div class="container-fluid px-3 smps-category-section"> 
         <!-- First Row -->
         <div class="row row-cols-auto g-2 justify-content-center">
             <div class="col">
               <div class="card category-card">
-                <a href="#">
+                <a class="fruits-vegetables">
                   <img src="../../Public/Assests/Images/fruit.jpg" alt="Fruits">
                   <div class="category-title">Fruits & Vegetables</div>
                 </a>
@@ -124,7 +125,7 @@
             </div>
             <div class="col">
               <div class="card category-card">
-                <a href="#">
+                <a class="">
                   <img src="../../Public/Assests/Images/staples.jpg" alt="Staples">
                   <div class="category-title">Staples</div>
                 </a>
@@ -132,7 +133,7 @@
             </div>
             <div class="col">
               <div class="card category-card">
-                <a href="#">
+                <a class="">
                   <img src="../../Public/Assests/Images/snacks.jpg" alt="Snacks">
                   <div class="category-title">Snacks</div>
                 </a>
@@ -140,7 +141,7 @@
             </div>
             <div class="col">
               <div class="card category-card">
-                <a href="#">
+                <a class="">
                   <img src="../../Public/Assests/Images/Beverages.jpg" alt="Beverages">
                   <div class="category-title">Beverages</div>
                 </a>
@@ -148,7 +149,7 @@
             </div>
             <div class="col">
               <div class="card category-card">
-                <a href="#">
+                <a class="">
                   <img src="../../Public/Assests/Images/Chilled & Dairy.jpg" alt="Chilled & Dairy">
                   <div class="category-title">Chilled & Dairy</div>
                 </a>
@@ -159,7 +160,7 @@
         <div class="row row-cols-auto g-2 justify-content-center mt-3">
             <div class="col">
               <div class="card category-card">
-                <a href="#">
+                <a class="">
                   <img src="../../Public/Assests/Images/Ready To Cook.jpg" alt="Ready To Cook">
                   <div class="category-title">Ready To Cook</div>
                 </a>
@@ -167,7 +168,7 @@
             </div>
             <div class="col">
               <div class="card category-card">
-                <a href="#">
+                <a class="">
                   <img src="../../Public/Assests/Images/baby care.jpg" alt="Baby Care">
                   <div class="category-title">Baby Care</div>
                 </a>
@@ -175,7 +176,7 @@
             </div>
             <div class="col">
               <div class="card category-card">
-                <a href="#">
+                <a class="">
                   <img src="../../Public/Assests/Images/household.jpg" alt="Household">
                   <div class="category-title">Household</div>
                 </a>
@@ -183,7 +184,7 @@
             </div>
             <div class="col">
               <div class="card category-card">
-                <a href="#">
+                <a class="">
                   <img src="../../Public/Assests/Images/Feminine Care.jpg" alt="Feminine Care">
                   <div class="category-title">Feminine Care</div>
                 </a>
@@ -191,7 +192,7 @@
             </div>
             <div class="col">
               <div class="card category-card">
-                <a href="#">
+                <a class="">
                   <img src="../../Public/Assests/Images/cleaning.jpg" alt="Cleaning Needs">
                   <div class="category-title">Cleaning Needs</div>
                 </a>
@@ -203,7 +204,7 @@
         <div class="row row-cols-auto g-2 justify-content-center mt-3">
             <div class="col">
               <div class="card category-card">
-                <a href="#">
+                <a class="">
                   <img src="../../Public/Assests/Images/health care.jpg" alt="Health Care">
                   <div class="category-title">Health Care</div>
                 </a>
@@ -211,7 +212,7 @@
             </div>
             <div class="col">
               <div class="card category-card">
-                <a href="#">
+                <a class="">
                   <img src="../../Public/Assests/Images/personal care.jpg" alt="Personal Care">
                   <div class="category-title">Personal Care</div>
                 </a>
@@ -219,7 +220,7 @@
             </div>
             <div class="col">
               <div class="card category-card">
-                <a href="#">
+                <a class="crockeries">
                   <img src="../../Public/Assests/Images/Crockeries.jpeg" alt="Crockeries">
                   <div class="category-title">Crockeries</div>
                 </a>
@@ -244,7 +245,9 @@
             let scriptTopNavigation = document.createElement('script');
             scriptTopNavigation.src = '../../Public/Assests/Js files/topnavigation.js';
             document.body.appendChild(scriptTopNavigation);
-    });
+        });
+
+        
     </script>
 </body>
 </html>

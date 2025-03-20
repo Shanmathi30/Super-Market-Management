@@ -103,7 +103,7 @@
                 <div class="category-item" data-category="snacks"><i class="fas fa-cookie"></i> Snacks & Namkeens</div>
                 <div class="category-item" data-category="beverages"><i class="fas fa-coffee"></i> Beverages</div>
                 <div class="category-item" data-category="dairy"><i class="fas fa-cheese"></i> Chilled & Dairy Foods</div>
-                <div class="category-item" data-category="ready-cook"><i class="fas fa-fire"></i> Ready To Cook</div>
+                <div class="category-item" data-category="readycook"><i class="fas fa-fire"></i> Ready To Cook</div>
                 <div class="category-item" data-category="ready-eat"><i class="fas fa-utensil-spoon"></i> Ready To Eat</div>
                 <div class="category-item" data-category="baby-care"><i class="fas fa-baby"></i> Baby Care</div>
                 <div class="category-item" data-category="household"><i class="fas fa-home"></i> Household</div>
@@ -150,7 +150,7 @@
                 { name: "Cheese", price: 250, discount: 8, icon: "fas fa-cheese" },
                 { name: "Butter", price: 200, discount: 12, icon: "fas fa-ice-cream" }
             ],
-            "ready-cook": [
+            readycook: [
                 { name: "Frozen Paratha", price: 50, discount: 5, icon: "fas fa-hotdog" },
                 { name: "Instant Noodles", price: 30, discount: 10, icon: "fas fa-bowl-rice" }
             ],
@@ -198,29 +198,40 @@
             $(this).addClass("active");
 
             $("#category-title").text(categoryTitle);
-            $("#product-list").html(""); // Clear previous products
+            // $("#product-list").html(""); // Clear previous products
             
-            products[category]?.forEach(product => {
-                let discountPrice = product.price - (product.price * product.discount / 100);
+            // products[category]?.forEach(product => {
+            //     let discountPrice = product.price - (product.price * product.discount / 100);
                 
-                let productHTML = `
-                    <div class="col-md-4">
+            //     let productHTML = `
+            //         <div class="col-md-4">
+            //             <div class="product-card position-relative">
+            //                 <span class="discount-badge">${product.discount}% OFF</span>
+            //                 <i class="${product.icon} product-icon"></i>
+            //                 <h5>${product.name}</h5>
+            //                 <p><s>₹${product.price}</s> <b style="color:red;">₹${discountPrice.toFixed(0)}</b></p>
+            //             </div>
+            //         </div>
+            //     `;
+            //     $("#product-list").append(productHTML);
+            // });
+
+            $("#product-list").html(products[category]?products[category].reduce((prevElement,currenElement) => {
+                let discountPrice = currenElement.price - (currenElement.price * currenElement.discount / 100);
+                return `${prevElement} <div class="col-md-4">
                         <div class="product-card position-relative">
-                            <span class="discount-badge">${product.discount}% OFF</span>
-                            <i class="${product.icon} product-icon"></i>
-                            <h5>${product.name}</h5>
-                            <p><s>₹${product.price}</s> <b style="color:red;">₹${discountPrice.toFixed(0)}</b></p>
+                            <span class="discount-badge">${currenElement.discount}% OFF</span>
+                            <i class="${currenElement.icon} product-icon"></i>
+                            <h5>${currenElement.name}</h5>
+                            <p><s>₹${currenElement.price}</s> <b style="color:red;">₹${discountPrice.toFixed(0)}</b></p>
                         </div>
-                    </div>
-                `;
-                $("#product-list").append(productHTML);
-            });
+                    </div>`
+            },"") :"")
         });
     });
 </script>
 
 <!-- Bootstrap 5 JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
 </body>
 </html>

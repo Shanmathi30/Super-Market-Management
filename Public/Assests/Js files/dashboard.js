@@ -1,16 +1,3 @@
-// // Get the current URL's query string
-// const params = new URLSearchParams(window.location.search);
-
-// // Get specific query parameter values
-// const param1 = params.get('isAdmin');  // If the URL is like ?param1=value1
-
-// if(param1 === "N") {
-    
-// }else {
-
-// }
-
-
 $(document).ready(function() {
     let username = "";
 

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category & Products</title>
+    
+    <link rel="stylesheet" href="../../Public/Assests/CSS files/categories.css">
+    <link rel="stylesheet" href="../../Public/Assests/CSS files/dashboard.css">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"> 
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="smds-sidebar">
+        <supermarket-navigation></supermarket-navigation>
+    </div>
+    
+    <!-- Navbar -->
+    <div class="smds-content-wrapper">
+    <nav class="navbar" style="width:96%;">
+        <supermarket-topnavigation style="display:block; width:100%;"></supermarket-topnavigation>  
+    </nav>
+    <div class="smcs-container mt-4">
+        <div class="row mr-3">
+            <!-- Category Section -->
+            <div class="col-md-3">
+                <h4 class="text-success">Categories</h4>
+                <div class="smcs-category-list">
+                    <div class="smcs-category-item" data-category="fruitsVegetables" id="fruits_vegetables">
+                        <i class="fas fa-apple-alt"></i> Fruits & Vegetables</div>
+                    <div class="smcs-category-item" data-category="staples" id="staples">
+                        <i class="fas fa-utensils"></i> Staples</div>
+                    <div class="smcs-category-item" data-category="snacks" id="snacks">
+                        <i class="fas fa-cookie"></i> Snacks & Namkeens</div>
+                    <div class="smcs-category-item" data-category="beverages" id="beverages">
+                        <i class="fas fa-coffee"></i> Beverages</div>
+                    <div class="smcs-category-item" data-category="dairy" id="dairy">
+                        <i class="fas fa-cheese"></i> Chilled & Dairy Foods</div>
+                    <div class="smcs-category-item" data-category="readyCook" id="ready_to_cook">
+                        <i class="fas fa-fire"></i> Ready To Cook</div>
+                    <div class="smcs-category-item" data-category="readyEat" id="ready_to_eat">
+                        <i class="fas fa-utensil-spoon"></i> Ready To Eat</div>
+                    <div class="smcs-category-item" data-category="babyCare" id="baby_care">
+                        <i class="fas fa-baby"></i> Baby Care</div>
+                    <div class="smcs-category-item" data-category="household" id="household">
+                        <i class="fas fa-home"></i> Household</div>
+                    <div class="smcs-category-item" data-category="feminineCare" id="feminine_care">
+                        <i class="fas fa-female"></i> Feminine Care</div>
+                    <div class="smcs-category-item" data-category="cleaning" id="cleaning">
+                        <i class="fas fa-soap"></i> Cleaning Needs</div>
+                    <div class="smcs-category-item" data-category="personalCare" id="personal_care">
+                        <i class="fas fa-hand-holding-water"></i> Personal Care</div>
+                    <div class="smcs-category-item" data-category="healthCare" class="health_care">
+                        <i class="fas fa-heartbeat"></i> Health Care</div>
+                    <div class="smcs-category-item" data-category="crockeries" id="crockeries">
+                        <i class="fas fa-utensils"></i> Crockeries</div>
+                </div>
+            </div>
+
+            <!-- Product Display Section -->
+            <div class="col-md-9">
+                <h4 id="category-title" class="text-success">Select a Category</h4>
+                <div class="row product-container" id="product-list">
+                    <!-- Products will be dynamically added here -->
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="all-template"></div>
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="../../Public/Assests/Js files/dashboard.js"></script>
+
+    <script src="../../Public/Assests/Js files/categories.js"></script>
+
+    <script>
+        $('.all-template').load('customelement.html', function () {
+            let script = document.createElement('script');
+            script.src = '../../Public/Assests/Js files/navigation.js';
+            document.body.appendChild(script);
+                
+            let scriptTopNavigation = document.createElement('script');
+            scriptTopNavigation.src = '../../Public/Assests/Js files/topnavigation.js';
+            document.body.appendChild(scriptTopNavigation);
+        });
+    </script>
+</body>
+</html>

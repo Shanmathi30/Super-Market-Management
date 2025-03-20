@@ -1,0 +1,74 @@
+body {
+    background-color: #ecf8ec;
+    font-family: 'Arial', sans-serif;
+}
+/* Category Section */
+.smcs-category-list {
+    background: linear-gradient(to right, #a7dca7, #4caf50);
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
+}
+.smcs-category-item {
+    cursor: pointer;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    background: white;
+    transition: all 0.3s ease-in-out;
+    font-weight: bold;
+    color: #2d572c;
+}
+.smcs-category-item i {
+    margin-right: 12px;
+    font-size: 22px;
+    color: #1a471a;
+}
+.smcs-category-item:hover {
+    background: #81c784;
+    transform: scale(1.05);
+    color: white;
+}
+.smcs-category-item.active {
+    background: #2e7d32;
+    color: white;
+    box-shadow: 0 0 10px rgba(46, 125, 50, 0.8);
+}
+.smcs-category-item:hover i,
+.smcs-category-item.active i {
+    color:white !important;
+}
+/* Product Section */
+.product-card {
+    border: none;
+    border-radius: 12px;
+    padding: 15px;
+    text-align: center;
+    background: white;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+.product-card:hover {
+    transform: translateY(-5px);
+}
+.discount-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: red;
+    color: white;
+    padding: 5px;
+    font-size: 12px;
+    border-radius: 5px;
+}
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+.product-icon {
+    font-size: 50px;
+    color: #388e3c;
+}
