@@ -8,8 +8,8 @@ const SELECTORS = {
     userRegisterLocationId: "#location",
     userRegisterCityId: "#city",
     userRegisterPincodeId: "#pincode",
-    userRegisterEmailId: "#email",
-    userRegisterPasswordId: "#password",
+    userRegisterEmailId: "#customer_email",
+    userRegisterPasswordId: "#customer_password",
     userCancelButtonId: "#smrs_cancel_btn",
     userRegisterButtonId: "#smrs_register_btn",
     toastMessageId: "#toastBody",
@@ -67,8 +67,8 @@ const RegisterPage = function () {
                 { 
                     required: true, 
                     digits: true, 
-                    minlength: 5, 
-                    maxlength: 5 
+                    minlength: 6, 
+                    maxlength: 6 
                 },
                 email: 
                 { 
@@ -121,8 +121,8 @@ const RegisterPage = function () {
                 { 
                     required: "Pincode is required.", 
                     digits: "Only numbers allowed.", 
-                    minlength: "Exactly 5 digits.", 
-                    maxlength: "Exactly 5 digits." 
+                    minlength: "Exactly 6 digits.", 
+                    maxlength: "Exactly 6 digits." 
                 },
                 email: 
                 { 
@@ -161,9 +161,9 @@ const RegisterPage = function () {
             success: function (response) {
                 if (response.status === "SUCCESS") {
                     showToast("Customer registered successfully!");
-                    window.location.href = "login.html";
+                    window.location.href = "loginpage.html";
                 } else {
-                    showToast("Registration failed: " + response.message);
+                    showToast("Registration failed: " + `${response.message ? response.message : "Failed to register"}`);
                 }
             },
             error: function () {

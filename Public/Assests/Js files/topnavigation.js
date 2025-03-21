@@ -6,9 +6,13 @@ class SuperMarketTopNavigation extends HTMLElement{
         this.appendChild(clonedNode);
     }
 
-    connectedcallback(){
-        $("#avatarIcon").on("click",function() {
+    connectedCallback(){
+        const urlParams = new URLSearchParams(window.location.search);
+        let userDetails = urlParams.get("isAdmin") === "N" ? localStorage.getItem("customer"): localStorage.getItem("admin");
+        
+        $(this).find("#avatarIcon").on("click",function() {
             $("#profileCard").toggle();
+            
         });
     }    
 }

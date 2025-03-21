@@ -3,6 +3,12 @@ body {
     font-family: 'Arial', sans-serif;
 }
 /* Category Section */
+.smcs-container {
+    margin-left: 10px; /* Adjust as needed */
+    padding-left: 10px;
+    padding-bottom: 10px;;
+}
+
 .smcs-category-list {
     background: linear-gradient(to right, #a7dca7, #4caf50);
     padding: 15px;
@@ -72,3 +78,4 @@ body {
     font-size: 50px;
     color: #388e3c;
 }
+

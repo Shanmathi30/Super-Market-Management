@@ -5,11 +5,5 @@ $(document).ready(function () {
     });
     $(".curated").on("click",function(){
         window.location="categories.html"
-    });
-    $(".fruits-vegetables").on("click",function(){
-        window.location="categories.html#fruits_vegetables"
-    });
-    $(".crockeries").on("click",function(){
-        window.location="categories.html#crockeries"
-    });
+    }) 
 });

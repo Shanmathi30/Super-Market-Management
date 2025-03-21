@@ -38,11 +38,3 @@ h3 {
     font-size: 16px;
     background-color: #fff;
 }
-.form-control:hover {
-    border-color: #045a1b;
-}
-.form-control:focus {
-    border-color: #ff9800;
-    box-shadow: 0 0 10px rgba(255, 152, 0, 0.7);
-    outline: none;
-}

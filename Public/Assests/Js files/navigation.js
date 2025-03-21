@@ -7,6 +7,7 @@ class SuperMarketNavigation extends HTMLElement {
     connectedCallback () {
         const urlParams = new URLSearchParams(window.location.search);
         urlParams.get("isAdmin") === "N" ? $(".customer").removeClass("d-none") : $(".admin").removeClass("d-none");
+        
         $(".product").on("click",function(){
             window.location="productdashboard.html";
         });
@@ -15,8 +16,10 @@ class SuperMarketNavigation extends HTMLElement {
         });
         $(".dashboard").on("click",function(){
             window.location="dashboard.html"
+        });
+        $(".categories").on("click",function(){
+            window.location="categories.html"
         })
-        
     }
 }
 customElements.define("supermarket-navigation", SuperMarketNavigation);

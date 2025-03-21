@@ -77,7 +77,7 @@ h1{
 #extraCategories {
     display: none;
 }
-#extraCategories .category{
+#extraCategories .smps-category{
     display:inline-block;
 }
 /***categories list***/

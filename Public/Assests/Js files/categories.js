@@ -23,7 +23,8 @@ $(document).ready(function(){
         ],
         readyCook: [
             { name: "Frozen Paratha", price: 50, discount: 5, icon: "fas fa-hotdog" },
-            { name: "Instant Noodles", price: 30, discount: 10, icon: "fas fa-bowl-rice" }
+            { name: "Instant Noodles", price: 30, discount: 10, icon: "fas fa-bowl-rice" },
+            {name:"maggi",price:14,icon:"fas fa-hotdog"}
         ],
         readyEat: [
             { name: "Pasta", price: 150, discount: 18, icon: "fas fa-pizza-slice" },
@@ -51,7 +52,8 @@ $(document).ready(function(){
         ],
         healthCare: [
             { name: "Vitamin Tablets", price: 300, discount: 20, icon: "fas fa-pills" },
-            { name: "First Aid Kit", price: 500, discount: 10, icon: "fas fa-briefcase-medical" }
+            { name: "First Aid Kit", price: 500, discount: 10, icon: "fas fa-briefcase-medical" },
+            {name: ""}
         ],
         crockeries: [
             { name: "Dinner Set", price: 800, discount: 18, icon: "fas fa-utensils" },
@@ -69,24 +71,6 @@ $(document).ready(function(){
         $(this).addClass("active");
 
         $("#category-title").text(categoryTitle);
-        // $("#product-list").html(""); // Clear previous products
-        
-        // products[category]?.forEach(product => {
-        //     let discountPrice = product.price - (product.price * product.discount / 100);
-            
-        //     let productHTML = `
-        //         <div class="col-md-4">
-        //             <div class="product-card position-relative">
-        //                 <span class="discount-badge">${product.discount}% OFF</span>
-        //                 <i class="${product.icon} product-icon"></i>
-        //                 <h5>${product.name}</h5>
-        //                 <p><s>₹${product.price}</s> <b style="color:red;">₹${discountPrice.toFixed(0)}</b></p>
-        //             </div>
-        //         </div>
-        //     `;
-        //     $("#product-list").append(productHTML);
-        // });
-
         $("#product-list").html(products[category]?products[category].reduce((prevElement,currenElement) => {
             let discountPrice = currenElement.price - (currenElement.price * currenElement.discount / 100);
             return `${prevElement} <div class="col-md-4">
