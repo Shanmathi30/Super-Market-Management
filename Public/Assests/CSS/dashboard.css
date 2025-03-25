@@ -158,23 +158,6 @@ body {
 }
 
 /* Buttons */
-/* Update Profile Button - Match Navbar */
-.btn-update {
-    background-color: #184d47 !important; /* Dark green */
-    color: white !important;
-    border: none;
-    font-weight: 500;
-    width: 100%;
-    padding: 8px 12px;
-    border-radius: 5px;
-    text-align: center;
-    transition: background 0.3s ease-in-out;
-}
-
-.btn-update:hover {
-    background-color: #133b35 !important; /* Slightly darker green */
-}
-
 /* Logout Button - Adjust to Soft Red */
 .btn-logout {
     background-color: #ff6b6b !important; /* Light red */

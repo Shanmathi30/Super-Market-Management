@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>product</title>
-    <link rel="stylesheet" href="../../Public/Assests/CSS files/dashboard.css">
+    <link rel="stylesheet" href="../../Public/Assests/CSS/dashboard.css">
+    <link rel="stylesheet" href="../../Public/Assests/CSS/product-dashboard.css">
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../Public/Assests/CSS files/productdashboard.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"> 
@@ -17,12 +17,12 @@
 <body>
     <!-- Sidebar -->
     <div class="smds-sidebar">
-        <supermarket-navigation></supermarket-navigation>
+      <supermarket-side-navigation></supermarket-side-navigation>
     </div>
     <div class="smds-content-wrapper">
     <!-- Navbar -->
     <nav class="navbar" style="width:96%;">
-        <supermarket-topnavigation style="display:block; width:100%;"></supermarket-topnavigation>  
+        <supermarket-top-navigation style="display:block; width:100%;"></supermarket-top-navigation>  
     </nav>
     <!---main content-->
    
@@ -231,21 +231,21 @@
     </main>
   </div>
 
+  
   <div class="all-template"></div>
-  <script src="../../Public/Assests/Js files/dashboard.js"></script>
+  <script src="../../Public/Assests/Js/dashboard.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="../../Public/Assests/Js files/productdashboard.js"></script>
+  <script src="../../Public/Assests/Js/product.dashboard.js"></script>
   <script>
-
-        $('.all-template').load('customelement.html', function () {
+     $('.all-template').load('customelement.html', function () {
             let script = document.createElement('script');
-            script.src = '../../Public/Assests/Js files/navigation.js';
+            script.src = '../../Public/Assests/js/navigation.js';
             document.body.appendChild(script);
-            
+                
             let scriptTopNavigation = document.createElement('script');
-            scriptTopNavigation.src = '../../Public/Assests/Js files/topnavigation.js';
+            scriptTopNavigation.src = '../../Public/Assests/Js/top.navigation.js';
             document.body.appendChild(scriptTopNavigation);
-        });    
+        });
     </script>
 </body>
 </html>

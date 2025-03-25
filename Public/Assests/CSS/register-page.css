@@ -53,6 +53,16 @@ h2 {
     -webkit-text-fill-color: transparent;
 }
 
+h3 {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+    font-size: 28px;
+    background: linear-gradient(to bottom, #3d0000, #e40909);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 /* Card Styling */
 .smrs-card {
     max-width: 750px;

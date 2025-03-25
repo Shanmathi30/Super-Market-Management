@@ -89,7 +89,7 @@ const LoginPage = function () {
         } 
     }
     function _redirectingRegisterPage() {
-        window.location.href = "registerpage.html";
+        window.location.href = "register-page.html";
     }
 };
 

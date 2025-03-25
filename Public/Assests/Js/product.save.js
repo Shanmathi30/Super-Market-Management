@@ -111,7 +111,7 @@ const ProductSave= function () {
             productLastEffectiveDate: $(SELECTORS.productLastEffectiveDateId).val().trim()
         };
         $.ajax({
-            url: "/products/saveOrUpdate",
+            url: "https://dev-api.humhealth.com/SuperMarketAPI/products/saveOrUpdate",
             type: "POST",
             contentType: "application/json",
             data: JSON.stringify(productData),
@@ -119,7 +119,6 @@ const ProductSave= function () {
             success: function (response) {
                 if (response.status === "SUCCESS") {
                     $(SELECTORS.resetModalId).html(`<div class="alert alert-success">${response.message}</div>`);
-                    
                     $(SELECTORS.productFormId)[0].reset(); // Reset form after successful save
                     $(SELECTORS.addProductModalId).modal("hide"); // Close modal after successful save
                 } else {

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     
-    <link rel="stylesheet" href="../../Public/Assests/CSS files/dashboard.css">
+    <link rel="stylesheet" href="../../Public/Assests/CSS/dashboard.css">
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     
@@ -17,13 +17,13 @@
 <body>
     <!-- Sidebar -->
     <div class="smds-sidebar">
-        <supermarket-navigation></supermarket-navigation>
+        <supermarket-side-navigation></supermarket-side-navigation>
     </div>
     
     <!-- Navbar -->
     <div class="smds-content-wrapper">
     <nav class="navbar" style="width:96%;">
-        <supermarket-topnavigation style="display:block; width:100%;"></supermarket-topnavigation>  
+        <supermarket-top-navigation style="display:block; width:100%;"></supermarket-top-navigation>  
     </nav>
 
     <main class="smds-content">
@@ -49,7 +49,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Fresh And Organic</h5>
                                 <p class="card-text">"Enjoy farm-fresh, organic produce sourced directly from trusted growers. Shop with us for healthy, chemical-free groceries delivered to your doorstep!"</p>
-                                <a href="productdashboard.html" class="btn btn-outline-dark">Read More</a>
+                                <a href="product-dashboard.html" class="btn btn-outline-dark">Read More</a>
                             </div>
                         </div>
                     </div>
@@ -60,7 +60,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Free Delivery</h5>
                                 <p class="card-text">"Get your groceries delivered fast and fresh within minutes. Enjoy hassle-free shopping with our super-speed delivery service!"</p>
-                                <a href="productdashboard.html" class="btn btn-outline-dark">Read More</a>
+                                <a href="product-dashboard.html" class="btn btn-outline-dark">Read More</a>
                             </div>
                         </div>
                     </div>
@@ -71,7 +71,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Easy Payments</h5>
                                 <p class="card-text">"Experience hassle-free shopping with our secure and easy payment options. Choose from multiple payment methods for a smooth checkout!"</p>
-                                <a href="productdashboard.html" class="btn btn-outline-dark">Read More</a>
+                                <a href="product-dashboard.html" class="btn btn-outline-dark">Read More</a>
                             </div>
                         </div>
                     </div>
@@ -89,7 +89,7 @@
                         Your one-stop shop for everything.</p>
                 <p>Where quality meets convenience.
                         Freshness guaranteed, every aisle.</p>
-                    <a href="#" class="smds-about-link"><p>shop more......</p></a>
+                    <a href="product-dashboard.html" class="smds-about-link"><p>shop more......</p></a>
             </div>
         </div>
     </main>
@@ -99,21 +99,18 @@
 </footer>
 
 <div class="all-template"></div>
-<script src="../../Public/Assests/Js files/dashboard.js"></script>
+<script src="../../Public/Assests/Js/dashboard.js"></script>
     <script>
-
-        $('.all-template').load('customelement.html', function () {
+         $('.all-template').load('customelement.html', function () {
             let script = document.createElement('script');
-            script.src = '../../Public/Assests/Js files/navigation.js';
+            script.src = '../../Public/Assests/js/navigation.js';
             document.body.appendChild(script);
-            
+                
             let scriptTopNavigation = document.createElement('script');
-            scriptTopNavigation.src = '../../Public/Assests/Js files/topnavigation.js';
+            scriptTopNavigation.src = '../../Public/Assests/Js/top.navigation.js';
             document.body.appendChild(scriptTopNavigation);
-    });
+        });
     </script>
-
-    
 </body>
 </html>
 

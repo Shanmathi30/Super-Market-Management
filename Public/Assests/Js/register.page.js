@@ -70,12 +70,12 @@ const RegisterPage = function () {
                     minlength: 6, 
                     maxlength: 6 
                 },
-                email: 
+                customer_email: 
                 { 
                     required: true, 
                     email: true 
                 },
-                password: 
+                customer_password: 
                 { 
                     required: true, 
                     minlength: 6 
@@ -124,12 +124,12 @@ const RegisterPage = function () {
                     minlength: "Exactly 6 digits.", 
                     maxlength: "Exactly 6 digits." 
                 },
-                email: 
+                customer_email: 
                 { 
                     required: "Email is required.", 
                     email: "Enter a valid email address." 
                 },
-                password: 
+                customer_password: 
                 { 
                     required: "Password is required.", 
                     minlength: "At least 6 characters." 
@@ -161,7 +161,7 @@ const RegisterPage = function () {
             success: function (response) {
                 if (response.status === "SUCCESS") {
                     showToast("Customer registered successfully!");
-                    window.location.href = "loginpage.html";
+                    window.location.href = "login-page.html";
                 } else {
                     showToast("Registration failed: " + `${response.message ? response.message : "Failed to register"}`);
                 }

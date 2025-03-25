@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Registration page</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../Public/Assests/CSS/register-page.css">
+    
+    <!-- jQuery, Validation & InputMask Plugins -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.8/jquery.inputmask.min.js"></script>
+</head>
+<body>
+    <div class="smrs-container mt-5">
+        <div class="smrs-card shadow-lg p-4">
+            <div class="smrs-logo-container">
+                <img src="../../Public/Assests/Images/supermarket_logo.png" alt="Logo" class="logo">
+            </div>
+            <h2 class="text-center mb-4">Customer Registration</h2>
+
+             <!-- Avatar -->
+             <div class="text-center mb-4">
+                <div class="smrs-avatar-container">
+                    <img id="smrs_avatar_Preview" src="../../Public/Assests/Images/general user icon.jpg" alt="Avatar">
+                </div>
+            </div>
+
+            <form id="smrs_customer_form" autocomplete="off">
+                <div class="row g-3">
+                    <supermarket-customer-information></supermarket-customer-information>
+                </div>
+                <div class="mt-4 text-center">
+                    <button type="button" class="btn btn-success w-25" id="smrs_register_btn">Register</button>
+                    <button type="button" class="btn btn-outline-danger w-25" id="smrs_cancel_btn">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Message -->
+<div class="position-fixed top-0 start-50 translate-middle-x p-3" style="z-index: 1050">
+    <div id="liveToast" class="toast border-0">
+        <div class="d-flex">
+            <div class="toast-body fw-bold text-danger text-center" id="toastBody">
+                <!-- Message will be inserted dynamically -->
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="all-template"></div>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../Public/Assests/Js/register.page.js"></script>
+        <script>
+            $('.all-template').load('customelement.html', function () {
+                let scriptCustomerInformation=document.createElement('script');
+                scriptCustomerInformation.src = '../../Public/Assests/Js/customer.information.js';
+                document.body.appendChild(scriptCustomerInformation);
+            });
+        </script>
+</body>
+</html>
+

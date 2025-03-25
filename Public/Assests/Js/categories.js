@@ -71,14 +71,14 @@ $(document).ready(function(){
         $(this).addClass("active");
 
         $("#category-title").text(categoryTitle);
-        $("#product-list").html(products[category]?products[category].reduce((prevElement,currenElement) => {
-            let discountPrice = currenElement.price - (currenElement.price * currenElement.discount / 100);
+        $("#product-list").html(products[category]?products[category].reduce((prevElement,currentElement) => {
+            let discountPrice = currentElement.price - (currentElement.price * currentElement.discount / 100);
             return `${prevElement} <div class="col-md-4">
                     <div class="product-card position-relative">
-                        <span class="discount-badge">${currenElement.discount}% OFF</span>
-                        <i class="${currenElement.icon} product-icon"></i>
-                        <h5>${currenElement.name}</h5>
-                        <p><s>₹${currenElement.price}</s> <b style="color:red;">₹${discountPrice.toFixed(0)}</b></p>
+                        <span class="discount-badge">${currentElement.discount}% OFF</span>
+                        <i class="${currentElement.icon} product-icon"></i>
+                        <h5>${currentElement.name}</h5>
+                        <p><s>₹${currentElement.price}</s> <b style="color:red;">₹${discountPrice.toFixed(0)}</b></p>
                     </div>
                 </div>`
         },"") :"")
