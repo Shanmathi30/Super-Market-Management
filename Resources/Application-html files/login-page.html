@@ -1,25 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>login page</title>
-    <link rel="stylesheet" href="../../Public/Assests/CSS/login-page.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">    
+<title>login page</title>
+<link rel="stylesheet" href="../../Public/Assests/CSS/login-page.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>  
 </head>
 <body>
-    <!-- Bootstrap Toast (Top Center) -->
-    <div id="toastElement" class="toast position-fixed top-0 start-50 translate-middle-x mt-3">
-        <div id="toastMessage" class="toast-body text-center">
-            <!-- Message will be inserted dynamically -->
-        </div>
-    </div>
-    
     <!--main content-->
     <div class="smls-login-container">
         <!-- Left Side: Login logo -->
@@ -30,7 +21,7 @@
         <!-- Left Side: Login Form -->
         <div class="smls-left-side">
             <div class="smls-login-Form-container">
-                <h2>MEMBER LOGIN</h2>
+                <h2>LOGIN</h2>
                     <form id="smls_login_form">
                         <!--username-->
                        <div style="margin-bottom: 15px;">
@@ -44,9 +35,12 @@
                         <div style="margin-bottom:15px;">
                             <div class="smls-login-input-container">
                                 <span class="icon"><i class="fa fa-lock fa-lg" ></i></span>
-                                <input type="password" id="password" name="password" placeholder="Password">    
+                                <input type="password" id="password" name="password" placeholder="Password"> 
+                                <span class="toggle-password" onclick="togglePassword()">
+                                    <i class="fa fa-eye" id="toggleIcon"></i>
+                                </span>   
                             </div>
-                            <label for="password" id="password-error" class="error"></label>
+                            <label for="password" id="password-error" class="error" ></label>
                         </div>
                         <!--button-->
                         <button type="button" class="login-btn">LOGIN</button>
@@ -61,6 +55,12 @@
             <p class="slogan">"Delicious Deals Await You!"</p>
         </div>
 
+        <!-- Bootstrap Toast (Top Center) -->
+        <div id="toastElement" class="toast position-fixed top-0 start-50 translate-middle-x mt-3">
+            <div id="toastMessage" class="toast-body text-center">
+                <!-- Message will be inserted dynamically -->
+            </div>
+        </div>
     <script src="../../Public/Assests/Js/login.page.js"></script>
 </body>
 </html>

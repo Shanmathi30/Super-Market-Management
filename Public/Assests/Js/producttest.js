@@ -1,97 +1,101 @@
-const customerDataTableConfig = {
+const productDataTableConfig = {
     order: [0, 'asc'],
     processing: true,
     serverSide: true,
-    dom: '<"top" <"col-md-12 pr-none smc-customer-table-buttons text-right"p>>'+
+    dom: '<"top" <"col-md-12 pr-none smp-product-table-buttons text-right"p>>'+
         '<"scroll_table"tr>' +
         '<"bottom row"<"col-md-6 pl-none"<"details"><"change"i>>' +
         '<"col-md-6 pr-none text-right"p>>',
-    ajax: {
-        url: `https://dev-api.humhealth.com/SuperMarketAPI/customer/list`,
-        type: "POST",
-        dataType: "json",
-        beforeSend: function (request) {
-            request.setRequestHeader("Content-type", "application/json");
+    ajax:{
+        url:`https://dev-api.humhealth.com/SuperMarketAPI/products/list`,
+        type:"post",
+        dataType:"json",
+        beforeSend:function(request){
+            request.setRequestHeader("Content-type","application/json");
         },
-        data: (dataObject) => customerDataTable.customerDataTableObject(dataObject),
-        dataSrc: (jsonListResponse) => customerDataTable.displayCustomerList(jsonListResponse)
+        data:(dataObject)=>productDataTable.getProductDataTableObject(dataObject),
+        dataSrc:(jsonListResponse)=>productDataTable.displayProductList(jsonListResponse)
     },
     columns : [
         {"data" : "sno", "searchable": false, "orderable": true},
-        {"data" : "customerName", "searchable": true, "orderable": true},
-        {"data" : "customerAddress", "searchable": false, "orderable": true},
-        {"data" : "customerLocation", "searchable": true, "orderable": true},
-        {"data" : "customerCity", "searchable": true, "orderable": true},
-        {"data" : "customerPincode", "searchable": true, "orderable": true},
-        {"data" : "customerEmail", "searchable": true, "orderable": true},
-        {"data" : "customerMobileNo", "searchable": false, "orderable": false},
+        {"data" : "productId", "searchable": true, "orderable": true},
+        {"data" : "productName", "searchable": false, "orderable": true},
+        {"data" : "productPackQuantity", "searchable": true, "orderable": true},
+        {"data" : "productCategory", "searchable": true, "orderable": true},
+        {"data" : "productPrice", "searchable": true, "orderable": true},
+        {"data" : "productStockQuantity", "searchable": true, "orderable": true},
+        {"data" : "productEffectiveDate", "searchable": false, "orderable": false},
         {"data" : "action", "searchable": false, "orderable": false},
     ],
-    initComplete : () => customerDataTable.initializeCustomerTable(), //initial load
-    drawCallback : () => customerDataTable.showCustomerListPanelSectionAfterDraw(), //executes for every draw
-} 
-const CustomerDataTable= function () {
 
-    let customerDataTableObject;
+    initComplete : () => productDataTable.initializeProductTable(), //initial load
+    drawCallback : (settings) => productDataTable.showProductListPanelSectionAfterDraw(), //executes for every draw
+}
+const ProductDataTable= function () {
 
-    this.initializeCustomerTable = function () {
-        $(".smc-customer-table-buttons").prepend(`<div class="d-inline-block" style="width:73%; padding:2px"><button class="smcr-supermarket-customer-register btn btn-success float-end">+ customer</button></div>`)
+    let productDataTableObject;
 
-        $(".smcr-supermarket-customer-register").on("click",_viewCustomerRegister);
+    this.initializeProductTable = function () {
+        $(".smp-product-table-buttons").prepend(`<div class="d-inline-block" style="width:68%;"><button class="smps-supermarket-product-save btn btn-success float-end"> + Add Product</button></div>`)
 
-        $("#sm_customer_details_update").on("click", _updateCustomerDetails);
-        
-        $("#sm_customer_update_modal_id").on("hidden.bs.modal",_hideErrorMessageInModal);
+        $(".smps-supermarket-product-save").on("click", _addProductDetails);
+
     }
-
     function _updateCustomerDetails() { 
         let customerId = $("#sm_customer_update_form").attr("data-id");
-    
+        
         if (!customerId) {
             $("#updateMessage").text("Error: Customer ID is missing!").css("color", "red");
             return; // Stop execution
         }
     
-        // Construct request payload with additional fields
-        let requestData = {
-            customerId: customerId,
-            firstName: $("#update_customer_first_name").val().trim(),  // New field
-            middleName: $("#update_customer_middle_name").val().trim(), // New field
-            lastName: $("#update_customer_last_name").val().trim(),  // New field
-            customerMobileNumber: $("#update_customer_mobileNo").val().trim(),
-            customerEmail: $("#update_customer_email").val().trim(),
-            password: $("#update_customer_password").val().trim() // New field
-        };
-    
         $.ajax({
             url: "https://dev-api.humhealth.com/SuperMarketAPI/customer/update-customer",
             type: "POST",
-            data: JSON.stringify(requestData),
+            data: JSON.stringify({
+                customerId: customerId,  
+                customerName: $("#customer_name").val(),  // Include customer name
+                customerMobileNumber: $("#mobileNo").val(),
+                customerEmail: $("#customer_email").val(),
+            }),
             dataType: "json",
             contentType: "application/json",
             success: function(response) {
                 if (response.status === "SUCCESS") {
-                    $("#sm_customer_update_modal_id").modal("hide"); // Close modal
-                    customerDataTableObject.ajax.reload(); // Reload table
-                    $("#updateMessage").text("Customer details updated successfully!")
-                                       .css("color", "green").show();
+                    $("#updateMessage").text("Customer updated successfully!").css("color", "green");
+            
+                    // Close modal
+                    $("#sm_customer_update_modal_id").modal("hide");
+    
+                    // Reload table to reflect changes immediately
+                    customerDataTableObject.ajax.reload(); 
                 } else {
-                    $("#updateMessage").text(response.message || "Update failed!").css("color", "red").show();
+                    $("#updateMessage").text(response.message || "Update failed!").css("color", "red");
                 }
             },
             error: function(error) {
-                $("#updateMessage").text("An error occurred: " + error.responseText).css("color", "red").show();
+                $("#updateMessage").text("An error occurred: " + error.responseText).css("color", "red");
             }
         });
+        let success = true; // Simulating success response
+        if (success) {
+            $("#updateMessage").text("Customer details updated successfully!")
+                               .css("color", "green")
+                               .show();
+        } else {
+            $("#updateMessage").text("Failed to update customer details.")
+                               .css("color", "red")
+                               .show();
+        }
     }
-    
+
     this.showCustomerListPanelSectionAfterDraw =function () {
         $(".smc-customer-edit").on("click",_editCustomerDetails)
         $(".smc-customer-view").on("click",_viewCustomer)
     }
 
     this.customerDataTableObject = function(dataObject){
-        const orderByColumnIndex = dataObject.order[0].column; //sorting process 
+        const orderByColumnIndex = dataObject.order[0].column;
         return JSON.stringify({
                 start: dataObject.start,
                 length: dataObject.length || $("#customer_length").val(),
@@ -100,7 +104,7 @@ const CustomerDataTable= function () {
                 order : 
                 {
                     column: dataObject.columns[orderByColumnIndex].data,
-                    type: dataObject.order[0].dir //order type asc,des
+                    type: dataObject.order[0].dir
                 },
                 customerFilterModel:
                 {
@@ -117,7 +121,7 @@ const CustomerDataTable= function () {
                     if (customerListResponse.listOfCustomer.hasOwnProperty(index)) {
                         // Create an empty patient info array
                         let customerInfo = []
-                        //destrucing the object
+
                         let  { customerId, customerName, customerAddress, customerLocation, customerCity, customerPincode, customerEmail, customerMobileNo, sno } = customerListResponse.listOfCustomer[index];
 
                         customerInfo["sno"] = sno;
@@ -134,7 +138,7 @@ const CustomerDataTable= function () {
                     }
                 }
             }catch(error) {
-                console.error("Error processing product list:", error);
+
             }
             return customerList;
         }
@@ -147,13 +151,13 @@ const CustomerDataTable= function () {
     }
 
     this.bindCustomerListEvents = function () {
-        customerDataTable.initializeCustomerDataTable();
+        _initializeCustomerDataTable();
 
         $("#btn_submit").on("click",_drawCustomerTableBasedOnFilter);
         $("#btn_reset").on("click",_resetCustomerTableFilter);
     }
 
-    this.initializeCustomerDataTable = function () {
+    function _initializeCustomerDataTable () {
         let pageLength =parseInt($("#customer_length").val());
         if(customerDataTableObject) {
             customerDataTableObject.page.len(pageLength).draw();
@@ -164,7 +168,7 @@ const CustomerDataTable= function () {
     }
 
     function _drawCustomerTableBasedOnFilter(){
-        customerDataTable.initializeCustomerDataTable(); //refresh
+        _initializeCustomerDataTable();
     }
 
     function _resetCustomerTableFilter(){
@@ -190,16 +194,14 @@ const CustomerDataTable= function () {
             success: function(response) {
                 if (response.status === "SUCCESS") {
                     $("#sm_customer_update_form").attr("data-id", customerId);
-                    $('#update_customer_first_name').val(response.data.customerFirstName);
-                    $('#update_customer_middle_name').val(response.data.customerMiddleName);
-                    $('#update_customer_last_name').val(response.data.customerLastName);
-                    $('#update_customer_name').val(response.data.customerFullName); // Updated to use full name
-                    $('#update_customer_email').val(response.data.customerEmail); 
-                    $('#update_customer_mobileNo').val(response.data.customerMobileNo);
+                    $('#customer_name').val(response.data.customerName);
+                    $('#customer_email').val(response.data.customerEmail);
+                    $('#mobileNo').val(response.data.customerMobileNo);
+                    $('#customer_password').val(response.data.customPassword);
     
                     // Store initial values
                     $("#sm_customer_update_form").data("original", {
-                        customerFullName: response.data.customerFullName,
+                        customerName: response.data.customerName,
                         customerEmail: response.data.customerEmail,
                         customerMobileNo: response.data.customerMobileNo
                     });
@@ -210,18 +212,23 @@ const CustomerDataTable= function () {
             }
         });
     }
-    
     // Detect changes in input fields
-    $("#sm_customer_update_form input").on("input", function () {
-        let originalData = $("#sm_customer_update_form").data("original");
-        let hasChanged = (
-            $('#update_customer_name').val().trim() !== originalData.customerFullName.trim() ||
-            $('#update_customer_email').val().trim() !== originalData.customerEmail.trim() ||
-            $('#update_customer_mobileNo').val().trim() !== originalData.customerMobileNo.trim()
-        );        
-        $("#updateButton").prop("disabled", !hasChanged); // Enable/Disable button
-    });
+    // $("#sm_customer_update_form input").on("input", function () {
+    //     let originalData = $("#sm_customer_update_form").data("original");
+    //     let hasChanged = (
+    //         $('#customer_name').val() !== originalData.customerName ||
+    //         $('#customer_email').val() !== originalData.customerEmail ||
+    //         $('#mobileNo').val() !== originalData.customerMobileNo
+    //     );
+    //     $("#updateButton").prop("disabled", !hasChanged); // Enable/Disable button
+    // });
     
+    //     this.showCustomerListPanelSectionAfterDraw =function () {
+    //         $(".smc-customer-edit").on("click",_editCustomerDetails)
+    //         $(".smc-customer-view").on("click",_viewCustomer)
+    //     }
+    // }
+
     function _viewCustomer(){
         let customerId = $(this).attr("data-id");
         $.ajax({
@@ -241,5 +248,6 @@ const CustomerDataTable= function () {
 
 const customerDataTable = new CustomerDataTable();
 customerDataTable.bindCustomerListEvents();
+
 
 //<span class="p-1 smc-customer-view" data-id="${customerDetails.customerId}"><i class="fa-solid fa-eye"></i></span>

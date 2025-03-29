@@ -5,14 +5,15 @@ $(document).ready(function() {
     });
 
     // Close profile card when clicking outside
-    $(document).click(function(event) {
+    $(document).on("click",function(event) {
         if (!$(event.target).closest("#avatarIcon, #profileCard").length) {
             $("#profileCard").hide();
         }
     });
 
     // Logout - Clear storage and redirect
-    $("#logout_button").click(function() {
-        window.location.href = "login-page.html"; 
+    $("#logout_button").on("click",function() {
+        window.location= "login-page.html"; 
     });
+
 });

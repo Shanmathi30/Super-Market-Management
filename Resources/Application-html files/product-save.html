@@ -15,87 +15,72 @@
 </head>
 
 <body>
-    <div class="container mt-5">
-        <button class="btn btn-success" id="openAddProductModal">+ Add Product</button>
-    </div>
-    <!-- Add Product Modal -->
-    <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header text-center w-100">
-                    <h5 class="modal-title w-100" id="addProductModalLabel">Add Product</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <div class="smps-product-save-form">
+        <form id="productForm">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="productName" class="form-label">Product Name</label>
+                    <input type="text" class="form-control" id="productName" name="productName">
                 </div>
-                <div class="modal-body">
-                    <form id="productForm">
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label for="productName" class="form-label">Product Name</label>
-                                <input type="text" class="form-control" id="productName" name="productName">
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="productPackQuantity" class="form-label">Pack Quantity</label>
-                                <input type="number" class="form-control" id="productPackQuantity" name="productPackQuantity">
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="productCategory" class="form-label">Category</label>
-                                <select class="form-select" id="productCategory" name="productCategory">
-                                    <option value="" disabled selected>-- Select a Category --</option>
-                                    <option value="Fruits & Vegetables">Fruits & Vegetables</option>
-                                    <option value="Staples">Staples</option>
-                                    <option value="Snacks & Namkeens">Snacks & Namkeens</option>
-                                    <option value="Beverages">Beverages</option>
-                                    <option value="Chilled & Dairy Foods">Chilled & Dairy Foods</option>
-                                    <option value="Ready To Cook">Ready To Cook</option>
-                                    <option value="Ready To Eat">Ready To Eat</option>
-                                    <option value="Baby Care">Baby Care</option>
-                                    <option value="Household">Household</option>
-                                    <option value="Feminine Care">Feminine Care</option>
-                                    <option value="Cleaning Needs">Cleaning Needs</option>
-                                    <option value="Personal Care">Personal Care</option>
-                                    <option value="Health Care">Health Care</option>
-                                    <option value="Crockeries">Crockeries</option>
-                                </select>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="productPrice" class="form-label">Price</label>
-                                <input type="text" class="form-control" id="productPrice" name="productPrice">
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="productStockQuantity" class="form-label">Stock Quantity</label>
-                                <input type="number" class="form-control" id="productStockQuantity" name="productStockQuantity">
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="productEffectiveDate" class="form-label">Effective Date</label>
-                                <input type="text" class="form-control datepicker" id="productEffectiveDate" name="productEffectiveDate">
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="productLastEffectiveDate" class="form-label">Last Effective Date</label>
-                                <input type="text" class="form-control datepicker" id="productLastEffectiveDate" name="productLastEffectiveDate">
-                            </div>
-                        </div>
-                    </form>
-
-                    <!-- Buttons aligned in a single row -->
-                    <div class="btn-container">
-                        <button type="button" class="btn btn-success" id="submitProduct">Save</button>
-                        <button type="button" class="btn btn-outline-secondary" id="openResetModal">Reset</button>
-                    </div>
+                <div class="col-md-6 mb-3">
+                    <label for="productPackQuantity" class="form-label">Pack Quantity</label>
+                    <input type="number" class="form-control" id="productPackQuantity" name="productPackQuantity">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="productCategory" class="form-label">Category</label>
+                    <select class="form-select" id="productCategory" name="productCategory">
+                        <option value="" disabled selected>-- Select a Category --</option>
+                        <option value="Fruits & Vegetables">Fruits & Vegetables</option>
+                        <option value="Staples">Staples</option>
+                        <option value="Snacks & Namkeens">Snacks & Namkeens</option>
+                        <option value="Beverages">Beverages</option>
+                        <option value="Chilled & Dairy Foods">Chilled & Dairy Foods</option>
+                        <option value="Ready To Cook">Ready To Cook</option>
+                        <option value="Ready To Eat">Ready To Eat</option>
+                        <option value="Baby Care">Baby Care</option>
+                        <option value="Household">Household</option>
+                        <option value="Feminine Care">Feminine Care</option>
+                        <option value="Cleaning Needs">Cleaning Needs</option>
+                        <option value="Personal Care">Personal Care</option>
+                        <option value="Health Care">Health Care</option>
+                        <option value="Crockeries">Crockeries</option>
+                    </select>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="productPrice" class="form-label">Price</label>
+                    <input type="text" class="form-control" id="productPrice" name="productPrice">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="productStockQuantity" class="form-label">Stock Quantity</label>
+                    <input type="number" class="form-control" id="productStockQuantity" name="productStockQuantity">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="productEffectiveDate" class="form-label">Effective Date</label>
+                    <input type="text" class="form-control datepicker" id="productEffectiveDate"
+                        name="productEffectiveDate">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="productLastEffectiveDate" class="form-label">Last Effective Date</label>
+                    <input type="text" class="form-control datepicker" id="productLastEffectiveDate"
+                        name="productLastEffectiveDate">
                 </div>
             </div>
+        </form>
+        <!-- Buttons aligned in a single row -->
+        <div class="btn-container">
+            <button type="button" class="btn btn-success" id="submitProduct">Save</button>
+            <button type="button" class="btn btn-outline-secondary" id="openResetModal">Reset</button>
         </div>
-    </div>
-
-    <!-- Reset Confirmation Modal -->
-    <div class="modal fade" id="resetModal" tabindex="-1" aria-labelledby="resetModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
+        <!-- Reset Confirmation Modal -->
+        <div class="modal fade" id="resetModal" tabindex="-1" aria-labelledby="resetModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div   div class="modal-content">
                 <div class="modal-header text-center w-100">
                     <h5 class="modal-title w-100" id="resetModalLabel">Reset Confirmation</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body text-center">
-                    <p>Are you sure you want to reset?</p>
+                    <p>Are you sure you want to reset</p>
                     <button class="btn btn-danger" id="confirmReset">Yes</button>
                     <button class="btn btn-outline-secondary" data-bs-dismiss="modal">No</button>
                 </div>
@@ -113,6 +98,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
 
     <script src="../../Public/Assests/Js/product.save.js"></script>
-    
+
 </body>
 </html>

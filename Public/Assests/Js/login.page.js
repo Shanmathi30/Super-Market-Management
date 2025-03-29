@@ -8,18 +8,10 @@ const SELECTORS = {
     toastElementId: "#toastElement"
 };
 
-// Function to show Bootstrap toast
-function showToast(message) {
-    $(SELECTORS.toastMessageId).text(message);
-    let toastElement = document.getElementById("toastElement");
-    let toast = new bootstrap.Toast(toastElement);
-    toast.show();
-}
-
 // Constructor
 const LoginPage = function () {
     this.setUsersCredentialsInLocalStorage = function () {
-        localStorage.setItem("admin", JSON.stringify({ username: "Admin@gmail.com", password: "Admin@123" }));
+        localStorage.setItem("admin", JSON.stringify({ username: "admin@gmail.com", password: "Admin@123" })); //object to a string
     };
 
     // Validation function
@@ -92,6 +84,30 @@ const LoginPage = function () {
         window.location.href = "register-page.html";
     }
 };
+
+// Function to show Bootstrap toast
+function showToast(message) {
+    $(SELECTORS.toastMessageId).text(message);
+    let toastElement = document.getElementById("toastElement");
+    let toast = new bootstrap.Toast(toastElement); //control toast message---bootstrap js class
+    toast.show();
+}
+
+//Function for password icon
+function togglePassword() {
+    let passwordInput = document.getElementById("password");
+    let toggleIcon = document.getElementById("toggleIcon");
+
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        toggleIcon.classList.remove("fa-eye");
+        toggleIcon.classList.add("fa-eye-slash");
+    } else {
+        passwordInput.type = "password";
+        toggleIcon.classList.remove("fa-eye-slash");
+        toggleIcon.classList.add("fa-eye");
+    }
+}
 
 const loginPage = new LoginPage();
 loginPage.setUsersCredentialsInLocalStorage();

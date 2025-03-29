@@ -15,7 +15,7 @@
 
 /* Table container styling */
 #customer_list_table {
-    width: 100%;
+    width:100%;
     margin-bottom: 7px;
     border-collapse: separate;
     border-spacing: 0;
@@ -254,3 +254,9 @@
     font-size: 14px;
     padding: 6px 20px; /* Reduce button size */
 }
+#sm_customer_add_modal_id{
+    width:70%;
+    border-radius: 20px;
+    margin:20px 250px;
+}
+

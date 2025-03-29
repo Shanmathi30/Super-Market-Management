@@ -13,66 +13,70 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
+
     <!-- DataTables CSS -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+
 </head>
+
 <body>
     <!-- Sidebar -->
     <div class="smds-sidebar">
-      <supermarket-side-navigation></supermarket-side-navigation>
+        <supermarket-side-navigation></supermarket-side-navigation>
     </div>
     <div class="smds-content-wrapper">
         <!-- Navbar -->
         <nav class="navbar" style="width:96%;">
-            <supermarket-top-navigation style="display:block; width:100%;"></supermarket-top-navigation>  
+            <supermarket-top-navigation style="display:block; width:100%;"></supermarket-top-navigation>
         </nav>
         <!---main content-->
         <main class="smls-list-container">
-        <div class="card p-3">
-            <h3 class="text-center mb-4">Customer List</h3>
-            <form id="customer_filter_id">
-                <div class="row">
-                    <div class=" col-md-2 mb-3">
-                        <label for="customer_length">Show</label>
-                        <select id="customer_length" class="form-control">
-                            <option value="10">10</option>
-                            <option value="25">25</option>
-                            <option value="50">50</option>
-                            <option value="100">100</option>
-                        </select>
+            <div class="card p-3">
+                <h3 class="text-center mb-4">Customer List</h3>
+                <form id="customer_filter_id">
+                    <div class="row">
+                        <div class=" col-md-2 mb-3">
+                            <label for="customer_length">Show</label>
+                            <select id="customer_length" class="form-control">
+                                <option value="10">10</option>
+                                <option value="25">25</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            </select>
+                        </div>
+                        <div class=" col-md-3 mb-3">
+                            <label for="search_customer">Search</label>
+                            <input type="text" id="search_customer" class="form-control" placeholder="Search by Name">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="search_customer_city">City</label>
+                            <input type="text" id="search_customer_city" class="form-control" placeholder="Search by City">
+                        </div>
+                        <div class="col-md-3">
+                            <button type="button" id="btn_reset"
+                                class="btn btn-outline-secondary mt-md-4 me-2">Reset</button>
+                            <button type="button" id="btn_submit" class="btn btn-success mt-md-4">Submit</button>
+                        </div>
                     </div>
-                    <div class=" col-md-3 mb-3">
-                        <label for="search_customer">Search</label>
-                        <input type="text" id="search_customer" class="form-control" placeholder="Search by Name">
-                    </div>
-                    <div class="col-md-3">
-                        <label for="search_customer_city">City</label>
-                        <input type="text" id="search_customer_city" class="form-control" placeholder="Search by City">
-                    </div>
-                    <div class="col-md-3">
-                        <button type="button" id="btn_reset" class="btn btn-outline-secondary mt-md-4 me-2">Reset</button>
-                        <button type="button" id="btn_submit" class="btn btn-success mt-md-4">Submit</button>
-                    </div>
-                </div>
-            </form>
+                </form>
                 <table id="customer_list_table" class="table table-bordered table- table-hover">
                     <thead class="table">
                         <tr>
                             <th>s.no</th>
-                            <th>Customer Name</th>
-                            <th>Customer Address</th>
-                            <th>Customer Location</th>
-                            <th>Customer City</th>
-                            <th>Customer Pincode</th>
-                            <th>Customer Email</th>
-                            <th>Customer MobileNo</th>
+                            <th>Name</th>
+                            <th>Address</th>
+                            <th>Location</th>
+                            <th>City</th>
+                            <th>Pincode</th>
+                            <th>Email</th>
+                            <th>MobileNo</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -80,25 +84,28 @@
                         <!-- Customers will be appended here -->
                     </tbody>
                 </table>
-            </div> 
+            </div>
         </main>
-        <div class="modal fade pt-lg-5" id="sm_customer_view_modal_id" tabindex="-1" aria-labelledby="resetModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header text-center w-100">
-                        <h5 class="modal-title w-100" id="resetModalLabel">View Customer</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body text-center">
-                        <h4>Customer Details</h4>
-                            <p><strong>Name:</strong> <span id="view_name"></span></p>
-                            <p><strong>Email:</strong> <span id="view_email"></span></p>
-                            <p><strong>Mobile:</strong> <span id="view_mobile"></span></p>
+        <!-- <div class="modal fade pt-lg-5" id="sm_customer_view_modal_id" tabindex="-1" aria-labelledby="resetModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header text-center w-100">
+                            <h5 class="modal-title w-100" id="resetModalLabel">View Customer</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body text-center">
+                            <h4>Customer Details</h4>
+                                <p><strong>Name:</strong> <span id="view_name"></span></p>
+                                <p><strong>Email:</strong> <span id="view_email"></span></p>
+                                <p><strong>Mobile:</strong> <span id="view_mobile"></span></p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="modal fade pt-lg-5" id="sm_customer_update_modal_id" tabindex="-1" aria-labelledby="resetModalLabel" aria-hidden="true">
+            </div> -->
+        
+            <!--edit customer-->
+        <div class="modal fade pt-lg-5" id="sm_customer_update_modal_id" tabindex="-1" aria-labelledby="resetModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog modal-xl">
                 <div class="modal-content">
                     <div class="modal-header text-center w-100">
@@ -107,66 +114,123 @@
                     </div>
                     <div class="modal-body text-center">
                         <h4>Customer Details</h4>
-                            <form id="sm_customer_update_form"> 
-                               <div class="row">
-                                    <div class="col-md-6">
+                        <form id="sm_customer_update_form">
+                            <div class="row">
+                                    <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="customer_name" class="form-label">Customer Name</label>
-                                            <input type="text" id="customer_name" name="customer_name" class="form-control">
+                                            <label for="update_customer_first_name" class="form-label">First Name</label>
+                                            <input type="text" id="update_customer_first_name" name="update_customer_first_name" class="form-control">
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="mobileNo" class="form-label">Mobile Number</label>
-                                            <input type="text" id="mobileNo" name="mobileNo" class="form-control">
+                                            <label for="update_customer_middle_name" class="form-label">Middle Name</label>
+                                            <input type="text" id="update_customer_middle_name" name="update_customer_middle_name" class="form-control">
                                         </div>
                                     </div>
-                                </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="update_customer_last_name" class="form-label">Last Name</label>
+                                            <input type="text" id="update_customer_last_name" name="update_customer_last_name" class="form-control">
+                                        </div>
+                                    </div>
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="customer_email" class="form-label">Email</label>
-                                            <input type="text" id="customer_email" name="customer_email" class="form-control">
-                                        </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="update_customer_mobileNo" class="form-label">Mobile Number</label>
+                                        <input type="text" id="update_customer_mobileNo" name="update_customer_mobileNo" class="form-control">
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="customer_password" class="form-label">Password</label>
-                                            <input type="text" id="customer_password" name="customer_password" class="form-control">
-                                        </div>
-                                    </div>
-                                    
-                               </div>
-                               <div class="row smc-customer-details-update-buttons-section mt-3">
-                                <div class="col-12 d-flex justify-content-center gap-3">
-                                    <button type="button" class="btn btn-success px-4 py-2" id="sm_customer_details_update">Update</button>
-                                    <button type="button" class="btn btn-outline-secondary px-4 py-2" data-bs-dismiss="modal">Cancel</button>
                                 </div>
-                            </div>                            
-                                <!-- Message Display -->
-                                <p id="updateMessage" class="text-center mt-2 fw-bold" style="display: none;"></p>
-                            </form>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="customer_email" class="form-label">Email</label>
+                                        <input type="text" id="update_customer_email" name="customer_email" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="update_customer_password" class="form-label">Password</label>
+                                        <input type="text" id="update_customer_password" name="update_customer_password"
+                                            class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="row smc-customer-details-update-buttons-section mt-3">
+                                <div class="col-12 d-flex justify-content-center gap-3">
+                                    <button type="button" class="btn btn-success px-4 py-2"
+                                        id="sm_customer_details_update">Update</button>
+                                    <button type="button" class="btn btn-outline-secondary px-4 py-2"
+                                        data-bs-dismiss="modal">Cancel</button>
+                                </div>
+                            </div>
+                            <!-- Message Display -->
+                            <p id="updateMessage" class="text-center mt-2 fw-bold" style="display: none;"></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--customer add-->
+        <div class="modal fade pt-lg-5" id="sm_customer_add_modal_id" tabindex="-1" aria-labelledby="resetModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header text-center w-100">
+                        <h5 class="modal-title w-100" id="resetModalLabel">Add Customer</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <h4>Customer Details</h4>
+                        <form id="smrs_customer_form" autocomplete="off">
+                            <div class="row g-3">
+                                <supermarket-customer-information></supermarket-customer-information>
+                            </div>
+                            <div class="mt-4 text-center">
+                                <button type="button" class="btn btn-success w-25" id="smrs_register_btn">Register</button>
+                                <button type="button" class="btn btn-outline-danger w-25"
+                                    id="smrs_cancel_btn">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- Toast Message -->
+                    <div class="position-fixed top-0 start-50 translate-middle-x p-3" style="z-index: 1050">
+                        <div id="liveToast" class="toast border-0">
+                            <div class="d-flex">
+                                <div class="toast-body fw-bold text-danger text-center" id="toastBody">
+                                    <!-- Message will be inserted dynamically -->
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-  <div class="all-template"></div>
-  <script src="../../Public/Assests/Js/dashboard.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="../../Public/Assests/Js/customer.list.view.js"></script>
-  <script>
+    <div class="all-template"></div>
+    <script src="../../Public/Assests/Js/dashboard.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../Public/Assests/Js/customer.list.view.js"></script>
+    <script>
         $('.all-template').load('customelement.html', function () {
             let script = document.createElement('script');
             script.src = '../../Public/Assests/js/navigation.js';
             document.body.appendChild(script);
-                
+
             let scriptTopNavigation = document.createElement('script');
             scriptTopNavigation.src = '../../Public/Assests/Js/top.navigation.js';
             document.body.appendChild(scriptTopNavigation);
+
+            let scriptCustomerInformation=document.createElement('script');
+                scriptCustomerInformation.src = '../../Public/Assests/Js/customer.information.js';
+                document.body.appendChild(scriptCustomerInformation);
+
+            let scriptRegisterCustomerInformation=document.createElement('script');
+            scriptRegisterCustomerInformation.src = '../../Public/Assests/Js/register.page.js';
+            document.body.appendChild(scriptRegisterCustomerInformation);
         });  
-    </script>
+    </script>  
 </body>
 </html>
 

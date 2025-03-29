@@ -157,8 +157,35 @@ h3 {
 .error {
     color: #ff3e3e;
     font-size: 13px;
-    font-weight: bold;
+    font-weight:500px;
 }
 
+.panel-header {
+    background: linear-gradient(to right, #25812b, #66bb6a); 
+    color: white;
+    padding: 12px;
+    border: 1px solid #ddd;
+    font-weight: bold;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+}
 
+.toggle-icon {
+    font-size: 18px;
+    font-weight: bold;
+    width: 20px;
+    text-align: center;
+    margin-right: 10px;
+}
 
+.panel-content {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-top: none;
+    background-color: white;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}

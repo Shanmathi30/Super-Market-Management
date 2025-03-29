@@ -57,7 +57,6 @@ class SuperMarketCategoriesCustomer extends HTMLElement {
             healthCare: [
                 { name: "Vitamin Tablets", price: 300, discount: 20, icon: "fas fa-pills" },
                 { name: "First Aid Kit", price: 500, discount: 10, icon: "fas fa-briefcase-medical" },
-                {name: ""}
             ],
             crockeries: [
                 { name: "Dinner Set", price: 800, discount: 18, icon: "fas fa-utensils" },
@@ -66,12 +65,13 @@ class SuperMarketCategoriesCustomer extends HTMLElement {
         };
     }
     connectedCallback () {
+
         this.bindCustomerCategoriesEvents();
     }
 
     bindCustomerCategoriesEvents () {
-        $(".smcs-category-item").click(function(){
-            let category = $(this).data("category");
+        $(this).on("click",".smcs-category-item",{classObject:this},function(){
+            let category = $(this).attr("data-category");
             let categoryTitle = $(this).text();
             
             // Remove active class from all categories and add to clicked one
@@ -79,17 +79,17 @@ class SuperMarketCategoriesCustomer extends HTMLElement {
             $(this).addClass("active");
     
             $("#category-title").text(categoryTitle);
-            $("#product-list").html(products[category]?products[category].reduce((prevElement,currentElement) => {
-                let discountPrice = currentElement.price - (currentElement.price * currentElement.discount / 100);
-                return `${prevElement} <div class="col-md-4">
-                        <div class="product-card position-relative">
-                            <span class="discount-badge">${currentElement.discount}% OFF</span>
-                            <i class="${currentElement.icon} product-icon"></i>
-                            <h5>${currentElement.name}</h5>
-                            <p><s>₹${currentElement.price}</s> <b style="color:red;">₹${discountPrice.toFixed(0)}</b></p>
-                        </div>
-                    </div>`
-            },"") :"")
+            // $("#product-list").html( this.products[category]? this.products[category].reduce((prevElement,currentElement) => {
+            //     let discountPrice = currentElement.price - (currentElement.price * currentElement.discount / 100);
+            //     return `${prevElement} <div class="col-md-4">
+            //             <div class="product-card position-relative">
+            //                 <span class="discount-badge">${currentElement.discount}% OFF</span>
+            //                 <i class="${currentElement.icon} product-icon"></i>
+            //                 <h5>${currentElement.name}</h5>
+            //                 <p><s>₹${currentElement.price}</s> <b style="color:red;">₹${discountPrice.toFixed(0)}</b></p>
+            //             </div>
+            //         </div>`
+            // },"") :"")
         });
     }
 }

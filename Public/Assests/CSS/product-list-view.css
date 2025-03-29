@@ -1,10 +1,13 @@
+
+
+/*****************/
 .dataTables_paginate{
     border:1px solid #28a745;
     padding: 3px !important;
     margin-bottom: 10px !important;
 }
 #product_list_table_previous, #product_list_table_next, .current, .next, .previous{
-    background: linear-gradient(to right, #28a745, #34d058) !important;
+    background: linear-gradient(to right, #086c1f, #57c270) !important;
     color:white !important;
     padding: 0px;
     margin-left: 0px !important;
@@ -13,8 +16,9 @@
     padding: 5px 10px !important;
 }
 
+/* Table container styling */
 #product_list_table {
-    width: 100%;
+    width:100%;
     margin-bottom: 7px;
     border-collapse: separate;
     border-spacing: 0;
@@ -23,6 +27,7 @@
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
     background-color: #fff;
 }
+
 /* Table Header Styling */
 #product_list_table thead th {
     background: linear-gradient(to right, #3b4452, #6b7280) !important;
@@ -104,5 +109,17 @@
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     overflow: hidden;
+}
+
+
+.smls-list-container{
+    width:95%;
+    margin:35px;
+
+}
+body{
+    background: url("../../Public/Assests/Images/add-product-background.jpg")no-repeat center center fixed;
+    background-size: cover;
+    margin:30px;
 }
 
