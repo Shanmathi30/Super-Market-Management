@@ -14,7 +14,7 @@ const LoginPage = function () {
         localStorage.setItem("admin", JSON.stringify({ username: "admin@gmail.com", password: "Admin@123" })); //object to a string
     };
 
-    // Validation function
+    // login Validation function
     this.validateUserInputFields = function () {
         $(SELECTORS.userLoginFormId).validate({
             rules: {
@@ -46,7 +46,7 @@ const LoginPage = function () {
         let password = $(SELECTORS.userLoginPasswordId).val().trim();
         let storedAdmin = JSON.parse(localStorage.getItem("admin"));
 
-        if (storedAdmin && username === storedAdmin.username && password === storedAdmin.password) {
+        if (storedAdmin && username === storedAdmin.username && password === storedAdmin.password) { //admin stored in ls.
             window.location.href = "dashboard.html?isAdmin=Y";
             return;
         }
@@ -81,7 +81,7 @@ const LoginPage = function () {
         } 
     }
     function _redirectingRegisterPage() {
-        window.location.href = "register-page.html";
+        window.location= "register-page.html";
     }
 };
 

@@ -60,12 +60,14 @@ const RegisterPage = function () {
                 customerPassword: 
                 { 
                     required: true, 
-                    minlength: 5
+                    minlength: 8,
+                    maxlength:16
                 },
                 customerConfirmPassword: 
                 { 
                     required: true, 
-                    minlength: 5,
+                    minlength: 8,
+                    maxlength:16,
                     matchPassword: true
                 },
                 customerMobileNo: 
@@ -76,6 +78,7 @@ const RegisterPage = function () {
                 },
                 customerAddressLineOne:{
                     required:true
+                    //min,max
                 },
                 customerAddressLineTwo:{
                     required:true
@@ -163,7 +166,7 @@ const RegisterPage = function () {
             }
         });
         $.validator.addMethod("validEmail", function (value, element) {
-            return this.optional(element) || /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value);
+            return this.optional(element) || /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value); //empty fields to pass validation
         }, "Enter a valid email address.");
 
         $.validator.addMethod("matchPassword", function (value, element) {
@@ -240,13 +243,14 @@ const RegisterPage = function () {
     }
     
     function _checkEmailPasswordValidation() {
-        const fieldToMatch = $(this).attr("id").includes("email") ? SELECTORS.userRegisterEmailId : SELECTORS.userRegisterPasswordId;
-        $(this).next(".error-message").remove();
+        const fieldToMatch = $(this).attr("id").includes("email") ? SELECTORS.userRegisterEmailId : SELECTORS.userRegisterPasswordId; //current i/p field,id(email,password),check words
+        $(this).next(".error-message").remove();  //remove he error message
     }
     
     $(SELECTORS.userResetButtonId).on("click", () => $("#resetConfirmationModal").modal("show"));
+
     $("#confirmReset").on("click", () => {
-        $(SELECTORS.userRegisterFormId)[0].reset();
+        $(SELECTORS.userRegisterFormId)[0].reset();  //not support native js  method
         $("#resetConfirmationModal").modal("hide");
     });
 };

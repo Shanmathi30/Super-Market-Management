@@ -17,15 +17,12 @@ const customerDataTableConfig = {
         dataSrc: (jsonListResponse) => customerDataTable.displayCustomerList(jsonListResponse)
     },
     columns : [
-        {"data" : "sno", "searchable": false, "orderable": true},
-        {"data" : "customerName", "searchable": true, "orderable": true},
-        {"data" : "customerAddress", "searchable": false, "orderable": true},
-        {"data" : "customerLocation", "searchable": true, "orderable": true},
-        {"data" : "customerCity", "searchable": true, "orderable": true},
-        {"data" : "customerPincode", "searchable": true, "orderable": true},
-        {"data" : "customerEmail", "searchable": true, "orderable": true},
-        {"data" : "customerMobileNo", "searchable": false, "orderable": false},
-        {"data" : "action", "searchable": false, "orderable": false},
+        {"data" : "sno", "searchable": false},
+        {"data" : "customerName", "searchable": true},
+        {"data" : "customerAddress", "searchable": false},
+        {"data" : "customerEmail", "searchable": true},
+        {"data" : "customerMobileNo", "searchable": false},
+        {"data" : "action", "searchable": false},
     ],
     initComplete : () => customerDataTable.initializeCustomerTable(), //initial load
     drawCallback : () => customerDataTable.showCustomerListPanelSectionAfterDraw(), //executes for every draw
@@ -86,6 +83,8 @@ const CustomerDataTable= function () {
     }
     
     this.showCustomerListPanelSectionAfterDraw =function () {
+          // Initialize Bootstrap tooltips
+        $('[data-bs-toggle="tooltip"]').tooltip(); ///regukar ha naddaknum 
         $(".smc-customer-edit").on("click",_editCustomerDetails)
         $(".smc-customer-view").on("click",_viewCustomer)
     }
@@ -129,7 +128,6 @@ const CustomerDataTable= function () {
                         customerInfo["customerEmail"]=customerEmail;
                         customerInfo["customerMobileNo"]=customerMobileNo;
                         customerInfo["action"]= _getCustomerListActionIcons(customerListResponse.listOfCustomer[index]);
-
                         customerList.push(customerInfo);
                     }
                 }
@@ -142,10 +140,10 @@ const CustomerDataTable= function () {
     
     function _getCustomerListActionIcons (customerDetails) {
         return `<div>
-                <span class="smc-customer-edit" data-id="${customerDetails.customerId}" data-bs-toggle="tooltip" title="Edit Customer">
+                <span class="smc-customer-edit" data-id="${customerDetails.customerId}" data-bs-toggle="tooltip" title="Edit Customer" data-bs-placement="top">
                     <i class="fa-solid fa-pen-to-square"></i>
                 </span>
-                <span class="p-1 smc-customer-view" data-id="${customerDetails.customerId}" data-bs-toggle="tooltip" title="View Customer">
+                <span class="p-1 smc-customer-view" data-id="${customerDetails.customerId}" data-bs-toggle="tooltip" title="View Customer" data-bs-placement="top">
                     <i class="fa-solid fa-eye"></i>
                 </span>
             </div>`
@@ -153,7 +151,6 @@ const CustomerDataTable= function () {
 
     this.bindCustomerListEvents = function () {
         customerDataTable.initializeCustomerDataTable();
-
         $("#btn_submit").on("click",_drawCustomerTableBasedOnFilter);
         $("#btn_reset").on("click",_resetCustomerTableFilter);
     }
@@ -171,16 +168,8 @@ const CustomerDataTable= function () {
     function _drawCustomerTableBasedOnFilter(){
         customerDataTable.initializeCustomerDataTable(); //refresh
     }
-
-    $(document).ready(function() {
-        // Initialize Bootstrap tooltips
-        $('[data-bs-toggle="tooltip"]').tooltip();
-    });
-    
+        
     function _resetCustomerTableFilter(){
-        // $("#customer_length").val(10);
-        // $("#search_customer").val("");
-        // $("#search_customer_city").val("");
         $("#customer_filter_id")[0].reset();
     }
 
@@ -232,23 +221,27 @@ const CustomerDataTable= function () {
         $("#updateButton").prop("disabled", !hasChanged); // Enable/Disable button
     });
     
-    function _viewCustomer(){
+    function _viewCustomer() {
         let customerId = $(this).attr("data-id");
         $.ajax({
-            url: `https://dev-api.humhealth.com/SuperMarketAPI/customer/view/${customerId}`,
+            url: `customer/view/${customerId}`,
             type: 'GET',
             success: function(response) {
-                if (response.status === "SUCCESS") {
-                    $('#view_name').text(response.data.customerName);
+                if (response.status === "SUCCESS" && response.data) {
+                    $('#view_name').text(response.data.customerFullName);
                     $('#view_email').text(response.data.customerEmail);
                     $('#view_mobile').text(response.data.customerMobileNo);
+                    $('#view_address').text(response.data.customerAddress);
+                    $('#view_city').text(response.data.customerCity);
+                    $('#view_state').text(response.data.customerState);
+                    $('#view_country').text(response.data.customerCountry);
+                    $('#view_pincode').text(response.data.customerPincode);
                     $('#sm_customer_view_modal_id').modal("show");
                 }
             }
         });
     }
 }
-
 const customerDataTable = new CustomerDataTable();
 customerDataTable.bindCustomerListEvents();
 

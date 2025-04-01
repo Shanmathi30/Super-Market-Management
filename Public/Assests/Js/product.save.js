@@ -164,3 +164,6 @@ const ProductSave= function () {
 const  productSave= new ProductSave();
 productSave.validateProductSaveInputFields();
 productSave.bindProductSaveEvents();
+
+
+

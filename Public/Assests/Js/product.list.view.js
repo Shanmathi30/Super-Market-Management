@@ -32,51 +32,119 @@ const productDataTableConfig = {
 
 const ProductDataTable = function () {
     let productDataTableObject;
-
-    this.initializeProductTable = function () {
-        $(".smp-product-table-buttons").prepend(`<div class="d-inline-block"><button class="smps-supermarket-product-list-download-button btn btn-success" style="margin-left:500px;">download</button></div>`);
-        $(".smp-product-table-buttons").append(`<div class="d-inline-block"><button class="smps-supermarket-product-save btn btn-success" style="margin-left:30px;"> + Add Product</button></div>`);
+    
+    this.initializeProductTable = function () 
+    {
+        $(".smp-product-table-buttons").prepend(
+            `<div class="d-inline-block">
+                <button class="smps-supermarket-product-list-download-button btn btn-success" style="margin-left:500px;"><i class="fa fa-download"></i> &nbsp;&nbsp;download</button>
+                <button class="smps-supermarket-product-save btn btn-success" style="margin-left:30px;"><i class="fa fa-plus"></i>&nbsp;&nbsp;Product</button>
+            </div>`);
         $(".smps-supermarket-product-save").on("click", _addProductDetails);
+
         $(".smps-supermarket-product-list-download-button").on("click",_downloadProductList);
+
+        // Get today's date and two year from today using Moment.js
+        let today = moment().format("MM-DD-YYYY hh:mm A");
+        let maxDate = moment().add(2, 'years').format("MM-DD-YYYY hh:mm A");
+
+        // Date & Time Picker Initialization
+        $(".datetimepicker").datetimepicker({
+            format: "m-d-Y h:i A",  
+            minDate: moment().toDate(), 
+            maxDate: moment().add(1, 'years').toDate(),  
+            step: 30,  
+            ampm: true,  
+            showButtonPanel: true
+        });
+
+        $("#sm_product_form").validate({
+            rules: {
+                productName: { 
+                    required: true, 
+                    minlength: 1,
+                    maxlength: 50
+                },
+                productPackQuantity: { 
+                    required: true,
+                    number: true,
+                    min: 1
+                },
+                productCategory: { 
+                    required: true 
+                },
+                productPrice: { 
+                    required: true, 
+                    number: true, 
+                    min: 0.01
+                },
+                productStockQuantity: { 
+                    required: true, 
+                    number: true, 
+                    min: 0
+                },
+                productEffectiveDate: { 
+                    required: true, 
+                    date: true 
+                },
+                productLastEffectiveDate: { 
+                    required: true, 
+                    date: true,
+                    greaterThan: "#product_effective_date"
+                }
+            },
+            messages: {
+                productName: { 
+                    required: "Product name is required.", 
+                    minlength: "At least 1 character.", 
+                    maxlength: "Maximum 50 characters allowed."
+                },
+                productPackQuantity: { 
+                    required: "Pack quantity is required.",
+                    number: "Enter a valid number.",
+                    min: "Must be at least 1."
+                },
+                productCategory: { 
+                    required: "Please select a category." 
+                },
+                productPrice: { 
+                    required: "Price is required.",
+                    number: "Enter a valid number.",
+                    min: "Price must be greater than 0."
+                },
+                productStockQuantity: { 
+                    required: "Stock quantity is required.",
+                    number: "Enter a valid number.",
+                    min: "Stock quantity cannot be negative."
+                },
+                productEffectiveDate: { 
+                    required: "Effective date is required.", 
+                    date: "Enter a valid date." 
+                },
+                productLastEffectiveDate: { 
+                    required: "Last effective date is required.",
+                    date: "Enter a valid date.",
+                    greaterThan:"Last effective date must be after the effective date."
+                }
+            }
+        });
+       
+        // Custom validation: Last Effective Date should be after Effective Date
+        $.validator.addMethod("greaterThan", function (value, element, param) {
+            let startDate = $(param).val();
+            return moment(value, "MM-DD-YYYY hh:mm A").isAfter(moment(startDate, "MM-DD-YYYY hh:mm A"));
+        }, "Last Effective Date must be after the Effective Date.");
+
+        // Add dollar symbol before price input
+        $("#product_price").before("<span class='input-group-text'>$</span>");
     };
 
     function _addProductDetails() {
         $("#sm_product_add_modal_id").modal("show");
     }    
-        
-    function _downloadProductList(){
-            $.ajax({
-                url: "https://dev-api.humhealth.com/SuperMarketAPI/download/productDetails",
-                type: "GET",
-                xhrFields: {
-                    responseType: 'blob' // Important for downloading files
-                },
-                success: function(response, status, xhr) {
-                    // Get filename from content-disposition header
-                    let filename = "Product_Details.xlsx";
-                    let disposition = xhr.getResponseHeader('Content-Disposition');
-                    if (disposition && disposition.indexOf('attachment') !== -1) {
-                        let match = disposition.match(/filename="?([^"]+)"?/);
-                        if (match && match[1]) filename = match[1];
-                    }
-        
-                    // Create a URL for the blob
-                    let blob = new Blob([response], { type: xhr.getResponseHeader('Content-Type') });
-                    let link = document.createElement('a');
-                    link.href = window.URL.createObjectURL(blob);
-                    link.download = filename;
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
-                },
-                error: function(xhr, status, error) {
-                    alert("Failed to download product list. Please try again.");
-                    console.error("Download error:", error);
-                }
-            });
-    }
-
+    
     $("#sm_product_details_update").on("click", function () {
+        if("#sm_product_form").valid(){
             let productData = {
                 productId: null,
                 productName: $("#product_name").val().trim(),
@@ -107,11 +175,12 @@ const ProductDataTable = function () {
                     alert("An error occurred while adding the product.");
                 }
             });
+            }
         })
-                        
+     
     this.showProductListPanelSectionAfterDraw = function () {
         $(".smp-product-edit").on("click", _editProductDetails);
-        // $(".smp-product-view").on("click", _viewProduct);
+        $(".smp-product-view").on("click", _viewProduct);
     }
 
     this.getProductDataTableObject = function(dataObject){
@@ -132,8 +201,6 @@ const ProductDataTable = function () {
                 }
         })
     }
-
-
     this.displayProductList = function(productListResponse) {
         const productList = [];
             if (productListResponse.status === "SUCCESS") {
@@ -153,7 +220,6 @@ const ProductDataTable = function () {
                             productInfo["productStockQuantity"]=productStockQuantity;
                             productInfo["productEffectiveDate"]=productEffectiveDate;
                             productInfo["action"]= _getProductListActionIcons(productListResponse.listOfProducts[index]);
-        
                             productList.push(productInfo);
                             }
                         }
@@ -168,6 +234,7 @@ const ProductDataTable = function () {
         return `<div>
                     <span class="p-1 smp-product-edit" data-id="${productDetails.productId}"><i class="fa-solid fa-pen-to-square"></i></span>
                     <span class="p-1 smp-product-view" data-id="${productDetails.productId}"><i class="fa-solid fa-eye"></i></span>
+                    <span class="p-1 smp-product-active-deactive" data-id="${productDetails.productId}"><i class="fa fa-user-plus"></i></span>
                 </div>`;
     }
 
@@ -193,7 +260,12 @@ const ProductDataTable = function () {
     function _resetProductTableFilter() {
         $("#product_filter_id")[0].reset();
     }
+    function _viewProduct(){
+        
+    }
+    function _downloadProductList(){
 
+    }
     function _editProductDetails() {
         let productId = $(this).attr("data-id");
         $.ajax({
@@ -209,7 +281,6 @@ const ProductDataTable = function () {
                     $('#product_stock_quantity').val(response.data.productStockQuantity);
                     $('#product_effective_date').val(moment(response.data.productEffectiveDate, "MM-DD-YYYY hh:mm a").format("MM-DD-YYYY hh:mm a"));
                     $('#product_last_effective_date').val(moment(response.data.productLastEffectiveDate, "MM-DD-YYYY hh:mm a").format("MM-DD-YYYY hh:mm a"));
-
                     $("#sm_product_update_modal_id").modal("show");
                 }
             },

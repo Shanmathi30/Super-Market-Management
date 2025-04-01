@@ -54,12 +54,11 @@ h2 {
 }
 
 h3 {
-    font-weight: 700;
-    text-transform: uppercase;
+    font-weight: 300;
     letter-spacing: 1px;
     text-align: center;
     font-size: 28px;
-    background: linear-gradient(to bottom, #3d0000, #e40909);
+    background: linear-gradient(to bottom,#005222, #2cda43 );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }

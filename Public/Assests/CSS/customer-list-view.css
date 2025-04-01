@@ -27,13 +27,12 @@
 
 /* Table Header Styling */
 #customer_list_table thead th {
-    background: linear-gradient(to right, #3b4452, #6b7280) !important;
+    background: linear-gradient(to right, #28a745, #34d058) !important;
     color: white !important;
     text-align: center;
-    padding: 14px;
+    padding: 12px;
     font-size: 16px;
     font-weight: bold;
-    text-transform: uppercase;
     border: none;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -55,7 +54,7 @@
 
 /* Hover Effect */
 #customer_list_table tbody tr:hover {
-    background: linear-gradient(to right, #e3f2fd, #bbdefb);
+    background: linear-gradient(to right, #28a745, #34d058);
     transform: scale(1.01);
     transition: 0.3s ease-in-out;
 }
@@ -118,7 +117,7 @@
 
 /* Modal Header Styling */
 .modal-header {
-    background: linear-gradient(to right, #3b4452, #6b7280);
+    background: linear-gradient(to right,#28a745, #34d058);
     color: white;
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;

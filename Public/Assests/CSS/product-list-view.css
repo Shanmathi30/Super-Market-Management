@@ -30,13 +30,12 @@
 
 /* Table Header Styling */
 #product_list_table thead th {
-    background: linear-gradient(to right, #3b4452, #6b7280) !important;
+    background: linear-gradient(to right,#086c1f, #57c270) !important;
     color: white !important;
     text-align: center;
     padding: 14px;
     font-size: 16px;
     font-weight: bold;
-    text-transform: uppercase;
     border: none;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
