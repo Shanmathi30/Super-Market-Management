@@ -159,7 +159,7 @@ h3 {
     font-size: 13px;
     font-weight:500px;
 }
-
+/*panel field like a address field*/
 .panel-header {
     background: linear-gradient(to right, #25812b, #66bb6a); 
     color: white;
@@ -172,7 +172,6 @@ h3 {
     text-decoration: none;
     transition: all 0.3s ease-in-out;
 }
-
 .toggle-icon {
     font-size: 18px;
     font-weight: bold;
@@ -180,7 +179,6 @@ h3 {
     text-align: center;
     margin-right: 10px;
 }
-
 .panel-content {
     padding: 15px;
     border: 1px solid #ddd;

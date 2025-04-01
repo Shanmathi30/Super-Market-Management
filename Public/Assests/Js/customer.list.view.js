@@ -142,7 +142,12 @@ const CustomerDataTable= function () {
     
     function _getCustomerListActionIcons (customerDetails) {
         return `<div>
-                <span class="smc-customer-edit" data-id="${customerDetails.customerId}"><i class="fa-solid fa-pen-to-square"></i></span>
+                <span class="smc-customer-edit" data-id="${customerDetails.customerId}" data-bs-toggle="tooltip" title="Edit Customer">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                </span>
+                <span class="p-1 smc-customer-view" data-id="${customerDetails.customerId}" data-bs-toggle="tooltip" title="View Customer">
+                    <i class="fa-solid fa-eye"></i>
+                </span>
             </div>`
     }
 
@@ -167,6 +172,11 @@ const CustomerDataTable= function () {
         customerDataTable.initializeCustomerDataTable(); //refresh
     }
 
+    $(document).ready(function() {
+        // Initialize Bootstrap tooltips
+        $('[data-bs-toggle="tooltip"]').tooltip();
+    });
+    
     function _resetCustomerTableFilter(){
         // $("#customer_length").val(10);
         // $("#search_customer").val("");
@@ -242,4 +252,3 @@ const CustomerDataTable= function () {
 const customerDataTable = new CustomerDataTable();
 customerDataTable.bindCustomerListEvents();
 
-//<span class="p-1 smc-customer-view" data-id="${customerDetails.customerId}"><i class="fa-solid fa-eye"></i></span>

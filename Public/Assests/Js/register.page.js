@@ -19,16 +19,9 @@ const SELECTORS = {
     toastMessageId: "#toastBody",
     liveToastId: "#liveToast",
     userCustomerAddModalId:"#sm_customer_add_modal_id",
-    togglePasswordIcon: ".toggle-password"
+    togglePasswordIconId: "#togglePassword",
+    toggleConfirmPasswordIconId:"#toggleConfirmPassword"
 };
-
-// Bootstrap Toast Function
-function showToast(message) {
-    let toastEl = $(SELECTORS.liveToastId);
-    $(SELECTORS.toastMessageId).text(message).addClass("fw-bold text-danger");
-    let toastInstance = new bootstrap.Toast(toastEl[0]); //toast class--plain JavaScript DOM element, jQuery object ($("#liveToast")) to a regular JavaScript element.
-    toastInstance.show();
-}
 
 const RegisterPage = function () {
     // Validation function
@@ -43,7 +36,8 @@ const RegisterPage = function () {
                 },
                 middleName: 
                 { 
-                    minlength: 1 
+                    minlength: 1,
+                    maxlength: 25
                 },
                 lastName: 
                 { 
@@ -106,17 +100,19 @@ const RegisterPage = function () {
                 firstName: 
                 { 
                     required: "First name is required.", 
-                    minlength: "At least 2 characters.",
-                    maxlength:"At least 10 characters."
+                    minlength: "At least 1 characters.",
+                    maxlength:"At least 25 characters."
                 },
                 middleName: 
                 { 
-                    minlength: "At least 1 character." 
+                    minlength: "At least 1 characters.",
+                    maxlength:"At least 25 characters."
                 },
                 lastName: 
                 { 
                     required: "Last name is required.", 
-                    minlength: "At least 2 characters." 
+                    minlength: "At least 1 characters.",
+                    maxlength:"At least 25 characters." 
                 },
                 customerEmail: 
                 { 
@@ -163,55 +159,21 @@ const RegisterPage = function () {
                     minlength: "Exactly 5 digits.", 
                     maxlength: "Exactly 5 digits." 
                 }
+
             }
         });
-        
-        // Custom Email Validation Regex
         $.validator.addMethod("validEmail", function (value, element) {
-        return this.optional(element) || /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value);
+            return this.optional(element) || /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value);
         }, "Enter a valid email address.");
 
-        // Custom Confirm Password Validation (Immediate)
         $.validator.addMethod("matchPassword", function (value, element) {
-        return value === $(SELECTORS.userRegisterPasswordId).val();
+            return value === $(SELECTORS.userRegisterPasswordId).val();
         }, "Passwords do not match.");
 
-        // Custom Confirm Email Validation (Immediate)
         $.validator.addMethod("matchEmail", function (value, element) {
-        return value === $(SELECTORS.userRegisterEmailId).val();
+            return value === $(SELECTORS.userRegisterEmailId).val();
         }, "Emails do not match.");
-
-        // Immediate validation for email & password mismatch 
-        $(SELECTORS.userRegisterConfirmEmailId).on("input", function () {
-            if ($(this).val() !== $(SELECTORS.userRegisterEmailId).val()) {
-                $(this).next(".error-message").remove();
-                // $(this).after('<span class="text-danger error-message">Emails do not match!</span>');
-            } else {
-                $(this).next(".error-message").remove();
-            }
-        });
-
-        $(SELECTORS.userRegisterConfirmPasswordId).on("input", function () {
-            if ($(this).val() !== $(SELECTORS.userRegisterPasswordId).val()) {
-                $(this).next(".error-message").remove();
-                // $(this).after('<span class="text-danger error-message">Passwords do not match!</span>');
-            } else {
-                $(this).next(".error-message").remove();
-            }
-        });
-        // Apply input mask for Mobile Number: (___)-___-____
-        $(SELECTORS.userRegisterMobileNo).inputmask("(999)-999-9999");
-    
-        // Reset Button Click - Show Confirmation Modal
-        $(SELECTORS.userResetButtonId).on("click", function () {
-            $("#resetConfirmationModal").modal("show");
-        });
-        
-        // Confirm Reset - Clear Form
-        $("#confirmReset").on("click", function () {
-            $("#smrs_customer_form")[0].reset(); // Reset form
-            $("#resetConfirmationModal").modal("hide"); // Hide modal
-        });
+       
     };
 
     // Register Process
@@ -263,36 +225,40 @@ const RegisterPage = function () {
 
     // Event Binding
     this.bindRegisterPageEvents = function () {
-        $(SELECTORS.userCancelButtonId).on("click",_handleCustomerRegisterationCancel);
+        $(SELECTORS.userResetButtonId).on("click",_handleCustomerRegisterationReset);
         $(SELECTORS.userRegisterButtonId).on("click", _saveCustomerDetailsForRegisteration);
-        $(SELECTORS.userRegisterConfirmPasswordId).on("input",_checkConfirmPasswordValidate);
+        $(SELECTORS.userRegisterConfirmEmailId + ", " + SELECTORS.userRegisterConfirmPasswordId).on("input",_checkEmailPasswordValidation);
     };
+
     function _saveCustomerDetailsForRegisteration (event) {
         if ($(SELECTORS.userRegisterFormId).valid()) {
             registerPage.registerCustomer(event);
         }
     }
-    function _handleCustomerRegisterationCancel() {
+    function _handleCustomerRegisterationReset() {
         $(SELECTORS.userRegisterFormId)[0].reset(); 
     }
-    function _checkConfirmPasswordValidate() {
-        if ($(this).val() !== $(SELECTORS.userRegisterPasswordId).val()) 
-        {
-            $(this).next(".error-message").remove();
-            // $(this).after('<span class="text-danger error-message">Passwords do not match!</span>');
-        } else {
-            $(this).next(".error-message").remove();
-        }
+    
+    function _checkEmailPasswordValidation() {
+        const fieldToMatch = $(this).attr("id").includes("email") ? SELECTORS.userRegisterEmailId : SELECTORS.userRegisterPasswordId;
+        $(this).next(".error-message").remove();
     }
+    
+    $(SELECTORS.userResetButtonId).on("click", () => $("#resetConfirmationModal").modal("show"));
+    $("#confirmReset").on("click", () => {
+        $(SELECTORS.userRegisterFormId)[0].reset();
+        $("#resetConfirmationModal").modal("hide");
+    });
 };
+
+// Bootstrap Toast Function
+function showToast(message) {
+    let toastEl = $(SELECTORS.liveToastId);
+    $(SELECTORS.toastMessageId).text(message).addClass("fw-bold text-danger");
+    let toastInstance = new bootstrap.Toast(toastEl[0]); //toast class--plain JavaScript DOM element, jQuery object ($("#liveToast")) to a regular JavaScript element.
+    toastInstance.show();
+}
 
 const registerPage = new RegisterPage();
 registerPage.validateUserInputFields();
 registerPage.bindRegisterPageEvents();
-
-
-
-   
-    
-
-

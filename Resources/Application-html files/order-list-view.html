@@ -36,12 +36,12 @@
         <!---main content-->
         <main class="smls-list-container">
         <div class="card p-3">
-            <h3 class="text-center mb-4">Customer List</h3>
-            <form id="customer_filter_id">
+            <h3 class="text-center mb-4">order List</h3>
+            <form id="order_filter_id">
                 <div class="row">
                     <div class=" col-md-2 mb-3">
-                        <label for="customer_length">Show</label>
-                        <select id="customer_length" class="form-control">
+                        <label for="order_length">Show</label>
+                        <select id="order_length" class="form-control">
                             <option value="10">10</option>
                             <option value="25">25</option>
                             <option value="50">50</option>
@@ -49,12 +49,12 @@
                         </select>
                     </div>
                     <div class=" col-md-3 mb-3">
-                        <label for="search_customer">Search</label>
-                        <input type="text" id="search_customer" class="form-control" placeholder="Search by Name">
+                        <label for="search_order">Search</label>
+                        <input type="text" id="search_order" class="form-control" placeholder="Search by Name">
                     </div>
                     <div class="col-md-3">
-                        <label for="search_customer_city">City</label>
-                        <input type="text" id="search_customer_city" class="form-control" placeholder="Search by City">
+                        <label for="search_order_city">City</label>
+                        <input type="text" id="search_order_city" class="form-control" placeholder="Search by City">
                     </div>
                     <div class="col-md-3">
                         <button type="button" id="btn_reset" class="btn btn-outline-secondary mt-md-4 me-2">Reset</button>
@@ -62,35 +62,33 @@
                     </div>
                 </div>
             </form>
-                <table id="customer_list_table" class="table table-bordered table- table-hover">
+                <table id="order_list_table" class="table table-bordered table- table-hover">
                     <thead class="table">
                         <tr>
                             <th>s.no</th>
-                            <th>Customer Name</th>
-                            <th>Customer Address</th>
-                            <th>Customer Location</th>
-                            <th>Customer City</th>
-                            <th>Customer Pincode</th>
-                            <th>Customer Email</th>
-                            <th>Customer MobileNo</th>
+                            <th>order Name</th>
+                            <th>order Address</th>
+                            <th>order Location</th>
+                            <th>order Email</th>
+                            <th>order MobileNo</th>
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody id="customerTableBody">
-                        <!-- Customers will be appended here -->
+                    <tbody id="orderTableBody">
+                        <!-- orders will be appended here -->
                     </tbody>
                 </table>
             </div> 
         </main>
-        <div class="modal fade pt-lg-5" id="sm_customer_view_modal_id" tabindex="-1" aria-labelledby="resetModalLabel" aria-hidden="true">
+        <div class="modal fade pt-lg-5" id="sm_order_view_modal_id" tabindex="-1" aria-labelledby="resetModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header text-center w-100">
-                        <h5 class="modal-title w-100" id="resetModalLabel">View Customer</h5>
+                        <h5 class="modal-title w-100" id="resetModalLabel">View order</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body text-center">
-                        <h4>Customer Details</h4>
+                        <h4>order Details</h4>
                             <p><strong>Name:</strong> <span id="view_name"></span></p>
                             <p><strong>Email:</strong> <span id="view_email"></span></p>
                             <p><strong>Mobile:</strong> <span id="view_mobile"></span></p>
@@ -98,21 +96,21 @@
                 </div>
             </div>
         </div>
-        <div class="modal fade pt-lg-5" id="sm_customer_update_modal_id" tabindex="-1" aria-labelledby="resetModalLabel" aria-hidden="true">
+        <div class="modal fade pt-lg-5" id="sm_order_update_modal_id" tabindex="-1" aria-labelledby="resetModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-xl">
                 <div class="modal-content">
                     <div class="modal-header text-center w-100">
-                        <h5 class="modal-title w-100" id="resetModalLabel">update Customer</h5>
+                        <h5 class="modal-title w-100" id="resetModalLabel">update order</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body text-center">
-                        <h4>Customer Details</h4>
-                            <form id="sm_customer_update_form"> 
+                        <h4>order Details</h4>
+                            <form id="sm_order_update_form"> 
                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="customer_name" class="form-label">Customer Name</label>
-                                            <input type="text" id="customer_name" name="customer_name" class="form-control">
+                                            <label for="order_name" class="form-label">order Name</label>
+                                            <input type="text" id="order_name" name="order_name" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -125,21 +123,21 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="customer_email" class="form-label">Email</label>
-                                            <input type="text" id="customer_email" name="customer_email" class="form-control">
+                                            <label for="order_email" class="form-label">Email</label>
+                                            <input type="text" id="order_email" name="order_email" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="customer_password" class="form-label">Password</label>
-                                            <input type="text" id="customer_password" name="customer_password" class="form-control">
+                                            <label for="order_password" class="form-label">Password</label>
+                                            <input type="text" id="order_password" name="order_password" class="form-control">
                                         </div>
                                     </div>
                                     
                                </div>
-                               <div class="row smc-customer-details-update-buttons-section mt-3">
+                               <div class="row smc-order-details-update-buttons-section mt-3">
                                 <div class="col-12 d-flex justify-content-center gap-3">
-                                    <button type="button" class="btn btn-success px-4 py-2" id="sm_customer_details_update">Update</button>
+                                    <button type="button" class="btn btn-success px-4 py-2" id="sm_order_details_update">Update</button>
                                     <button type="button" class="btn btn-outline-secondary px-4 py-2" data-bs-dismiss="modal">Cancel</button>
                                 </div>
                             </div>                            

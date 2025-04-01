@@ -86,7 +86,8 @@
                 </table>
             </div>
         </main>
-        <!-- <div class="modal fade pt-lg-5" id="sm_customer_view_modal_id" tabindex="-1" aria-labelledby="resetModalLabel" aria-hidden="true">
+        <!---view customer-->
+        <div class="modal fade pt-lg-5" id="sm_customer_view_modal_id" tabindex="-1" aria-labelledby="resetModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header text-center w-100">
@@ -101,7 +102,7 @@
                         </div>
                     </div>
                 </div>
-            </div> -->
+            </div>
         
             <!--edit customer-->
         <div class="modal fade pt-lg-5" id="sm_customer_update_modal_id" tabindex="-1" aria-labelledby="resetModalLabel"
@@ -223,8 +224,8 @@
             document.body.appendChild(scriptTopNavigation);
 
             let scriptCustomerInformation=document.createElement('script');
-                scriptCustomerInformation.src = '../../Public/Assests/Js/customer.information.js';
-                document.body.appendChild(scriptCustomerInformation);
+            scriptCustomerInformation.src = '../../Public/Assests/Js/customer.information.js';
+            document.body.appendChild(scriptCustomerInformation);
 
             let scriptRegisterCustomerInformation=document.createElement('script');
             scriptRegisterCustomerInformation.src = '../../Public/Assests/Js/register.page.js';

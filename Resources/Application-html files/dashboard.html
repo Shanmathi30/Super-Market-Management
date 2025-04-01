@@ -1,111 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    
+
     <link rel="stylesheet" href="../../Public/Assests/CSS/dashboard.css">
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
+
 <body>
     <!-- Sidebar -->
     <div class="smds-sidebar">
         <supermarket-side-navigation></supermarket-side-navigation>
     </div>
-    
+
     <!-- Navbar -->
     <div class="smds-content-wrapper">
-    <nav class="navbar" style="width:96%;">
-        <supermarket-top-navigation style="display:block; width:100%;"></supermarket-top-navigation>  
-    </nav>
+        <nav class="navbar" style="width:96%;">
+            <supermarket-top-navigation style="display:block; width:100%;"></supermarket-top-navigation>
+        </nav>
 
-    <main class="smds-content">
-        <section>
-            <div class="smds-header-heading">
-                <h1>Get your Weekly Groceries <span class="orange-text">at your door step!</span></h1>
-            </div>
-            <div class="smds-header-img">
-                <img src="../../Public/Assests/Images/Header_Image.png" alt="header_img">
-            </div>
-            <div class="smds-header-heading">
-                <h1>Get<span class="orange-text">10% OFF</span>on your first Purchase.</h1>
-            </div>
-        </section>
-        <div class="smds-features-section text-center py-5" id="feature-card">
-            <div class="container">
-                <h2 class="mb-4">Our <span class="highlight">Features</span></h2>
-                <div class="row">
-                    <!-- Feature 1 -->
-                    <div class="col-md-4">
-                        <div class="card feature-card">
-                            <img src="../../Public/Assests/Images/fresh_organic.jpg" class="card-img-top" alt="Fresh and Organic">
-                            <div class="card-body">
-                                <h5 class="card-title">Fresh And Organic</h5>
-                                <p class="card-text">"Enjoy farm-fresh, organic produce sourced directly from trusted growers. Shop with us for healthy, chemical-free groceries delivered to your doorstep!"</p>
-                                <a href="product-dashboard.html" class="btn btn-outline-dark">Read More</a>
+        <main class="smds-content">
+            <section>
+                <div class="smds-header-heading">
+                    <h1>Get your Weekly Groceries <span class="orange-text">at your door step!</span></h1>
+                </div>
+                <div class="smds-header-img">
+                    <img src="../../Public/Assests/Images/Header_Image.png" alt="header_img">
+                </div>
+                <div class="smds-header-heading">
+                    <h1>Get<span class="orange-text">10% OFF</span>on your first Purchase.</h1>
+                </div>
+            </section>
+            <div class="smds-features-section text-center py-5" id="feature-card">
+                <div class="container">
+                    <h2 class="mb-4">Our <span class="highlight">Features</span></h2>
+                    <div class="row">
+                        <!-- Feature 1 -->
+                        <div class="col-md-4">
+                            <div class="card feature-card">
+                                <img src="../../Public/Assests/Images/fresh_organic.jpg" class="card-img-top"
+                                    alt="Fresh and Organic">
+                                <div class="card-body">
+                                    <h5 class="card-title">Fresh And Organic</h5>
+                                    <p class="card-text">"Enjoy farm-fresh, organic produce sourced directly from
+                                        trusted growers. Shop with us for healthy, chemical-free groceries delivered to
+                                        your doorstep!"</p>
+                                    <a href="product-dashboard.html" class="btn btn-outline-dark">Read More</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- Feature 2 -->
-                    <div class="col-md-4">
-                        <div class="card feature-card active">
-                            <img src="../../Public/Assests/Images/food-delivery.jpg" class="card-img-top" alt="Free Delivery">
-                            <div class="card-body">
-                                <h5 class="card-title">Free Delivery</h5>
-                                <p class="card-text">"Get your groceries delivered fast and fresh within minutes. Enjoy hassle-free shopping with our super-speed delivery service!"</p>
-                                <a href="product-dashboard.html" class="btn btn-outline-dark">Read More</a>
+                        <!-- Feature 2 -->
+                        <div class="col-md-4">
+                            <div class="card feature-card active">
+                                <img src="../../Public/Assests/Images/food-delivery.jpg" class="card-img-top"
+                                    alt="Free Delivery">
+                                <div class="card-body">
+                                    <h5 class="card-title">Free Delivery</h5>
+                                    <p class="card-text">"Get your groceries delivered fast and fresh within minutes.
+                                        Enjoy hassle-free shopping with our super-speed delivery service!"</p>
+                                    <a href="product-dashboard.html" class="btn btn-outline-dark">Read More</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- Feature 3 -->
-                    <div class="col-md-4">
-                        <div class="card feature-card">
-                            <img src="../../Public/Assests/Images/easy_payment.jpg" class="card-img-top" alt="Easy Payments">
-                            <div class="card-body">
-                                <h5 class="card-title">Easy Payments</h5>
-                                <p class="card-text">"Experience hassle-free shopping with our secure and easy payment options. Choose from multiple payment methods for a smooth checkout!"</p>
-                                <a href="product-dashboard.html" class="btn btn-outline-dark">Read More</a>
+                        <!-- Feature 3 -->
+                        <div class="col-md-4">
+                            <div class="card feature-card">
+                                <img src="../../Public/Assests/Images/easy_payment.jpg" class="card-img-top"
+                                    alt="Easy Payments">
+                                <div class="card-body">
+                                    <h5 class="card-title">Easy Payments</h5>
+                                    <p class="card-text">"Experience hassle-free shopping with our secure and easy
+                                        payment options. Choose from multiple payment methods for a smooth checkout!"
+                                    </p>
+                                    <a href="product-dashboard.html" class="btn btn-outline-dark">Read More</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="smds-about-content">
-            <div class="smds-about-image">
-                <img src="../../Public/Assests/Images/circularImage.png" alt="circular image" class="rotating-image">
-                <img src="../../Public/Assests/Images/supermarket logo.jpg" class="fixed-image" alt="Fixed Image">
-            </div>
-            <div class="smds-about-text">
-                <h1>About Us</h1>
-                <p>We serve the best and quality product.
+            <div class="smds-about-content">
+                <div class="smds-about-image">
+                    <img src="../../Public/Assests/Images/circularImage.png" alt="circular image"
+                        class="rotating-image">
+                    <img src="../../Public/Assests/Images/supermarket logo.jpg" class="fixed-image" alt="Fixed Image">
+                </div>
+                <div class="smds-about-text">
+                    <h1>ABOUT US</h1>
+                    <p>We serve the best and quality product.
                         Your one-stop shop for everything.</p>
-                <p>Where quality meets convenience.
+                    <p>Where quality meets convenience.
                         Freshness guaranteed, every aisle.</p>
-                    <a href="product-dashboard.html" class="smds-about-link"><p>shop more......</p></a>
+                    <a href="product-dashboard.html" class="smds-about-link">
+                        <p>shop more......</p>
+                    </a>
+                </div>
+            </div>
+        </main>
+        <!-- Logout Success Toast -->
+        <div class="position-fixed top-0 start-50 translate-middle-x p-3" style="z-index: 1050; top: 80px !important;">
+            <div id="logoutToast" class="toast text-white bg-success border-0 rounded-pill shadow-lg" role="alert"
+                aria-live="assertive" aria-atomic="true">
+                <div class="d-flex align-items-center p-3">
+                    <div class="d-flex align-items-center">
+                        <i class="fa-solid fa-check-circle me-2 fs-4"></i>
+                        <span class="toast-body fw-bold">Successfully logged out from the application.</span>
+                    </div>
+                    <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="toast"
+                        aria-label="Close"></button>
+                </div>
             </div>
         </div>
-    </main>
-</div>
-<footer class="smds-footer">
-    <p>&copy; FOODHUB 2025</p>
-</footer>
+    </div>
+    <footer class="smds-footer">
+        <p>&copy; FOODHUB 2025</p>
+    </footer>
 
-<div class="all-template"></div>
-<script src="../../Public/Assests/Js/dashboard.js"></script>
+    <div class="all-template"></div>
+    <script src="../../Public/Assests/Js/dashboard.js"></script>
     <script>
-         $('.all-template').load('customelement.html', function () {
+        $('.all-template').load('customelement.html', function () {
             let script = document.createElement('script');
             script.src = '../../Public/Assests/js/navigation.js';
             document.body.appendChild(script);
-                
+
             let scriptTopNavigation = document.createElement('script');
             scriptTopNavigation.src = '../../Public/Assests/Js/top.navigation.js';
             document.body.appendChild(scriptTopNavigation);
@@ -113,4 +140,3 @@
     </script>
 </body>
 </html>
-

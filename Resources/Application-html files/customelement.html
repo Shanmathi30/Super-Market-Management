@@ -18,7 +18,7 @@
 <template id="sm_supermarket_top_navigation_template">
     <div class="container-fluid p-0 d-flex justify-content-between">
         <!-- Logo -->
-        <a class="navbar-brand text-white d-flex align-items-center" href="#">
+        <a class="navbar-brand text-white d-flex align-items-center" href="dashboard.html">
             <img src="../../Public/Assests/Images/supermarket logo.jpg" alt="logo" class="logo-image">
             <span class="brand-text">FOOD<span class="orange-text">HUB</span></span>
         </a>
@@ -50,11 +50,11 @@
     </div>
 </template>
 
-<!--- cuastomer register and update form template-->
+<!--- customer register and update form template-->
 <template id="sm_supermarket_customer_information_template">
     <div class="row">
         <div class="col-md-4">
-            <label for="firstName" class="form-label">First Name</label>
+            <label for="firstName" class="form-label">First Name <span class="text-danger">*</span></label>
             <input type="text" id="firstName" name="firstName" class="form-control"
                 placeholder="First Name">
         </div>
@@ -64,7 +64,7 @@
                 placeholder="Middle Name">
         </div>
         <div class="col-md-4">
-            <label for="lastName" class="form-label">Last Name</label>
+            <label for="lastName" class="form-label">Last Name <span class="text-danger">*</span></label>
             <input type="text" id="lastName" name="lastName" class="form-control"
                 placeholder="Last Name">
         </div>
@@ -78,65 +78,73 @@
         <div id="additionalInfoPanel" class="collapse panel-content">
             <div class="row">
                 <div class="col-md-6">
-                    <label for="customer_email" class="form-label">Email</label>
-                    <input type="text" id="customer_email" name="customer_email" class="form-control"
+                    <label for="customer_email" class="form-label">Email <span class="text-danger">*</span></label>
+                    <input type="text" id="customer_email" name="customerEmail" class="form-control"
                         placeholder="Email">
                 </div>
                 <div class="col-md-6">
-                    <label for="customer_confirm_email" class="form-label">Confirm Email</label>
-                    <input type="text" id="customer_confirm_email" name="customer_confirm_email"
+                    <label for="customer_confirm_email" class="form-label">Confirm Email <span class="text-danger">*</span></label>
+                    <input type="text" id="customer_confirm_email" name="customerConfirmEmail"
                         class="form-control" placeholder="Confirm Email">
                 </div>
             </div>
-            <div class="row">
+            <div class="row pt-2">
                 <div class="col-md-6">
-                    <label for="customer_password" class="form-label">Password</label>
-                    <input type="text" id="customer_password" name="customer_password"
-                        class="form-control" placeholder="Password">
+                    <label for="customer_password" class="form-label">Password <span class="text-danger">*</span></label>
+                    <div class="input-group">
+                        <input type="password" id="customer_password" name="customerPassword" class="form-control" placeholder="Password">
+                        <span class="input-group-text">
+                            <i class="fa fa-eye" id="togglePassword"></i>
+                        </span>
+                    </div>
                 </div>
                 <div class="col-md-6">
-                    <label for="customer_confirm_password" class="form-label">Confirm Password</label>
-                    <input type="text" id="customer_confirm_password" name="customer_confirm_password"class="form-control" placeholder="Password">
-                </div>
+                    <label for="customer_confirm_password" class="form-label">Confirm Password <span class="text-danger">*</span></label>
+                    <div class="input-group">
+                        <input type="password" id="customer_confirm_password" name="customerConfirmPassword" class="form-control" placeholder="Password">
+                        <span class="input-group-text">
+                            <i class="fa fa-eye" id="toggleConfirmPassword"></i>
+                        </span>
+                    </div>
+                </div>                                
             </div>
-            <div class="row">
+            <div class="row pt-2">
                 <div class="col-md-6">
-                    <label for="mobileNo" class="form-label">Mobile Phone</label>
-                    <input type="text" id="mobileNo" name="mobileNo" class="form-control"
+                    <label for="mobileNo" class="form-label">Mobile Phone <span class="text-danger">*</span></label>
+                    <input type="text" id="mobileNo" name="customerMobileNo" class="form-control"
                         placeholder="Mobile Phone">
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Patient Address Panel -->
+    <!-- customer Address Panel -->
     <div class="panel mt-2">
-        <a class="panel-header d-flex" data-bs-toggle="collapse" href="#patientAddressPanel"
-            role="button" aria-expanded="false" aria-controls="patientAddressPanel">
-            <span class="toggle-icon">+</span> Patient Address
+        <a class="panel-header d-flex" data-bs-toggle="collapse" href="#customerAddressPanel"
+            role="button" aria-expanded="false" aria-controls="customerAddressPanel">
+            <span class="toggle-icon">+</span> Customer Address
         </a>
-        <div id="patientAddressPanel" class="collapse panel-content">
+        <div id="customerAddressPanel" class="collapse panel-content">
             <div class="row">
                 <div class="col-md-4">
-                    <label for="address_one" class="form-label">Address Line One</label>
-                    <input type="text" id="address_one" name="address_one" class="form-control mb-2"
+                    <label for="address_line_one" class="form-label">Address Line One <span class="text-danger">*</span></label>
+                    <input type="text" id="address_line_one" name="customerAddressLineOne" class="form-control mb-2"
                         placeholder="Address Line One">
                 </div>
                 <div class="col-md-4">
-                    <label for="address_two" class="form-label">Address Line Two</label>
-                    <input type="text" id="address_two" name="address_two" class="form-control mb-2"
+                    <label for="address_line_two" class="form-label">Address Line Two <span class="text-danger">*</span></label>
+                    <input type="text" id="address_line_two" name="customerAddressLineTwo" class="form-control mb-2"
                         placeholder="Address Line Two">
                 </div>
                 <div class="col-md-4">
-                    <label for="city" class="form-label">City</label>
-                    <input type="text" id="city" name="city" class="form-control mb-2"
+                    <label for="city" class="form-label">City <span class="text-danger">*</span></label>
+                    <input type="text" id="city" name="customerCity" class="form-control mb-2"
                         placeholder="City">
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-4">
-                    <label for="state" class="form-label" name="state">State</label>
-                    <select class="form-control mb-2">
+                    <label for="state" class="form-label " name="customerState">State <span class="text-danger">*</span></label>
+                    <select id="state" class="form-control form-select mb-2">
                         <option value="">State</option>
                         <option value="AL">Alabama</option>
                         <option value="AK">Alaska</option>
@@ -200,65 +208,15 @@
                     </select>
                 </div>
                 <div class="col-md-4">
-                    <label for="zipcode" class="form-label">ZipCode</label>
-                    <input type="text" class="form-control mb-2" placeholder="ZipCode" id="zipcode"
-                        name="zipcode">
+                    <label for="zipcode" class="form-label">ZipCode <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control mb-2" placeholder="ZipCode" id="zipcode" name="customerPincode">
                 </div>
                 <div class="col-md-4">
-                    <label for="country" class="form-label">Country</label>
-                    <input type="text" id="country" name="country" class="form-control mb-2" value="USA"
-                        disabled>
+                    <label for="country" class="form-label">Country <span class="text-danger">*</span></label>
+                    <input type="text" id="country" name="customerCountry" class="form-control mb-2" value="USA" disabled>
                 </div>
             </div>
         </div>
     </div>
 </div>
-</template>
-
-<!--product categories list view for customer-->
-<template id="sm_supermarket_product_information_template">
-    <div class="row mr-3">
-        <!-- Category Section -->
-        <div class="col-md-3">
-            <h4 class="text-success">Categories</h4>
-            <div class="smcs-category-list">
-                <div class="smcs-category-item" data-category="fruitsVegetables" id="fruits_vegetables">
-                    <i class="fas fa-apple-alt"></i> Fruits & Vegetables</div>
-                <div class="smcs-category-item" data-category="staples" id="staples">
-                    <i class="fas fa-utensils"></i> Staples</div>
-                <div class="smcs-category-item" data-category="snacks" id="snacks">
-                    <i class="fas fa-cookie"></i> Snacks & Namkeens</div>
-                <div class="smcs-category-item" data-category="beverages" id="beverages">
-                    <i class="fas fa-coffee"></i> Beverages</div>
-                <div class="smcs-category-item" data-category="dairy" id="dairy">
-                    <i class="fas fa-cheese"></i> Chilled & Dairy Foods</div>
-                <div class="smcs-category-item" data-category="readyCook" id="ready_to_cook">
-                    <i class="fas fa-fire"></i> Ready To Cook</div>
-                <div class="smcs-category-item" data-category="readyEat" id="ready_to_eat">
-                    <i class="fas fa-utensil-spoon"></i> Ready To Eat</div>
-                <div class="smcs-category-item" data-category="babyCare" id="baby_care">
-                    <i class="fas fa-baby"></i> Baby Care</div>
-                <div class="smcs-category-item" data-category="household" id="household">
-                    <i class="fas fa-home"></i> Household</div>
-                <div class="smcs-category-item" data-category="feminineCare" id="feminine_care">
-                    <i class="fas fa-female"></i> Feminine Care</div>
-                <div class="smcs-category-item" data-category="cleaning" id="cleaning">
-                    <i class="fas fa-soap"></i> Cleaning Needs</div>
-                <div class="smcs-category-item" data-category="personalCare" id="personal_care">
-                    <i class="fas fa-hand-holding-water"></i> Personal Care</div>
-                <div class="smcs-category-item" data-category="healthCare" class="health_care">
-                    <i class="fas fa-heartbeat"></i> Health Care</div>
-                <div class="smcs-category-item" data-category="crockeries" id="crockeries">
-                    <i class="fas fa-utensils"></i> Crockeries</div>
-            </div>
-        </div>
-
-        <!-- Product Display Section -->
-        <div class="col-md-9">
-            <h4 id="category-title" class="text-success">Select a Category</h4>
-            <div class="row product-container" id="product-list">
-                <!-- Products will be dynamically added here -->
-            </div>
-        </div>
-    </div>
 </template>
