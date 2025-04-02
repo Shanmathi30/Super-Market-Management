@@ -28,12 +28,19 @@
             <i class='fas fa-search search-icon'></i>
         </div>
         <!-- Cart & Avatar -->
-        <div class="d-flex align-items-center ms-3 me-4">
-            <!-- Cart Icon with Badge -->
-            <div class="cart-container">
-                <i class="fa-solid fa-cart-shopping text-white fs-4"></i>
-                <span class="position-absolute cart-badge badge bg-danger rounded-pill">0</span>
-            </div>
+        <div class="d-flex align-items-center ms-3 me-4">   
+        <!-- Cart Icon with Badge -->
+        <div class="cart-container position-relative">
+            <i class="fa-solid fa-cart-shopping text-white fs-4"></i>
+            <span class="position-absolute cart-badge badge bg-danger rounded-pill">0</span>
+        <!-- Cart Preview -->
+        <div id="cartPreview" class="cart-preview">
+            <img src="" alt="Cart Icon" class="cart-icon"> <!-- Small cart image -->
+            <p>You have no items in your shopping cart</p>
+            <button class="btn btn-start-shopping">Start Shopping</button>
+        </div>
+        </div>
+
             <!-- Avatar Icon -->
             <div class="avatar-icon  top-0 right-0 ms-3" id="avatarIcon">
                 <i class="fa-solid fa-user text-dark fs-5"></i>

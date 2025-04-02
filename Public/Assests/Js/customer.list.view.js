@@ -17,12 +17,12 @@ const customerDataTableConfig = {
         dataSrc: (jsonListResponse) => customerDataTable.displayCustomerList(jsonListResponse)
     },
     columns : [
-        {"data" : "sno", "searchable": false},
-        {"data" : "customerName", "searchable": true},
-        {"data" : "customerAddress", "searchable": false},
-        {"data" : "customerEmail", "searchable": true},
-        {"data" : "customerMobileNo", "searchable": false},
-        {"data" : "action", "searchable": false},
+        {"data" : "sno", "searchable": false,"orderable": true},
+        {"data" : "customerName", "searchable": true,"orderable": true},
+        {"data" : "customerAddress", "searchable": false,"orderable": true},
+        {"data" : "customerEmail", "searchable": true,"orderable": true},
+        {"data" : "customerMobileNo", "searchable": false,"orderable": true},
+        {"data" : "action", "searchable": false, "orderable": false},
     ],
     initComplete : () => customerDataTable.initializeCustomerTable(), //initial load
     drawCallback : () => customerDataTable.showCustomerListPanelSectionAfterDraw(), //executes for every draw
@@ -86,7 +86,7 @@ const CustomerDataTable= function () {
           // Initialize Bootstrap tooltips
         $('[data-bs-toggle="tooltip"]').tooltip(); ///regukar ha naddaknum 
         $(".smc-customer-edit").on("click",_editCustomerDetails)
-        $(".smc-customer-view").on("click",_viewCustomer)
+        $(".smc-customer-view").on("click",_viewCustomerDetails)
     }
 
     this.customerDataTableObject = function(dataObject){
@@ -195,36 +195,19 @@ const CustomerDataTable= function () {
                     $('#update_customer_name').val(response.data.customerFullName); // Updated to use full name
                     $('#update_customer_email').val(response.data.customerEmail); 
                     $('#update_customer_mobileNo').val(response.data.customerMobileNo);
-    
-                    // Store initial values
-                    $("#sm_customer_update_form").data("original", {
-                        customerFullName: response.data.customerFullName,
-                        customerEmail: response.data.customerEmail,
-                        customerMobileNo: response.data.customerMobileNo
-                    });
-    
-                    $("#updateMessage").text("").hide(); // Hide success message initially
                     $('#sm_customer_update_modal_id').modal("show");
                 }
+            },
+            error: function () {
+                console.error("Error fetching customer details");
             }
         });
     }
     
-    // Detect changes in input fields
-    $("#sm_customer_update_form input").on("input", function () {
-        let originalData = $("#sm_customer_update_form").data("original");
-        let hasChanged = (
-            $('#update_customer_name').val().trim() !== originalData.customerFullName.trim() ||
-            $('#update_customer_email').val().trim() !== originalData.customerEmail.trim() ||
-            $('#update_customer_mobileNo').val().trim() !== originalData.customerMobileNo.trim()
-        );        
-        $("#updateButton").prop("disabled", !hasChanged); // Enable/Disable button
-    });
-    
-    function _viewCustomer() {
+    function _viewCustomerDetails() {
         let customerId = $(this).attr("data-id");
         $.ajax({
-            url: `customer/view/${customerId}`,
+            url: `https://dev-api.humhealth.com/SuperMarketAPI/customer/view/${customerId}`,
             type: 'GET',
             success: function(response) {
                 if (response.status === "SUCCESS" && response.data) {
@@ -238,6 +221,9 @@ const CustomerDataTable= function () {
                     $('#view_pincode').text(response.data.customerPincode);
                     $('#sm_customer_view_modal_id').modal("show");
                 }
+            },
+            error: function(error) {
+                console.error("Error fetching customer details:", error);
             }
         });
     }

@@ -404,4 +404,73 @@ h2{
     text-align: center; 
 }
 
+/*cart hover*/
+.cart-preview {
+    width: 300px;
+    top: 70px;
+    right: 10px;
+    z-index: 1200;
+    border: 1px solid #ddd;
+}
+/* Cart preview container */
+.cart-preview {
+    width: 260px; /* Slightly wider */
+    top: 55px; /* Moved downward */
+    right: -10px; /* Shifted slightly left */
+    z-index: 1050;
+    background: white;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15); /* Smooth shadow */
+    padding: 15px;
+    display: none;
+    position: absolute;
+    animation: fadeInSlide 0.3s ease-in-out;
+    text-align: center;
+}
+
+/* Cart preview animation */
+@keyframes fadeInSlide {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Small cart image */
+.cart-preview .cart-icon {
+    width: 50px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+/* Shopping cart text */
+.cart-preview p {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+/* Start Shopping Button */
+.cart-preview .btn-start-shopping {
+    background: #198754; /* Bootstrap success color */
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    width: 100%;
+    font-weight: bold;
+}
+
+.cart-preview .btn-start-shopping:hover {
+    background: #157347;
+    transform: scale(1.05);
+}
+
+
 

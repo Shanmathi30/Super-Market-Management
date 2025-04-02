@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,16 +17,8 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
-    <!-- DataTables CSS -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
-
-    <!-- Tempus Dominus Date Picker CSS -->
-    <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/@eonasdan/tempus-dominus@6.7.10/dist/css/tempus-dominus.min.css" />
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.14.0/jquery.timepicker.min.css">
-
+    <!--toastr.js-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
     <style>
         .smls-list-container {
@@ -40,9 +31,8 @@
             background-size: cover;
             margin: 30px;
         }
-    </style>
+    </style> 
 </head>
-
 <body>
     <!-- Sidebar -->
     <div class="smds-sidebar">
@@ -114,10 +104,10 @@
                         <tr>
                             <th>S.No</th>
                             <th>Name</th>
-                            <th>Pack Quantity</th>
+                            <!-- <th>Pack Quantity</th> -->
                             <th>Category</th>
-                            <th>Price</th>
-                            <th>Stock Quantity</th>
+                            <!-- <th>Price</th> -->
+                            <!-- <th>Stock Quantity</th> -->
                             <th>Effective Date</th>
                             <th>Action</th>
                         </tr>
@@ -128,96 +118,94 @@
                 </table>
             </div>
         </main>
-        <!--add product-->
-        <div class="modal fade pt-lg-5" id="sm_product_add_modal_id" tabindex="-1" aria-labelledby="resetModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-xl">
-                <div class="modal-content">
-                    <div class="modal-header text-center w-100">
-                        <h5 class="modal-title w-100" id="resetModalLabel">Add Product</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <!--add product-->      
+<div class="modal fade pt-lg-5" id="sm_product_add_modal_id" tabindex="-1" aria-labelledby="resetModalLabel"
+aria-hidden="true">
+<div class="modal-dialog modal-xl">
+    <div class="modal-content">
+        <div class="modal-header text-center w-100">
+            <h5 class="modal-title w-100" id="resetModalLabel">Add Product</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+            <form id="sm_product_form" autocomplete="off">
+                <div class="row g-3">
+                    <div class="col-md-6 mb-3">
+                        <label for="product_name" class="form-label">Product Name</label>
+                        <input type="text" class="form-control" id="product_name" name="productName" placeholder="Product Name">
+                        <span class="error-message"></span>
                     </div>
-                    <div class="modal-body text-center">
-                        <form id="sm_product_form" autocomplete="off">
-                            <div class="row g-3">
-                                <div class="col-md-6 mb-3">
-                                    <label for="product_name" class="form-label">Product Name</label>
-                                    <input type="text" class="form-control" id="product_name" name="productName">
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label for="product_pack_quantity" class="form-label">Pack Quantity</label>
-                                    <input type="number" class="form-control" id="product_pack_quantity"
-                                        name="productPackQuantity">
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label for="product_category" class="form-label">Category</label>
-                                    <select class="form-control form-select" id="product_category"
-                                        name="productCategory">
-                                        <option value="" disabled selected>-- Select a Category --</option>
-                                        <option value="Fruits And Vegetables">Fruits And Vegetables</option>
-                                        <option value="Staples">Staples</option>
-                                        <option value="Snacks And Namkeens">Snacks And Namkeens</option>
-                                        <option value="Beverages">Beverages</option>
-                                        <option value="Chilled And Dairy Foods">Chilled And Dairy Foods</option>
-                                        <option value="Ready To Cook">Ready To Cook</option>
-                                        <option value="Ready To Eat">Ready To Eat</option>
-                                        <option value="Baby Care">Baby Care</option>
-                                        <option value="Household">Household</option>
-                                        <option value="Feminine Care">Feminine Care</option>
-                                        <option value="Cleaning Needs">Cleaning Needs</option>
-                                        <option value="Personal Care">Personal Care</option>
-                                        <option value="Health Care">Health Care</option>
-                                        <option value="Crockeries">Crockeries</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label for="" class="form-label">Price</label>
-                                    <input type="text" class="form-control" id="product_price" name="productPrice">
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label for="product_stock_quantity" class="form-label">Stock Quantity</label>
-                                    <input type="number" class="form-control" id="product_stock_quantity"
-                                        name="productStockQuantity">
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label for="product_effective_date" class="form-label">Effective Date</label>
-                                    <div class="input-group" id="effectiveDatePicker">
-                                        <input type="text" class="form-control" id="product_effective_date"
-                                            name="productEffectiveDate">
-                                        <span class="input-group-text"><i class="bi bi-calendar"></i></span>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label for="product_last_effective_date" class="form-label">Last Effective
-                                        Date</label>
-                                    <div class="input-group" id="lastEffectiveDatePicker">
-                                        <input type="text" class="form-control" id="product_last_effective_date"
-                                            name="productLastEffectiveDate">
-                                        <span class="input-group-text"><i class="bi bi-calendar"></i></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="mt-4 text-lg-end">
-                                <button type="button" class="btn btn-success w-25" id="smrs_add_product_btn">Add
-                                    Product</button>
-                                <button type="button" class="btn btn-outline-danger w-25"
-                                    id="smrs_cancel_btn">Cancel</button>
-                            </div>
-                        </form>
+                    <div class="col-md-6 mb-3">
+                        <label for="product_pack_quantity" class="form-label">Pack Quantity</label>
+                        <input type="number" class="form-control" id="product_pack_quantity"
+                        name="productPackQuantity" placeholder="Product Pack Quantity">
+                            <span class="error-message"></span>
                     </div>
-                    <!-- Toast Message -->
-                    <div class="position-fixed top-0 start-50 translate-middle-x p-3" style="z-index: 1050">
-                        <div id="liveToast" class="toast border-0">
-                            <div class="d-flex">
-                                <div class="toast-body fw-bold text-danger text-center" id="toastBody">
-                                    <!-- Message will be inserted dynamically -->
-                                </div>
-                            </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="product_category" class="form-label">Category</label>
+                        <select class="form-control form-select" id="product_category" name="productCategory" placeholder="Select Category">
+                            <option value="">-- Select a Category --</option>
+                            <option value="Fruits And Vegetables">Fruits And Vegetables</option>
+                            <option value="Staples">Staples</option>
+                            <option value="Snacks And Namkeens">Snacks And Namkeens</option>
+                            <option value="Beverages">Beverages</option>
+                            <option value="Chilled And Dairy Foods">Chilled And Dairy Foods</option>
+                            <option value="Ready To Cook">Ready To Cook</option>
+                            <option value="Ready To Eat">Ready To Eat</option>
+                            <option value="Baby Care">Baby Care</option>
+                            <option value="Household">Household</option>
+                            <option value="Feminine Care">Feminine Care</option>
+                            <option value="Cleaning Needs">Cleaning Needs</option>
+                            <option value="Personal Care">Personal Care</option>
+                            <option value="Health Care">Health Care</option>
+                            <option value="Crockeries">Crockeries</option>
+                        </select>
+                        <span class="error-message"></span>
+                    </div>
+                    <!-- Price Field with Dollar Symbol -->
+                    <div class="col-md-6 mb-3">
+                        <label for="product_price" class="form-label">Price</label>
+                        <div class="input-group">
+                            <span class="input-group-text">$</span>
+                            <input type="text" class="form-control" id="product_price" name="productPrice" placeholder="Product Price">
                         </div>
+                        <span class="error-message"></span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="product_stock_quantity" class="form-label">Stock Quantity</label>
+                        <input type="number" class="form-control" id="product_stock_quantity"
+                            name="productStockQuantity" placeholder="Product Stock Quantity">
+                        <span class="error-message"></span>
+                    </div>
+                    <!-- Effective Date with Clock Icon -->
+                    <div class="col-md-6 mb-3">
+                        <label for="product_effective_date" class="form-label">Effective Date</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control datetimepicker" id="product_effective_date"
+                                name="productEffectiveDate" placeholder="Product Effective Date">
+                            <span class="input-group-text"><i class="fa-solid fa-calendar-days"></i></span>
+                        </div>
+                        <span class="error-message"></span>
+                    </div>
+                    <!-- Last Effective Date with Clock Icon -->
+                    <div class="col-md-6 mb-3">
+                        <label for="product_last_effective_date" class="form-label">Last Effective Date</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control datetimepicker" id="product_last_effective_date" name="productLastEffectiveDate" placeholder="Product Last Effective Date">
+                            <span class="input-group-text"><i class="fa-solid fa-calendar-days"></i></span>
+                        </div>
+                        <span class="error-message"></span>
                     </div>
                 </div>
-            </div>
+                <div class="mt-4 text-lg-end">
+                    <button type="button" class="btn btn-success w-25" id="smrs_add_product_btn">Add Product</button>
+                    <button type="button" class="btn btn-outline-danger w-25" id="smrs_cancel_btn">Cancel</button>
+                </div>
+            </form>
         </div>
+    </div>
+</div>
+</div>
         <!-- Edit Product Modal -->
         <div class="modal fade pt-lg-5" id="sm_product_update_modal_id" tabindex="-1" aria-labelledby="productUpdateModalLabel"
     aria-hidden="true">
@@ -229,8 +217,6 @@
             </div>
             <div class="modal-body text-center">
                 <form id="sm_product_update_form">
-                    <input type="hidden" id="update_product_id">
-                    
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -247,7 +233,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="row mt-2">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -260,23 +245,22 @@
                             <div class="form-group">
                                 <label for="update_product_stock_quantity" class="form-label">Stock Quantity</label>
                                 <input type="number" id="update_product_stock_quantity"
-                                    name="update_product_stock_quantity" class="form-control">
+                                    name="update_product_stock_quantity" class="form-control datetimepicker">
                             </div>
                         </div>
                     </div>
-
                     <div class="row mt-2">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="update_product_effective_date" class="form-label">Effective Date</label>
-                                <input type="datetime-local" id="update_product_effective_date"
-                                    name="update_product_effective_date" class="form-control">
+                                <input type="text" id="update_product_effective_date"
+                                    name="update_product_effective_date" class="form-control datetimepicker">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="update_product_last_effective_date" class="form-label">Last Effective Date</label>
-                                <input type="datetime-local" id="update_product_last_effective_date"
+                                <input type="text" id="update_product_last_effective_date"
                                     name="update_product_last_effective_date" class="form-control">
                             </div>
                         </div>
@@ -299,20 +283,18 @@
             aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="productViewModalLabel">View Product Details</h5>
+                    <div class="modal-header text-center w-100">
+                        <h5 class="modal-title w-100" id="productViewModalLabel">View Product Details</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">
+                    <div class="modal-body text-center">
                         <p><strong>Product Name:</strong> <span id="view_product_name"></span></p>
                         <p><strong>Category:</strong> <span id="view_product_category"></span></p>
                         <p><strong>Price:</strong> <span id="view_product_price"></span></p>
                         <p><strong>Stock Quantity:</strong> <span id="view_product_stock"></span></p>
                         <p><strong>Pack Quantity:</strong> <span id="view_product_pack_quantity"></span></p>
                         <p><strong>Effective Date:</strong> <span id="view_product_effective_date"></span></p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <p><strong>Last Effective Date:</strong> <span id="view_product_last _effective_date"></span></p>
                     </div>
                 </div>
             </div>
@@ -322,20 +304,21 @@
     <div class="all-template"></div>
     <!-- Load external scripts -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.14.0/jquery.timepicker.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    
 
-    <!-- Tempus Dominus Bootstrap 5 JS -->
-    <script src="https://cdn.jsdelivr.net/npm/@eonasdan/tempus-dominus@6.7.10/dist/js/tempus-dominus.min.js"></script>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <!-- Custom Scripts -->
     <script src="../../Public/Assests/Js/dashboard.js"></script>
-    <script src="../../Public/Assests/Js/product.list.view.js"></script>
 
     <script>
         $('.all-template').load('customelement.html', function () {
@@ -346,6 +329,10 @@
             let scriptTopNavigation = document.createElement('script');
             scriptTopNavigation.src = '../../Public/Assests/Js/top.navigation.js';
             document.body.appendChild(scriptTopNavigation);
+
+            let scriptProductListView=document.createElement('script');
+            scriptProductListView.src = '../../Public/Assests/Js/product.list.view.js';
+            document.body.appendChild(scriptProductListView);
         });  
     </script>
 </body>
