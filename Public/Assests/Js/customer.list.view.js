@@ -144,7 +144,7 @@ const CustomerDataTable= function () {
                     <i class="fa-solid fa-pen-to-square"></i>
                 </span>
                 <span class="p-1 smc-customer-view" data-id="${customerDetails.customerId}" data-bs-toggle="tooltip" title="View Customer" data-bs-placement="top">
-                    <i class="fa-solid fa-eye"></i>
+                    <i class="fas fa-expand-arrows-alt"></i>
                 </span>
             </div>`
     }

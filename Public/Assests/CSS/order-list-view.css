@@ -1,0 +1,26 @@
+/* Add spacing between rows */
+.row {
+    margin-bottom: 15px;
+}
+
+/* Attractive Green Header */
+.custom-table-header {
+    background-color: #2d6a4f !important;
+    color: white;
+    text-align: center;
+}
+
+.custom-table-header th {
+    padding: 12px;
+    font-size: 16px;
+}
+
+/* Improve Button Style */
+#btn_submit {
+    background-color: #2d6a4f;
+    border: none;
+}
+
+#btn_submit:hover {
+    background-color: #1b4332;
+}

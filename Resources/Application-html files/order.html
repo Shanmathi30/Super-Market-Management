@@ -1,0 +1,113 @@
+<!-- HTML Structure -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Order</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        .order-modal .modal-dialog {
+            max-width: 800px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <h2>View Single Order</h2>
+        <div class="mb-3">
+            <label for="customerId" class="form-label">Customer ID:</label>
+            <input type="text" id="customerId" class="form-control" placeholder="Enter Customer ID">
+        </div>
+        <button id="viewOrderByCustomer" class="btn btn-primary">View Order by Customer ID</button>
+        <button id="viewOrderByOrder" class="btn btn-success">View Order by Order ID</button>
+    </div>
+
+    <!-- Order Details Modal -->
+    <div class="modal fade order-modal" id="orderModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Order Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>Customer Name:</strong> <span id="customerName"></span></p>
+                    <p><strong>Address:</strong> <span id="customerAddress"></span></p>
+                    <p><strong>City:</strong> <span id="customerCity"></span></p>
+                    <p><strong>Mobile:</strong> <span id="customerMobile"></span></p>
+                    <h5>Order List</h5>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody id="orderDetails"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function fetchOrderData(url, paramKey, paramValue) {
+            $.ajax({
+                url: url + '?' + paramKey + '=' + paramValue,
+                method: 'GET',
+                dataType: 'json',
+                success: function(response) {
+                    if (response.status === "SUCCESS") {
+                        const data = response.data;
+                        $("#customerName").text(data.customerName);
+                        $("#customerAddress").text(data.customerAddress);
+                        $("#customerCity").text(data.customerCity);
+                        $("#customerMobile").text(data.customerMobile);
+                        
+                        let orders = "";
+                        data.orderList?.forEach(order => {
+                            orders += `<tr>
+                                <td>${order.orderId}</td>
+                                <td>${order.orderCreatedDate}</td>
+                                <td>${order.orderStatus}</td>
+                                <td>${order.orderTotal}</td>
+                            </tr>`;
+                        });
+                        
+                        $("#orderDetails").html(orders);
+                        $("#orderModal").modal("show");
+                    } else {
+                        alert("No order found");
+                    }
+                },
+                error: function() {
+                    alert("Failed to fetch order data");
+                }
+            });
+        }
+        
+        $("#viewOrderByCustomer").on("click", function() {
+            const customerId = $("#customerId").val();
+            if (customerId) {
+                fetchOrderData("/order/view", "customerId", customerId);
+            } else {
+                alert("Please enter a Customer ID");
+            }
+        });
+        
+        $("#viewOrderByOrder").on("click", function() {
+            const orderId = $("#customerId").val();
+            if (orderId) {
+                fetchOrderData("/order/view", "orderId", orderId);
+            } else {
+                alert("Please enter an Order ID");
+            }
+        });
+    </script>
+</body>
+</html>

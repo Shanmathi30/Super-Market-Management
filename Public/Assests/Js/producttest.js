@@ -250,4 +250,4 @@ const customerDataTable = new CustomerDataTable();
 customerDataTable.bindCustomerListEvents();
 
 
-//<span class="p-1 smc-customer-view" data-id="${customerDetails.customerId}"><i class="fa-solid fa-eye"></i></span>
+//<span class="p-1 smc-customer-view" data-id="${customerDetails.customerId}"><i class="fas fa-expand-arrows-alt"></i></span>

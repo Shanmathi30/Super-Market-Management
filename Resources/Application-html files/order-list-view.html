@@ -9,6 +9,7 @@
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="../../Public/Assests/CSS/dashboard.css">
+    <link rel="stylesheet" href="../../Public/Assests/CSS/order-list-view.css">
     <link rel="stylesheet" href="../../Public/Assests/CSS/product-list-view.css">
 
     <!-- Bootstrap 5 CSS -->
@@ -25,7 +26,6 @@
             width: 95%;
             margin: 35px;
         }
-
         body {
             background: url("../../Public/Assests/Images/add-product-background.jpg")no-repeat center center fixed;
             background-size: cover;
@@ -45,80 +45,135 @@
         </nav>
         <!---main content-->
         <main class="smls-list-container">
-            <!---input field-->
-            <div class="card p-3">
-                <h3 class="text-lg-start mb-4">Product List</h3>
-                <form id="product_filter_id">
-                    <div class="row">
-                        <div class="col-md-2 mb-3">
-                            <label for="product_length">Show</label>
-                            <select id="product_length" class="form-control form-select">
-                                <option value="10">10</option>
-                                <option value="25">25</option>
-                                <option value="50">50</option>
-                                <option value="100">100</option>
-                            </select>
-                        </div>
-                        <div class="col-md-3 mb-3">
-                            <label for="search_product">Search</label>
-                            <input type="text" id="search_product" class="form-control" placeholder="Search by Name">
-                        </div>
-                        <div class="col-md-3 mb-3">
-                            <label for="search_product_category">Product Category</label>
-                            <input type="text" id="search_product_category" class="form-control"
-                                placeholder="Search by Category">
-                        </div>
-                        <div class="col-md-3 mb-3">
-                            <label>Product Status</label>
-                            <div class="d-flex">
-                                <div class="form-check me-3">
-                                    <input class="form-check-input" type="radio" name="product_status" id="status_all"
-                                        value="all" checked>
-                                    <label class="form-check-label" for="status_all">All</label>
-                                </div>
-                                <div class="form-check me-3">
-                                    <input class="form-check-input" type="radio" name="product_status"
-                                        id="status_active" value="active">
-                                    <label class="form-check-label" for="status_active">Active</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="product_status"
-                                        id="status_deactive" value="deactive">
-                                    <label class="form-check-label" for="status_deactive">Deactive</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <!-- Input Fields -->
+<div class="card p-3">
+    <h3 class="text-lg-start mb-4">Order List</h3>
+    <form id="order_filter_id">
+        <div class="row align-items-end">
+            <div class="col-md-2">
+                <label for="order_length">Show</label>
+                <select id="order_length" class="form-control form-select">
+                    <option value="10">10</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label for="search_order">Search</label>
+                <input type="text" id="search_order" class="form-control" placeholder="Search by value">
+            </div>
+            <div class="col-md-3">
+                <label for="search_customer_id">Customer Id</label>
+                <input type="text" id="search_customer_id" class="form-control" placeholder="Search by Customer Id">
+            </div>
+            <div class="col-md-3">
+                <label for="search_order_created_date">Order Created Date</label>
+                <input type="text" id="search_order_created_date" class="form-control" placeholder="Search by Order Created Date">
+            </div>
+        </div>
 
-                    <!-- New Row for Buttons -->
-                    <div class="row mt-3">
-                        <div class="col-12 d-flex justify-content-end">
-                            <button type="button" id="btn_reset" class="btn btn-outline-secondary me-2">Reset</button>
-                            <button type="button" id="btn_submit" class="btn btn-success">Submit</button>
-                        </div>
-                    </div>
-                </form>
+        <!-- Buttons in a Separate Row -->
+        <div class="row mt-3">
+            <div class="col-12 d-flex justify-content-end">
+                <button type="button" id="btn_reset" class="btn btn-outline-secondary me-2">Reset</button>
+                <button type="button" id="btn_submit" class="btn btn-success">Submit</button>
+            </div>
+        </div>
+    </form>
 
-                <table id="product_list_table" class="table table-bordered table-hover mt-3">
-                    <thead class="table">
+    <!-- Order List Table -->
+    <table id="order_list_table" class="table table-bordered table-hover mt-3">
+        <thead class="custom-table-header">
+            <tr>
+                <th>S.No</th>
+                <th>orderId</th>
+                <th>orderCreatedDate</th>
+                <th>customerName</th>
+                <th>orderStatus</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="orderTableBody">
+            <!-- Orders will be appended here -->
+        </tbody>
+    </table>
+</div>
+
+<!-- View Order Modal by order id -->
+<div class="modal fade" id="sm_order_view_modal_id" tabindex="-1" aria-labelledby="orderViewModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="margin-top: 75px !important;">
+            <div class="modal-header text-center w-100">
+                <h5 class="modal-title w-100" id="orderViewModalLabel">View Order Details</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">X</button>
+            </div>
+            <div class="modal-body text-center">
+                <p><strong>Order ID:</strong> <span id="view_order_id"></span></p>
+                <p><strong>Customer Name:</strong> <span id="view_customer_name"></span></p>
+                <p><strong>Address:</strong> <span id="view_customer_address"></span></p>
+                <p><strong>state:</strong> <span id="view_customer_state"></span></p>
+                <p><strong>Country:</strong> <span id="view_customer_country"></span></p>
+                <p><strong>City:</strong> <span id="view_customer_city"></span></p>
+                <p><strong>Pincode:</strong> <span id="view_customer_pincode"></span></p>
+                <p><strong>Mobile:</strong> <span id="view_customer_mobile"></span></p>
+                <p><strong>Order Created Date:</strong> <span id="view_order_created_date"></span></p>
+                <p><strong>Expected Delivery Date:</strong> <span id="view_order_expected_delivery_date"></span></p>
+                <p><strong>Order Status:</strong> <span id="view_order_status"></span></p>
+                <p><strong>Order Total:</strong> $<span id="view_order_total"></span></p>
+                <h5 class="mt-3">Products Ordered</h5>
+                <table class="table table-bordered">
+                    <thead>
                         <tr>
-                            <th>S.No</th>
-                            <th>Name</th>
-                            <!-- <th>Pack Quantity</th> -->
+                            <th>Product Name</th>
                             <th>Category</th>
-                            <!-- <th>Price</th> -->
-                            <!-- <th>Stock Quantity</th> -->
-                            <th>Effective Date</th>
-                            <th>Action</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
                         </tr>
                     </thead>
-                    <tbody id="productTableBody">
-                        <!-- Products will be appended here -->
-                    </tbody>
+                    <tbody id="view_order_products"></tbody>
                 </table>
             </div>
-        </main>
+        </div>
     </div>
+</div>
+
+<!-- View Orders by Customer Modal -->
+<div class="modal fade" id="sm_order_view_customer_modal_id" tabindex="-1" aria-labelledby="orderViewCustomerModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="margin-top: 75px !important;">
+            <div class="modal-header text-center w-100">
+                <h5 class="modal-title w-100" id="orderViewCustomerModalLabel">View Orders by Customer</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">X</button>
+            </div>
+            <div class="modal-body text-center">
+                <p><strong>Customer ID:</strong> <span id="view_customer_id"></span></p>
+                <p><strong>Customer Name:</strong> <span id="view_customer_name"></span></p>
+                <p><strong>Address:</strong> <span id="view_customer_address"></span></p>
+                <p><strong>Country</strong> <span id="view_customer_country"></span></p>
+                <p><strong>State</strong> <span id="view_customer_state"></span></p>
+                <p><strong>City:</strong> <span id="view_customer_city"></span></p>
+                <p><strong>Pincode:</strong> <span id="view_customer_pincode"></span></p>
+                <p><strong>Mobile:</strong> <span id="view_customer_mobile"></span></p>
+                <h5 class="mt-3">Orders</h5>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Created Date</th>
+                            <th>Expected Delivery</th>
+                            <th>Status</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody id="view_customer_orders"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</main>
+</div>
 
     <div class="all-template"></div>
     <!-- Load external scripts -->

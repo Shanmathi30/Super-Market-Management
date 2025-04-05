@@ -157,8 +157,8 @@ input {
     text-align: left;
     display: block;
     font-size: 16px;
-    margin-left: 48px; /* Adjust this value to match the icon width */
-    margin-top: 5px; /* Slight space between input and error message */
+    margin-left: 48px; 
+    margin-top: 5px; 
 }
 .toggle-password {
     cursor: pointer;

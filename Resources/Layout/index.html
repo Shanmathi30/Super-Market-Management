@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery Plex</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  </head>
+  <body>
+    <div class="container">
+      <header class="navbar" id="navbar">
+        <div class="nav-left">
+          <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="logo">
+            <img src="./img/logo.png" alt="Logo Image" class="logo-image" />
+            <span>GROCERY<span class="orange-text">PLEX</span></span>
+          </div>
+        </div>
+
+        <div class="search-bar">
+          <input type="text" placeholder="Search for vegetables, fruits..." />
+          <i class="fas fa-search search-icon"></i>
+        </div>
+
+        <div class="offer">
+          <i class="fas fa-bolt lightning-icon"></i>
+          <span class="offer-text">Order now and get it within 15 min!</span>
+        </div>
+
+        <div class="cart">
+          <div class="cart-icon" onclick="toggleCart()">
+            <i class="fas fa-shopping-cart"></i>
+            <span id="cart-count">0</span>
+          </div>
+        </div>
+
+        <!-- Cart Modal Popup -->
+        <div id="cart-modal" class="cart-modal">
+          <div class="cart-content">
+            <h3>Shopping Cart</h3>
+            <div id="cart-items"></div>
+            <p id="cart-total">Total: $0.00</p>
+            <button onclick="checkout()">Checkout</button>
+            <button onclick="toggleCart()">Close</button>
+          </div>
+        </div>
+      </header>
+      <main class="content">
+        <section>
+          <!-- Content goes here -->
+          <div class="header_heading">
+            <h1>Get your weekly groceries <span class="orange-text"> at your
+                door step!</span></h1>
+
+          </div>
+
+          <div class="header_img">
+            <img src="./img/Header_Image.png" alt="header-image">
+          </div>
+
+          <div class="header_heading">
+            <h1>Get <span class="orange-text"> 10% OFF</span> on your first
+              purchase</h1>
+
+          </div>
+        </section>
+
+        <div class="shop-by-category">
+          <h2>Shop by Category</h2>
+        </div>
+
+        <div class="category-slider">
+          <button class="arrow left-arrow"><i
+              class="fas fa-chevron-left"></i></button>
+          <div class="slider-wrapper">
+            <div class="slider">
+              <!-- Category Cards -->
+              <div class="category-card" data-section="vegetables-section">
+                <div class="category_image">
+                  <img src="./img/cabbage.png" alt="Vegetables">
+                </div>
+                <h3>Vegetables</h3>
+                <p>150+ items</p>
+              </div>
+              <div class="category-card" data-section="fruits-section">
+                <div class="category_image">
+                  <img src="./img/fruits.png" alt="Fruits">
+                </div>
+                <h3>Fruits</h3>
+                <p>120+ items</p>
+              </div>
+              <div class="category-card" data-section="seafood-section">
+                <div class="category_image">
+                  <img src="./img/fish.png" alt="Sea Food">
+                </div>
+                <h3>Sea Food</h3>
+                <p>90+ items</p>
+              </div>
+              <div class="category-card" data-section="meat-section">
+                <div class="category_image">
+                  <img src="./img/meat.png" alt="Meat">
+                </div>
+                <h3>Meat</h3>
+                <p>60+ items</p>
+              </div>
+              <div class="category-card" data-section="dairy-section">
+                <div class="category_image">
+                  <img src="./img/dairyproduct.png" alt="Dairy">
+                </div>
+                <h3>Dairy</h3>
+                <p>40+ items</p>
+              </div>
+              <div class="category-card" data-section="beverage-section">
+                <div class="category_image">
+                  <img src="./img/beverage.png" alt="Eggs">
+                </div>
+                <h3>Beverage</h3>
+                <p>70+ items</p>
+              </div>
+              <div class="category-card" data-section="noodles-section">
+                <div class="category_image">
+                  <img src="./img/ramen.png" alt="Noodles">
+                </div>
+                <h3>Noodles</h3>
+                <p>70+ items</p>
+              </div>
+              <div class="category-card" data-section="jams-section">
+                <div class="category_image">
+                  <img src="./img/jam.png" alt="Jams">
+                </div>
+                <h3>Jams</h3>
+                <p>70+ items</p>
+              </div>
+              <div class="category-card" data-section="bakery-section">
+                <div class="category_image">
+                  <img src="./img/bkery.png" alt="bakery">
+                </div>
+                <h3>Bakery</h3>
+                <p>70+ items</p>
+              </div>
+
+            </div>
+          </div>
+          <button class="arrow right-arrow"><i
+              class="fas fa-chevron-right"></i></button>
+        </div>
+
+  <!-- Product Sections for Each Category (hidden by default) -->
+  <div id="vegetables-section" class="product-section hidden">
+    <h2>Vegetables</h2>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product_image">
+          <img src="./img/tomato.png" alt="Tomato">
+        </div>
+        <h4>Tomato</h4>
+        <p>$1.50</p>
+        <button class="add-to-cart-button" data-name="Tomato"
+          data-price="1.50">
+          Add to Cart</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product_image">
+          <img src="./img/broccoli.png" alt="broccoli">
+        </div>
+        <h4>Broccoli</h4>
+        <p>$1.80</p>
+        <button class="add-to-cart-button" data-name="Broccoli"
+          data-price="1.80"> Add to Cart</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product_image">
+          <img src="./img/potatoes.jpg" alt="potatoes">
+        </div>
+        <h4>Potatoes</h4>
+        <p>$1.40</p>
+        <button class="add-to-cart-button" data-name="potatoes"
+          data-price="1.40"> Add to Cart</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product_image">
+          <img src="./img/cucumber.png" alt>
+        </div>
+        <h4>Cucumber</h4>
+        <p>$1.80</p>
+        <button class="add-to-cart-button" data-name="cucumber"
+          data-price="1.80"> Add to Cart</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product_image">
+          <img src="./img/corn.jpg" alt>
+        </div>
+        <h4>Corn</h4>
+        <p>$1.40</p>
+        <button class="add-to-cart-button" data-name="Corn"
+          data-price="1.40"> Add to Cart</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product_image">
+          <img src="./img/califlower.jpg" alt>
+        </div>
+        <h4>cauliflower</h4>
+        <p>$1.20</p>
+        <button class="add-to-cart-button" data-name="Cauliflower"
+          data-price="1.20"> Add to Cart</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product_image">
+          <img src="./img/beetroot.jpg" alt>
+        </div>
+        <h4>Beetroot</h4>
+        <p>$1.80</p>
+        <button class="add-to-cart-button" data-name="Beetroot"
+          data-price="1.80">Add to Cart</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product_image">
+          <img src="./img/onions.jpg" alt>
+        </div>
+        <h4>Onions</h4>
+        <p>$1.00</p>
+        <button class="add-to-cart-button" data-name="Onions"
+          data-price="1.00"> Add to Cart</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product_image">
+          <img src="./img/ginger.jpg" alt>
+        </div>
+        <h4>Ginger</h4>
+        <p>$1.80</p>
+        <button class="add-to-cart-button" data-name="Ginger"
+          data-price="1.80"> Add to Cart</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product_image">
+          <img src="./img/eggplant.jpg" alt>
+        </div>
+        <h4>EggPlant</h4>
+        <p>$1.80</p>
+        <button class="add-to-cart-button" data-name="cucumber"
+          data-price="1.80">Add to Cart</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product_image">
+          <img src="./img/green onion.png" alt>
+        </div>
+        <h4>Green Onion</h4>
+        <p>$1.00</p>
+        <button class="add-to-cart-button" data-name="Green Onion"
+          data-price="1.00">Add to Cart</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product_image">
+          <img src="./img/capsicum-2716161_1280.png" alt>
+        </div>
+        <h4>Capsicum</h4>
+        <p>$1.80</p>
+        <button class="add-to-cart-button" data-name="Capsicum"
+          data-price="1.80"> Add to Cart</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="fruits-section" class="product-section hidden">
+    <h2>Fruits</h2>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product_image"><img src="./img/apple.png"
+            alt="apple"></div>
+        <h4>Apple</h4>
+        <p>$1.50</p>
+        <button class="add-to-cart-button" data-name="Apple"
+          data-price="1.50"> Add to Cart</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product_image"><img src="./img/purplegrapes.png"
+            alt="grapes"></div>
+        <h4>Grapes</h4>
+        <p>$1.50</p>
+        <button class="add-to-cart-button" data-name="Grapes"
+          data-price="1.50"> Add to Cart</button>
+
+      </div>
+
+      <div class="product-card">
+        <div class="product_image"><img src="./img/orange.png"
+            alt="orange"></div>
+        <h4>Orange</h4>
+        <p>$1.50</p>
+        <button class="add-to-cart-button" data-name="Orange"
+          data-price="1.50"> Add to Cart</button>
+
+      </div>
+
+      <div class="product-card">
+        <div class="product_image"><img src="./img/grapefruit.png"
+            alt="grapefruit"></div>
+        <h4>Grape
+          Fruit</h4>
+        <p>$1.50</p>
+        <button class="add-to-cart-button" data-name="Grape Fruit"
+          data-price="1.50"> Add to Cart</button>
+
+      </div>
+
+      <div class="product-card">
+        <div class="product_image">
+          <img src="./img/banana.jpg" alt="Banana">
+        </div>
+        <h4>Banana</h4>
+        <p>$1.10</p><button class="add-to-cart-button"
+          data-name="Grape Fruit" data-price="1.50"> Add to Cart</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product_image"><img src="./img/kiwi.jpg"
+            alt="kiwi"></div>
+        <h4>Kiwi</h4>
+        <p>$1.30</p><button class="add-to-cart-button" data-name="Kiwi"
+          data-price="1.30"> Add to Cart</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product_image">
+          <img src="./img/pineapple.jpg" alt="Pineapple">
+        </div>
+        <h4>Pineapple</h4>
+        <p>$1.40</p><button class="add-to-cart-button"
+          data-name="pineapple" data-price="1.40"> Add to Cart</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product_image"><img src="./img/avocado.jpg"
+            alt="Avocado"></div>
+        <h4>Avocado</h4>
+        <p>$1.40</p><button class="add-to-cart-button" data-name="Avocado"
+          data-price="1.40"> Add to Cart</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product_image"><img src="./img/apricot.jpg"
+            alt="apricot"></div>
+        <h4>Apricot</h4>
+        <p>$1.45</p><button class="add-to-cart-button" data-name="Apricot"
+          data-price="1.45"> Add to
+          Cart</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product_image"><img
+            src="./img/watermelon-2409368_1280.jpg" alt="apricot"></div>
+        <h4>Watermelon</h4>
+        <p>$1.45</p><button class="add-to-cart-button"
+          data-name="Watermelon" data-price="1.45">Add to
+          Cart</button>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="seafood-section" class="product-section hidden">
+    <h2>Sea Food</h2>
+    <div class="products-grid">
+
+      <div class="product-card">
+        <div class="product_image">
+          <img src="./img/salmon.jpg" alt="Salmon">
+        </div>
+        <h4>Salmon</h4>
+        <p>$1.45</p><button class="add-to-cart-button" data-name="Salmon"
+          data-price="1.45"> Add to Cart</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product_image">
+          <img src="./img/Sardine Fish.jpg" alt="Sardine fish">
+        </div>
+        <h4>Sardine Fish</h4>
+        <p>$1.08</p><button class="add-to-cart-button" data-name="Sardine Fish"
+          data-price="1.08"> Add to
+          Cart</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product_image">
+          <img src="./img/salmon.png" alt="Salmon">
+        </div>
+        <h4>Salmon</h4>
+        <p>$1.45</p><button class="add-to-cart-button" data-name="Salmon"
+          data-price="1.45">Add to
+          Cart</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product_image">
+          <img src="./img/sushifish.jpg" alt="sushi">
+        </div>
+        <h4>Sushi</h4>
+        <p>$1.45</p><button class="add-to-cart-button" data-name="Sushi"
+          data-price="1.45">Add to
+          Cart</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product_image">
+          <img src="./img/fish.jpg" alt="Salmon">
+        </div>
+        <h4>Salmon</h4>
+        <p>$1.45</p><button class="add-to-cart-button" data-name="Salmon"
+          data-price="1.45"> Add to
+          Cart</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product_image">
+          <img src="./img/Tuna fish.jpg" alt="tuna fish">
+        </div>
+        <h4>Tuna Fish</h4>
+        <p>$1.75</p><button class="add-to-cart-button" data-name="Tuna Fish"
+          data-price="1.08">Add to
+          Cart</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product_image">
+          <img src="./img/Swordfish.webp" alt="Swordfish">
+        </div>
+        <h4>Sword Fish</h4>
+        <p>$1.45</p><button class="add-to-cart-button" data-name="Sword Fish"
+          data-price="1.45"> Add to
+          Cart</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product_image">
+          <img src="./img/cod fish.webp" alt="codfish">
+        </div>
+        <h4>Cod Fish</h4>
+        <p>$1.45</p><button class="add-to-cart-button" data-name="Code Fish"
+          data-price="1.45"> Add to
+          Cart</button>
+      </div>
+      <!-- More products... -->
+    </div>
+  </div>
+
+  <div id="meat-section" class="product-section hidden">
+    <h2>Meat</h2>
+
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product_image">
+          <img src="./img/ground-beef.jpg" alt="ground-beef">
+        </div>
+        <h4>ground-beef</h4>
+        <p>$1.90</p>
+        <button class="add-to-cart-button" data-name="ground-beef"
+          data-price="1.90">Add to Cart</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product_image">
+          <img src="./img/flesh.jpg" alt="beef">
+        </div>
+        <h4>Red Beef</h4>
+        <p>$1.80</p>
+        <button class="add-to-cart-button" data-name="Red Beef"
+          data-price="1.80">Add to Cart</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product_image">
+          <img src="./img/beef2.png" alt="beef">
+        </div>
+        <h4>Beef</h4>
+        <p>$1.40</p>
+        <button class="add-to-cart-button" data-name="beef"
+          data-price="1.40"> Add to
+          Cart</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product_image">
+          <img src="./img/beef-inner-thighs.jpg" alt>
+        </div>
+        <h4>beef-inner-thighs</h4>
+        <p>$1.80</p>
+        <button class="add-to-cart-button" data-name="beef-inner-thighs"
+          data-price="1.80"> Add to Cart</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product_image">
+          <img src="./img/flesh2.jpg" alt="Meat">
+        </div>
+        <h4>Meat</h4>
+        <p>$1.80</p>
+        <button class="add-to-cart-button" data-name="Meat"
+          data-price="1.80"> Add to Cart</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product_image">
+          <img src="./img/flesh3.webp" alt>
+        </div>
+        <h4>Cucumber</h4>
+        <p>$1.80</p>
+        <button class="add-to-cart-button" data-name="cucumber"
+          data-price="1.80"> Add to Cart</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product_image">
+          <img src="./img/chicken.webp" alt>
+        </div>
+        <h4>Whole chicken</h4>
+        <p>$1.80</p>
+        <button class="add-to-cart-button" data-name="chicken"
+          data-price="1.80"> Add to Cart</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product_image">
+          <img src="./img/chicken breast pcs.jpg" alt>
+        </div>
+        <h4>Chicken Breast</h4>
+        <p>$1.80</p>
+        <button class="add-to-cart-button" data-name="chicken breast"
+          data-price="1.80"> Add to Cart</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product_image">
+          <img src="./img/boneless chicken.png" alt>
+        </div>
+        <h4>Boneless Chicken</h4>
+        <p>$1.80</p>
+        <button class="add-to-cart-button" data-name="boneless chicken"
+          data-price="1.80">Add to Cart</button>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div id="dairy-section" class="product-section hidden">
+    <h2>Dairy Products</h2>
+
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product_image">
+          <img src="./img/butter.jpg" alt="butter">
+        </div>
+        <h4>Butter</h4>
+        <p>$1.90</p>
+        <button class="add-to-cart-button" data-name="butterf"
+          data-price="1.90"> Add to Cart</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product_image">
+          <img src="./img/cheese.jpg" alt="cheese">
+        </div>
+        <h4>Cheese</h4>
+        <p>$1.82</p>
+        <button class="add-to-cart-button" data-name="Cheese"
+          data-price="1.82"> Add to Cart</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product_image">
+          <img src="./img/youghurt.jpg" alt="youghurt">
+        </div>
+        <h4>youghurt</h4>
+        <p>$1.43</p>
+        <button class="add-to-cart-button" data-name="youghurt"
+          data-price="1.43">Add to Cart</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product_image">
+          <img src="./img/milk.jpg" alt="milk">
+        </div>
+        <h4>milk</h4>
+        <p>$1.00</p>
+        <button class="add-to-cart-button" data-name="milk"
+          data-price="1.00"> Add to
+          Cart</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product_image">
+          <img src="./img/coffee mate.webp" alt="Coffee ">
+        </div>
+        <h4>Coffee Mate</h4>
+        <p>$1.80</p>
+        <button class="add-to-cart-button" data-name="Coffee Mate"
+          data-price="1.80">Add to Cart</button>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div id="beverage-section" class="product-section hidden">
+    <h2>Beverages</h2>
+
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product_image">
+          <img src="./img/orangejuice.png" alt="orange juice">
+        </div>
+        <h4>Orange Juice</h4>
+        <p>$1.90</p>
+        <button class="add-to-cart-button" data-name="butterf"
+          data-price="1.90"> Add to Cart</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product_image">
+          <img src="./img/smoothie.png" alt="Smoothie">
+        </div>
+        <h4>Smoothie</h4>
+        <p>$1.82</p>
+        <button class="add-to-cart-button" data-name="smoothie"
+          data-price="1.82"> Add to Cart</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product_image">
+          <img src="./img/beeryjuice (1).png" alt="berry">
+        </div>
+        <h4>Berry Juice</h4>
+        <p>$1.43</p>
+        <button class="add-to-cart-button" data-name="Berry Juice"
+          data-price="1.43"> Add to Cart</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product_image">
+          <img src="./img/bubble tea.jpg" alt="bubble tea">
+        </div>
+        <h4>Bubble Tea</h4>
+        <p>$1.00</p>
+        <button class="add-to-cart-button" data-name="Bubble Tea"
+          data-price="1.00"> Add to Cart</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product_image">
+          <img src="./img/peach.png" alt="Peach ">
+        </div>
+        <h4>Peach Juice</h4>
+        <p>$1.80</p>
+        <button class="add-to-cart-button" data-name="Peach Juice"
+          data-price="1.80"> Add to Cart</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product_image">
+          <img src="./img/vegfruitJuice.png" alt="Veg Juice">
+        </div>
+        <h4>Veg Fruit Juice</h4>
+        <p>$1.80</p>
+        <button class="add-to-cart-button" data-name="Veg Fruit Juice"
+          data-price="1.80"> Add to Cart</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product_image">
+          <img src="./img/orage-juice-karizp.png" alt=" Juice">
+        </div>
+        <h4> Juice</h4>
+        <p>$1.80</p>
+        <button class="add-to-cart-button" data-name=" Juice"
+          data-price="1.80"> Add to Cart</button>
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+<div class="banners">
+  <div class="banner-fruitJuice shine-overlay">
+    <div class="banner-inner">
+      <div class="subtitle">Save 45% OFF</div>
+      <div class="title">Fresh &amp; Tasty <br> Fruits Juice</div>
+      <div class="btn btn-12" href="#">
+        Shop Now
+      </div>
+    </div>
+    <div class="shine"></div>
+  </div>
+  <div class="banner-fruitPop shine-overlay">
+    <div class="banner-inner">
+      <div class="subtitle">Save 45% OFF</div>
+      <div class="title">Fresh &amp; Tasty <br> Fruits Ice Pop</div>
+      <div class="btn btn-12" href="#">
+        Shop Now
+      </div>
+    </div>
+    <div class="shine"></div>
+  </div>
+</div>
+
+<div class="about_content">
+  <div class="about_image">
+    <img src="./img/circularImage.png" alt>
+  </div>
+  <div class="about_text">
+    <h1>About Us</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
+      nulla laboriosam maiores quidem
+      distinctio! Ea qui reprehenderit quae cum voluptate.</p>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-container">
+    <!-- About Section -->
+    <div class="footer-section">
+      <h3>About Us</h3>
+      <p>
+        GroceryPlex is your one-stop destination for fresh and
+        high-quality grocery items.
+        We deliver within 15 minutes to ensure freshness at your
+        doorstep.
+      </p>
+    </div>
+
+    <!-- Quick Links Section -->
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Shop</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">FAQ</a></li>
+      </ul>
+    </div>
+
+    <!-- Newsletter Section -->
+    <div class="footer-section newsletter">
+      <h3>Newsletter</h3>
+      <form>
+        <input type="email" placeholder="Enter your email" required />
+        <button type="submit">Subscribe</button>
+      </form>
+      <div class="social-icons">
+        <a href="#" class="icon"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="icon"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="icon"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="icon"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2024 Nex Coder. All rights reserved.</p>
+  </div>
+</footer>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+
+</html>

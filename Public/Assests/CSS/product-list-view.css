@@ -30,7 +30,7 @@
 #product_list_table thead th {
     background: linear-gradient(to right,#086c1f, #57c270) !important;
     color: white !important;
-    text-align: center;
+    text-align:left;
     padding: 14px;
     font-size: 16px;
     font-weight: bold;
@@ -63,7 +63,7 @@
 /* Table Cell Styling */
 #product_list_table tbody td {
     padding: 12px;
-    text-align: center;
+    text-align:left;
     font-size: 14px;
     font-weight: 500;
     color: #333;

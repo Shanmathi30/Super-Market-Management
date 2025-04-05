@@ -5,7 +5,6 @@ $(document).ready(function () {
     });
     $(".curated").on("click",function(){
         const urlParams = new URLSearchParams(window.location.search);
-        let targetLocation =  urlParams.get("isAdmin") === "Y" ? "product-list-view.html" : "categories.html";
-        window.location=targetLocation;
-    }) 
+        window.location=`categories.html?isAdmin=${urlParams.get("isAdmin")}`
+    })
 });

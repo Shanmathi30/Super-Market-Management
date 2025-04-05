@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="placeOrderBtn" class="btn btn-success">Place Order</button>
+    <div id="orderResponse" class="mt-3">
+
+    </div>
+</body>
+<script>
+$(document).ready(function () {
+    // Example customerId and cart items — replace with actual values from your app
+    const customerId = 5; // Get this dynamically for each logged-in customer
+    const cartItems = [
+        { productId: 1, productQuantity: 6 },
+        { productId: 10, productQuantity: 2 }
+    ];
+
+    $('#placeOrderBtn').click(function () {
+        const requestData = {
+            orderId: null,
+            customerId: customerId,
+            orderStatus: "NEW",
+            listOfProducts: cartItems
+        };
+
+        $.ajax({
+            url: 'https://dev-api.humhealth.com/SuperMarketAPI/order/saveOrUpdate',
+            method: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(requestData),
+            success: function (response) {
+                if (response.status === "SUCCESS") {
+                    displayOrderDetails(response.data);
+                } else {
+                    $('#orderResponse').html('<div class="alert alert-danger">Failed to place order</div>');
+                }
+            },
+            error: function () {
+                $('#orderResponse').html('<div class="alert alert-danger">Server error. Please try again.</div>');
+            }
+        });
+    });
+
+    function displayOrderDetails(data) {
+        let html = `
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    Order Placed Successfully (Order ID: ${data.orderId})
+                </div>
+                <div class="card-body">
+                    <h5>Customer: ${data.customerName}</h5>
+                    <p><strong>Address:</strong> ${data.customerAddress}, ${data.customerLocation}, ${data.customerCity} - ${data.customerPincode}</p>
+                    <p><strong>Mobile:</strong> ${data.customerMobile}</p>
+                    <p><strong>Order Date:</strong> ${data.orderCreatedDate}</p>
+                    <p><strong>Delivery Date:</strong> ${data.orderExpectedDeliveryDate}</p>
+                    <p><strong>Status:</strong> ${data.orderStatus}</p>
+                    <p><strong>Total:</strong> ₹${data.orderTotal.toFixed(2)}</p>
+                    
+                    <h5>Ordered Products:</h5>
+                    <ul class="list-group">
+        `;
+
+        data.listOfProductsOrdered.forEach(item => {
+            html += `
+                <li class="list-group-item">
+                    <strong>${item.orderLineProductName}</strong> (${item.orderLineProductCategory})<br>
+                    Quantity: ${item.orderLineProductQuantity}, Price: ₹${item.orderLineProductPrice.toFixed(2)}
+                </li>
+            `;
+        });
+
+        html += `
+                    </ul>
+                </div>
+            </div>
+        `;
+
+        $('#orderResponse').html(html);
+    }
+});
+</script>
+
+</script>
+</html>

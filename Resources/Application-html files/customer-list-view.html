@@ -30,7 +30,7 @@
     <div class="smds-sidebar">
         <supermarket-side-navigation></supermarket-side-navigation>
     </div>
-    <div class="smds-content-wrapper">
+    <div class="smds-content-wrapper" style="width: 100%;">
         <!-- Navbar -->
         <nav class="navbar" style="width:96%;">
             <supermarket-top-navigation style="display:block; width:100%;"></supermarket-top-navigation>
@@ -58,14 +58,16 @@
                             <label for="search_customer_city">City</label>
                             <input type="text" id="search_customer_city" class="form-control" placeholder="Search by City">
                         </div>
-                        <div class="col-md-3">
+                    </div>
+                    <div class="d-block">
+                        <div class="float-end pb-4">
                             <button type="button" id="btn_reset"
-                                class="btn btn-outline-secondary mt-md-4 me-2">Reset</button>
-                            <button type="button" id="btn_submit" class="btn btn-success mt-md-4">Submit</button>
+                                class="btn btn-outline-secondary me-2">Reset</button>
+                            <button type="button" id="btn_submit" class="btn btn-success">Submit</button>
                         </div>
                     </div>
                 </form>
-                <table id="customer_list_table" class="table table-bordered table- table-hover">
+                <table id="customer_list_table" class="table table-bordered table- table-hover" style="width: 100%;">
                     <thead class="table">
                         <tr>
                             <th>s.no</th>

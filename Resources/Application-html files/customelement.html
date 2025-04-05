@@ -4,13 +4,16 @@
         <li><a href="#"><i class="fas fa-bars"></i></a></li>
         <li class="admin customer d-none"><a class="dashboard"><i class="fas fa-th-large"></i><span>Dashboard</span></a></li>
         <li class="admin customer d-none"><a class="feature"><i class="fas fa-envelope"></i> <span>Features</span></a></li>
-        <li class="admin customer d-none"><a class="product"><i class="fa-solid fa-box"></i> <span>Product</span></a>
+        <li class="admin d-none"><a class="productListView"><i class="fa-solid fa-box"></i> <span>Product</span></a></li>
+        <li class="customer d-none"><a class="product"><i class="fa-solid fa-box"></i> <span>Product</span></a>
         </li>
-        <li class="admin customer d-none"><a class="categories"><i class="fa-solid fa-list"></i><span>Categories</span></a>
+        <li class="customer d-none"><a class="categories"><i class="fa-solid fa-list"></i><span>Categories</span></a>
         </li>
         <li class="admin d-none"><a class="customerListView"><i class="fas fa-user"></i><span>Customers</span></a></li>
-        <li class="admin customer d-none"><a href="#"><i class="fas fa-shopping-cart"></i> <span>Orders</span></a></li>
-        <li class="admin customer d-none"><a href="#"><i class="fa-solid fa-tags"></i><span>Offers</span></a></li>
+        <li class="admin d-none"><a class="orderListView"><i class="fas fa-shopping-cart"></i> <span>Orders</span></a></li>
+        <li class="customer d-none"><a class="order"><i class="fas fa-shopping-cart"></i> <span>My Orders</span></a></li>
+        <li class="customer d-none"><a class="cart"><i class="fas fa-shopping-cart"></i> <span>Cart</span></a></li>
+        <li class="customer d-none"><a class="offers"><i class="fa-solid fa-tags"></i><span>Offers</span></a></li>
     </ul>
 </template>
 
@@ -24,23 +27,41 @@
         </a>
         <!-- Search Bar -->
         <div class="search-bar">
-            <input class="form-control" type="search" placeholder="Search for vegetables, fruits....." aria-label="Search">
+            <input class="form-control" type="search" placeholder="Search for vegetables, fruits....."
+                aria-label="Search">
             <i class='fas fa-search search-icon'></i>
         </div>
         <!-- Cart & Avatar -->
-        <div class="d-flex align-items-center ms-3 me-4">   
-        <!-- Cart Icon with Badge -->
-        <div class="cart-container position-relative">
-            <i class="fa-solid fa-cart-shopping text-white fs-4"></i>
-            <span class="position-absolute cart-badge badge bg-danger rounded-pill">0</span>
-        <!-- Cart Preview -->
-        <div id="cartPreview" class="cart-preview">
-            <img src="" alt="Cart Icon" class="cart-icon"> <!-- Small cart image -->
-            <p>You have no items in your shopping cart</p>
-            <button class="btn btn-start-shopping">Start Shopping</button>
+        <div class="d-flex align-items-center ms-3 me-4">
+            <!-- Cart Icon with Badge -->
+            <div class="cart-container position-relative">
+                <i class="fa-solid fa-cart-shopping text-white fs-4"></i>
+                <span class="position-absolute cart-badge badge bg-danger rounded-pill">0</span>
+                <!-- Cart Preview -->
+                <div id="cartPreview" class="cart-preview">
+                    <img src="../../Public/Assests/Images/cart-icon.png" alt="Cart Icon" class="cart-icon">
+                    <!-- Small cart image -->
+                    <p>You have no items in your shopping cart</p>
+                    <button class="btn btn-start-shopping">Start Shopping</button>
+                </div>
+            </div>
+            <!-- Cart Offcanvas -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="cartOffcanvas" aria-labelledby="cartOffcanvasLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="cartOffcanvasLabel">Your Shopping Cart</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
+        <div class="offcanvas-body">
+            <div id="cartPreviewContent">
+                <p>You have no items in your shopping cart</p>
+                <button class="btn btn-primary btn-start-shopping">Start Shopping</button>
+            </div>
         </div>
-
+        <div class="offcanvas-footer p-3">
+            <a href="../../../Resources/Application-html files/cart.html" class="btn btn-success w-100">Go to Cart</a>
+        </div>
+    </div>
+    
             <!-- Avatar Icon -->
             <div class="avatar-icon  top-0 right-0 ms-3" id="avatarIcon">
                 <i class="fa-solid fa-user text-dark fs-5"></i>
@@ -50,8 +71,8 @@
                 <div class="profile-card-content">
                     <img src="../../Public/Assests/Images/general user icon.jpg" class="profile-pic" alt="User Avatar">
                     <h5 class="user-name"></h5>
-                    <button id="logout_button" class="btn btn-logout mt-2">Logout</button>                        
-               </div>
+                    <button id="logout_button" class="btn btn-logout mt-2">Logout</button>
+                </div>
             </div>
         </div>
     </div>
@@ -98,18 +119,18 @@
             <div class="row pt-2">
                 <div class="col-md-6">
                     <label for="customer_password" class="form-label">Password <span class="text-danger">*</span></label>
-                    <div class="input-group">
+                    <div class="form-group">
                         <input type="password" id="customer_password" name="customerPassword" class="form-control" placeholder="Password">
-                        <span class="input-group-text">
+                        <span class="form-group-text">
                             <i class="fa fa-eye" id="togglePassword"></i>
                         </span>
                     </div>
-                </div>
+                </div>            
                 <div class="col-md-6">
                     <label for="customer_confirm_password" class="form-label">Confirm Password <span class="text-danger">*</span></label>
-                    <div class="input-group">
+                    <div class="form-group">
                         <input type="password" id="customer_confirm_password" name="customerConfirmPassword" class="form-control" placeholder="Password">
-                        <span class="input-group-text">
+                        <span class="form-group-text">
                             <i class="fa fa-eye" id="toggleConfirmPassword"></i>
                         </span>
                     </div>
@@ -119,7 +140,7 @@
                 <div class="col-md-6">
                     <label for="mobileNo" class="form-label">Mobile Phone <span class="text-danger">*</span></label>
                     <input type="text" id="mobileNo" name="customerMobileNo" class="form-control"
-                        placeholder="Mobile Phone">
+                    placeholder="Mobile Phone">
                 </div>
             </div>
         </div>

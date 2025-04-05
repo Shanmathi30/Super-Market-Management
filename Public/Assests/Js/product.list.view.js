@@ -19,10 +19,7 @@ const productDataTableConfig = {
     columns: [
         { "data": "sno", "searchable": false, "orderable": true },
         { "data": "productName", "searchable": false, "orderable": true },
-        // { "data": "productPackQuantity", "searchable": true, "orderable": true },
         { "data": "productCategory", "searchable": true, "orderable": true },
-        // { "data": "productPrice", "searchable": true, "orderable": true },
-        // { "data": "productStockQuantity", "searchable": true, "orderable": true },
         { "data": "productEffectiveDate", "searchable": false, "orderable": false },
         { "data": "action", "searchable": false, "orderable": false },
     ],
@@ -37,7 +34,7 @@ const ProductDataTable = function () {
     this.initializeProductTable = function () 
     {
         $(".smp-product-table-buttons").prepend(
-            `<div class="d-inline-block">
+            `<div class="d-inline-block ">
                 <button class="smps-supermarket-product-list-download-button btn btn-success">
                     <i class="fa fa-download"></i> &nbsp;&nbsp;download
                 </button>
@@ -53,6 +50,8 @@ const ProductDataTable = function () {
         $("#sm_product_view_modal_id").on("hidden.bs.modal",_hideErrorMessageInModal);
 
         $(".smps-supermarket-product-list-download-button").on("click",_downloadProductList);
+
+
 
         // Get today's date and two year from today using Moment.js
         let today = moment().format("MM-DD-YYYY hh:mm A");
@@ -146,17 +145,19 @@ const ProductDataTable = function () {
         }, "Last Effective Date must be after the Effective Date.");
 
         // Add dollar symbol before price input
-        $("#product_price").before("<span class='input-group-text'>$</span>");
+        $("#product_price").before("<span class='form-group-text'>$</span>");
     };
 
     function _addProductDetails() {
         $("#sm_product_add_modal_id").modal("show");
+        $("#smrs_add_product_btn").text("Add Product");
+        $("#reset_modal_label").text("ADD PRODUCT");
     }    
 
     $("#smrs_add_product_btn").on("click", function () {
         if ($("#sm_product_form").valid()) { 
             let productData = {
-                productId: null,
+                productId: $("#sm_product_form").attr("data-id"),
                 productName: $("#product_name").val().trim(),
                 productPackQuantity: $("#product_pack_quantity").val().trim(),
                 productCategory: $("#product_category").val().trim(),
@@ -237,6 +238,7 @@ const ProductDataTable = function () {
         $('[data-bs-toggle="tooltip"]').tooltip();
         $(".smp-product-edit").on("click", _editProductDetails);
         $(".smp-product-view").on("click", _viewProductDetails);
+        $(".smp-product-price-history").on("click",_productPriceHistory);
     }
 
     this.getProductDataTableObject = function(dataObject){
@@ -268,7 +270,7 @@ const ProductDataTable = function () {
                             // Create an empty patient info array
                             let productInfo = []
                             //destrucing the object
-                            let  { productId, productName, productPackQuantity, productCategory, productPrice, productStockQuantity, productEffectiveDate, sNo } = productListResponse.listOfProducts[index];
+                            let  { productId, productName, productPackQuantity, productCategory, productPrice, productStockQuantity, productEffectiveDate, productLastEffectiveDate,sNo } = productListResponse.listOfProducts[index];
         
                             productInfo["sno"] = sNo;
                             productInfo["productName"] = productName;
@@ -277,6 +279,7 @@ const ProductDataTable = function () {
                             productInfo["productPrice"]=productPrice;
                             productInfo["productStockQuantity"]=productStockQuantity;
                             productInfo["productEffectiveDate"]=productEffectiveDate;
+                            productInfo["productLastEffectiveDate"]=productLastEffectiveDate;
                             productInfo["action"]= _getProductListActionIcons(productListResponse.listOfProducts[index]);
                             productList.push(productInfo);
                             }
@@ -295,10 +298,16 @@ const ProductDataTable = function () {
                     </span>
                     <span class="p-1 smp-product-view" data-id="${productDetails.productId}"
                     data-bs-toggle="tooltip" title="View Product" data-bs-placement="top">
-                        <i class="fa-solid fa-eye"></i>
+                        <i class="fas fa-expand-arrows-alt"></i>
                     </span>
-                    <span class="p-1 smp-product-active-deactive" data-id="${productDetails.productId}" data-bs-toggle="tooltip" title="Activate/Deactive" data-bs-placement="top">
+                    <span class="p-1 smp-product-active-deactive ${productDetails.activeFlag === "Y" ? "":"d-none"}" data-id="${productDetails.productId}" data-bs-toggle="tooltip" title="Product is Active.Click to Deactivate" data-bs-placement="top">
                         <i class="fas fa-basket-shopping"></i>
+                    </span>
+                    <span class="p-1 smp-product-active-deactive ${productDetails.activeFlag=== "Y" ? "d-none":""}"  data-id="${productDetails.productId}" data-bs-toggle="tooltip" title="Product is Inactive.Click to Activate" data-bs-placement="top">
+                        <i class="fas fa-basket-shopping"></i>
+                    </span>
+                    <span class="p-1 smp-product-price-history"  data-id="${productDetails.productId}" data-bs-toggle="tooltip" title="price history" data-bs-placement="top">
+                        <i class="fas fa-history"></i>
                     </span>
                 </div>`;
     }
@@ -331,7 +340,10 @@ const ProductDataTable = function () {
     }
 
     function _downloadProductList(){
-
+        $.ajax({
+            url: `https://dev-api.humhealth.com/SuperMarketAPI/products/view/${productId}`,
+            type: 'GET',
+        })
     }
     
     function _editProductDetails() {
@@ -342,14 +354,17 @@ const ProductDataTable = function () {
             type: 'GET',
             success: function (response) {
                 if (response.status === "SUCCESS") {
-                    $("#sm_product_update_form").attr("data-id", productId);
-                    $('#update_product_name').val(response.data.productName);
-                    $('#update_product_pack_quantity').val(response.data.productPackQuantity);
-                    $('#update_product_price').val(response.data.productPrice);
-                    $('#update_product_stock_quantity').val(response.data.productStockQuantity);
-                    $('#update_product_effective_date').val(response.data.productEffectiveDate);
-                    $('#update_product_last_effective_date').val(response.data.productLastEffectiveDate);
-                    $("#sm_product_update_modal_id").modal("show");
+                    $("#reset_modal_label").text("UPDATE PRODUCT");
+                    $("#sm_product_form").attr("data-id", productId);
+                    $('#product_name').val(response.data.productName);
+                    $('#product_pack_quantity').val(response.data.productPackQuantity);
+                    $('#product_category').val(response.data.productCategory).attr("disabled",true);
+                    $('#product_price').val(response.data.productPrice);
+                    $('#product_stock_quantity').val(response.data.productStockQuantity);
+                    $('#product_effective_date').val(response.data.productEffectiveDate);
+                    $('#product_last_effective_date').val(response.data.productLastEffectiveDate);
+                    $("#smrs_add_product_btn").text("Update Product")
+                    $("#sm_product_add_modal_id").modal("show");
                 }
             },
             error: function () {
@@ -357,6 +372,49 @@ const ProductDataTable = function () {
             }
         });
     }
+
+    $(document).on('click', '.smp-product-price-history', function () {
+        let productId = $(this).data('id'); // Get product ID from data attribute
+    
+        $.ajax({
+            url: `https://dev-api.humhealth.com/SuperMarketAPI/products/history/${productId}`,
+            type: 'GET',
+            dataType: 'json',
+            success: function (response) {
+                if (response.status === "SUCCESS") {
+                    let data = response.data;
+                    let productName = data.productName;
+                    let priceHistory = data.listOfPriceHistory;
+    
+                    $('#productName').text(productName); // Set product name
+    
+                    let historyHtml = '';
+    
+                    // Append all records (old and new) into the table
+                    priceHistory.forEach(function (item) {
+                        historyHtml += `
+                            <tr>
+                                <td>${item.productEffectiveDate}</td>
+                                <td>₹${item.productPrice.toFixed(2)}</td>
+                            </tr>`;
+                    });
+    
+                    // Append new records to the existing table without removing old data
+                    $('#priceHistoryTableBody').append(historyHtml);
+    
+                    // Show modal
+                    $('#priceHistoryModal').modal('show');
+                } else {
+                    alert("No price history found!");
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error("Error fetching product price history:", error);
+                alert("Failed to load price history.");
+            }
+        });
+    });
+    
     
     function _viewProductDetails() {
         let productId = $(this).attr("data-id");
@@ -381,7 +439,15 @@ const ProductDataTable = function () {
             }
         });
     }
+
+    function _productPriceHistory(){
+        let productId = $(this).attr("data-id");
+
+        $.ajax({
+            url: `https://dev-api.humhealth.com/SuperMarketAPI/products/history/${productId}`,
+            type: 'GET'
+        });
+    }
 }
 const productDataTable = new ProductDataTable();
 productDataTable.bindProductListEvents();
-

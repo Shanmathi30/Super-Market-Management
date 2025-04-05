@@ -5,31 +5,199 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shopping Cart</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../Public/Assests/CSS/dashboard.css">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Toastr CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet"/>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
-        body {
-            background-color: #f8f9fa;
-        }
-        .empty-cart-container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 80vh;
-            text-align: center;
-        }
-        .empty-cart-container img {
-            width: 150px;
-            margin-bottom: 20px;
-        }
+    body 
+    {
+        background-color: #f8f9fa;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    .smc-cart-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 25px;
+    width: 50%;
+    max-width: 500px; /* Optional: to limit width */
+    padding: 30px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: adds a subtle shadow */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.cart-item-img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+}
+
+    .empty-cart-container img 
+    {
+        width: 150px;
+        margin-bottom: 20px;
+    }
+
+    body {
+    background-color: #f8f9fa;
+}
+
+.smc-cart-container {
+    width: 60%;
+    max-width: 600px;
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    max-height: 500px; /* Enables scrolling when items overflow */
+}
+
+/* Cart Item Styling */
+.cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+.cart-item img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.cart-item .item-details {
+    flex-grow: 1;
+    padding: 0 10px;
+}
+
+.cart-item .item-price {
+    font-size: 16px;
+    font-weight: bold;
+    color: #007bff;
+}
+
+/* Quantity Controls */
+.qty-controls {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.qty-controls button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.qty-controls input {
+    width: 35px;
+    text-align: center;
+    border: none;
+    outline: none;
+}
+
+/* Buttons */
+.btn-danger {
+    background-color: #dc3545;
+}
+
+.btn-danger:hover {
+    background-color: #bb2d3b;
+}
+
+.btn-success {
+    background-color: #28a745;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+}
+
+.btn-primary {
+    background-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Cart Total */
+.cart-total {
+    font-size: 20px;
+    font-weight: bold;
+    color: #28a745;
+    text-align: right;
+    margin-top: 10px;
+}
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="empty-cart-container">
-            <img src="https://cdn-icons-png.flaticon.com/512/2038/2038854.png" alt="Empty Cart">
-            <h4 class="text-muted">Your cart is empty</h4>
-            <a href="index.html" class="btn btn-success mt-3">Continue Shopping</a>
-        </div>
+    <!-- Sidebar -->
+    <div class="smds-sidebar">
+        <supermarket-side-navigation></supermarket-side-navigation>
     </div>
+
+    <!-- Navbar -->
+    <div class="smds-content-wrapper">
+        <nav class="navbar" style="width:96%;">
+            <supermarket-top-navigation style="display:block; width:100%;"></supermarket-top-navigation>
+        </nav>
+        <main class="container d-flex justify-content-center">
+            <div class="smc-cart-container">
+                <div class="container" id="cartContainer">
+                    <!-- Items will be dynamically added here -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="all-template"></div>
+    <!-- Toastr JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="../../Public/Assests/Js/cart.js"></script>
+    <script src="../../Public/Assests/Js/dashboard.js"></script>
+    <script>
+        $('.all-template').load('customelement.html', function () {
+            let script = document.createElement('script');
+            script.src = '../../Public/Assests/js/navigation.js';
+            document.body.appendChild(script);
+
+            let scriptTopNavigation = document.createElement('script');
+            scriptTopNavigation.src = '../../Public/Assests/Js/top.navigation.js';
+            document.body.appendChild(scriptTopNavigation);
+        });
+    </script>
 </body>
 </html>

@@ -58,7 +58,7 @@ const LoginPage = function () {
             contentType: "application/json",
             success: function (response) {
                 if (response.status === "SUCCESS") {
-                    localStorage.setItem("customer", JSON.stringify({ username:username , password:password }));
+                    localStorage.setItem("customer", JSON.stringify({ username:username , password:password, customerId: response.data.customerId }));
                     window.location.href = "dashboard.html?isAdmin=N";
                 } else {
                     showToast("Invalid Customer Credentials!");

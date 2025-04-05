@@ -24,6 +24,10 @@ const SELECTORS = {
 };
 
 const RegisterPage = function () {
+    // mobile number
+    this.destructorUSPhoneNumber = function (phoneNumber) {
+        return phoneNumber.replace(/[-,(,),_]/gi, '');
+    };
     // Validation function
     this.validateUserInputFields = function () {
         $(SELECTORS.userRegisterFormId).validate({
@@ -78,7 +82,6 @@ const RegisterPage = function () {
                 },
                 customerAddressLineOne:{
                     required:true
-                    //min,max
                 },
                 customerAddressLineTwo:{
                     required:true
@@ -182,11 +185,14 @@ const RegisterPage = function () {
     // Register Process
     this.registerCustomer = function (event) {
         let registerButtonElement = event.currentTarget;
+        let rawMobileNo = $(SELECTORS.userRegisterMobileNo).val().trim();
+        let cleanedMobileNo = this.destructorUSPhoneNumber(rawMobileNo);
+
         let customerData = {
             firstName: $(SELECTORS.userRegisterFirstNameId).val().trim(),
             middleName: $(SELECTORS.userRegisterMiddleNameId).val().trim(),
             lastName: $(SELECTORS.userRegisterLastNameId).val().trim(),
-            customerMobileNo: $(SELECTORS.userRegisterMobileNo).val().trim(),
+            customerMobileNo:cleanedMobileNo,
             customerAddressLineOne:$(SELECTORS.userRegisterAddressLineOneId).val().trim(),
             customerAddressLineTwo:$(SELECTORS.userRegisterAddressLineTwoId).val().trim(),
             customerCity: $(SELECTORS.userRegisterCityId).val().trim(),
